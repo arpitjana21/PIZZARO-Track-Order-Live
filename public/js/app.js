@@ -12,7 +12,6 @@ function add(a, b) {
   return a + b;
 }
 var a = add(5, 7);
-alert('Hello');
 
 /***/ }),
 
