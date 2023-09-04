@@ -2,10 +2,22 @@
     "name": "pizzalust-trackpizzalive",
     "version": "1.0.0",
     "description": "PizzaLust : Track Pizza Live!",
-    "main": "index.js",
+    "main": "server.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "dev": "nodemon server.js"
     },
     "author": "Arpit Jana",
-    "license": "MIT"
+    "license": "MIT",
+    "dependencies": {
+        "ejs": "^3.1.9",
+        "express": "^4.18.2",
+        "express-ejs-layouts": "^2.5.1"
+    },
+    "devDependencies": {
+        "laravel-mix": "^6.0.49",
+        "nodemon": "^3.0.1",
+        "resolve-url-loader": "^5.0.0",
+        "sass": "^1.66.1",
+        "sass-loader": "^12.1.0"
+    }
 }
