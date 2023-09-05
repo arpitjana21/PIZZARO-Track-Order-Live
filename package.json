@@ -4,7 +4,10 @@
     "description": "PizzaLust : Track Pizza Live!",
     "main": "server.js",
     "scripts": {
-        "dev": "nodemon server.js"
+        "dev": "nodemon server.js",
+        "lmix": "npx mix watch",
+        "tail": "npx tailwindcss -i ./public/css/app.css -o ./public/css/tailwind.css",
+        "tailW": "npx tailwindcss -i ./public/css/app.css -o ./public/css/tailwind.css --watch"
     },
     "author": "Arpit Jana",
     "license": "MIT",

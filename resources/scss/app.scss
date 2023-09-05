@@ -1,4 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Roboto:wght@300;400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import './variable';
+
+body {
+    font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: $dark;
+}
+
+#logo {
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 1px;
+}
+
+#logo span {
+    color: $primary;
+}
+
+#cart {
+    &:hover {
+        // background-color: $primary-hover;
+        box-shadow: $shadow-red;
+    }
+    background-color: $primary;
+    font-size: 1.3rem;
+    color: $pure;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.2rem;
+}
+
+.nav-container {
+    box-shadow: $shadow;
+    nav li a {
+        transition: $smooth;
+        &:hover {
+            color: $primary;
+        }
+    }
+}

@@ -1,4 +1,39 @@
+@import url(https://fonts.googleapis.com/css2?family=Oswald&family=Roboto:wght@300;400;700&display=swap);
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap);
+body {
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #495057;
+}
+
+#logo {
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 1px;
+}
+
+#logo span {
+  color: #f03e3e;
+}
+
+#cart {
+  background-color: #f03e3e;
+  font-size: 1.3rem;
+  color: #fff;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.2rem;
+}
+#cart:hover {
+  box-shadow: rgba(240, 62, 62, 0.2745098039) 0px 2px 8px 0px;
+}
+
+.nav-container {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.nav-container nav li a {
+  transition: all 0.3s ease-in-out;
+}
+.nav-container nav li a:hover {
+  color: #f03e3e;
+}
