@@ -10,13 +10,13 @@
     <title>PizzaRo | Track Order Live</title>
 </head>
 
-<body class="pb-40">
+<body>
     <!-- Nav Bar -->
     <div class="nav-container">
         <nav class="container mx-auto flex items-center justify-between px-12 py-5">
             <div>
                 <div id="logo">
-                    <a href="#">
+                    <a href="/">
                         <img src="/img/logo.png" alt="PzzoRo">
                     </a>
                 </div>
@@ -28,7 +28,7 @@
                     <li><a href="#">Register</a></li>
                     <li><a href="#">Login</a></li>
                     <li>
-                        <a id="cart" class="flex gap-1" href="#">
+                        <a id="cart" class="flex gap-1" href="/cart">
                             <i class="ri-shopping-bag-2-fill"></i>
                             <span class="text-sm">0</span>
                         </a>
@@ -36,10 +36,37 @@
                 </ul>
             </div>
         </nav>
-        <%- body %>
     </div>
+    <%- body %>
+        <footer>
+            <div class="footer-container container mx-auto px-12 pt-12 pb-5 mt-20">
+                <div class="flex flex-col gap-5">
+                    <img src="/img/logoImgRounded.png" alt="">
+                    <div class="flex flex-col gap-5">
+                        <p>PizzaRo is your go-to pizza delivery website, powered by cutting-edge technology. With Node,
+                            Express,
+                            Mongo, and
+                            SocketIO, we offer a seamless and interactive experience. Enjoy mouthwatering pizzas while
+                            tracking
+                            your order live,
+                            making every delivery a thrilling journey to your doorstep.</p>
+                        <div class="flex gap-4">
+                            <a class="btn-md" href=""><i class="ri-github-fill"></i>&nbsp;&nbsp;GitHub</a>
+                            <!-- <a href=""><i class="ri-linkedin-box-fill"></i>&nbsp;&nbsp;LinkedIn</a> -->
+                        </div>
 
-    <script src="/js/app.js" type="module"></script>
+                    </div>
+
+                </div>
+                <div class="flex mt-6 justify-end">
+                    <span>made with <i class="ri-heart-3-fill"></i> by <a target="_blank"
+                            class="underline underline-offset-4" href="https://www.linkedin.com/in/arpitjana2103/">Arpit
+                            Jana</a> </span>
+                </div>
+            </div>
+
+        </footer>
+        <script src="/js/app.js" type="module"></script>
 </body>
 
 </html>

@@ -34,6 +34,18 @@ body {
   color: #495057;
 }
 
+.btn-md {
+  background-color: #f03e3e;
+  color: white;
+  padding: 0.3rem 1rem;
+  border-radius: 100rem;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.btn-md:hover {
+  box-shadow: rgba(240, 62, 62, 0.2745098039) 0px 2px 8px 0px;
+}
+
 .nav-container nav li a {
   transition: all 0.3s ease-in-out;
 }
@@ -74,16 +86,6 @@ body {
 .hero .ar02 {
   grid-area: ar02;
 }
-.hero a {
-  background-color: #f03e3e;
-  color: white;
-  padding: 0.3rem 1rem;
-  margin-top: 2rem;
-  border-radius: 100rem;
-}
-.hero a:hover {
-  box-shadow: rgba(240, 62, 62, 0.2745098039) 0px 2px 8px 0px;
-}
 
 .menu select {
   background-color: rgba(85, 85, 85, 0.1843137255);
@@ -102,14 +104,28 @@ body {
 .menu .card .veg {
   color: #40c057;
 }
-.menu .card button {
-  background-color: #f03e3e;
-  color: white;
-  padding: 0.3rem 1rem;
-  border-radius: 100rem;
+
+footer {
+  background-color: rgba(136, 136, 136, 0.137254902);
 }
-.menu .card button:hover {
-  box-shadow: rgba(240, 62, 62, 0.2745098039) 0px 2px 8px 0px;
+footer img {
+  width: 8rem;
+  height: 8rem;
+}
+footer p {
+  max-width: 50rem;
+}
+footer .btn-md {
+  background-color: #495057;
+  border-radius: 0.3rem;
+  font-size: 0.95rem;
+  padding: 0.2rem 0.6rem;
+}
+footer .btn-md i {
+  font-size: 1.2rem;
+}
+footer .btn-md:hover {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 @media (max-width: 1280px) {

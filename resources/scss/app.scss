@@ -36,6 +36,17 @@ body {
     color: $dark;
 }
 
+.btn-md {
+    background-color: $primary;
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 100rem;
+    width: fit-content;
+    &:hover {
+        box-shadow: $shadow-red;
+    }
+}
+
 .nav-container {
     nav li a {
         transition: $smooth;
@@ -82,16 +93,6 @@ body {
     .ar02 {
         grid-area: ar02;
     }
-    a {
-        background-color: $primary;
-        color: white;
-        padding: 0.3rem 1rem;
-        margin-top: 2rem;
-        border-radius: 100rem;
-        &:hover {
-            box-shadow: $shadow-red;
-        }
-    }
 }
 
 .menu {
@@ -112,15 +113,28 @@ body {
         .veg {
             color: #40c057;
         }
+    }
+}
 
-        button {
-            background-color: $primary;
-            color: white;
-            padding: 0.3rem 1rem;
-            border-radius: 100rem;
-            &:hover {
-                box-shadow: $shadow-red;
-            }
+footer {
+    background-color: #88888823;
+    img {
+        width: 8rem;
+        height: 8rem;
+    }
+    p {
+        max-width: 50rem;
+    }
+    .btn-md {
+        background-color: $dark;
+        border-radius: 0.3rem;
+        font-size: 0.95rem;
+        padding: 0.2rem 0.6rem;
+        i {
+            font-size: 1.2rem;
+        }
+        &:hover {
+            box-shadow: $shadow;
         }
     }
 }
