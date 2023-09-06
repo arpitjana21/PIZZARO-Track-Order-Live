@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@300;400;700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap);
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -15,7 +15,7 @@
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #495057;
-  border-radius: 0.2rem;
+  border-radius: 0.12rem;
   cursor: pointer;
 }
 
@@ -24,8 +24,12 @@
   background: #495057;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   color: #495057;
 }
@@ -81,12 +85,34 @@ body {
   box-shadow: rgba(240, 62, 62, 0.2745098039) 0px 2px 8px 0px;
 }
 
+.menu select {
+  background-color: rgba(85, 85, 85, 0.1843137255);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.4rem;
+}
+.menu .card {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border: 2px solid #ccc;
+}
+.menu .card button {
+  background-color: #f03e3e;
+  color: white;
+  padding: 0.3rem 1rem;
+  border-radius: 100rem;
+}
+.menu .card button:hover {
+  box-shadow: rgba(240, 62, 62, 0.2745098039) 0px 2px 8px 0px;
+}
+
 @media (max-width: 1280px) {
   .hero h1 {
     font-size: 4rem;
   }
   .hero a {
     margin-top: 1rem;
+  }
+  .menu .pizza-container {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 @media (max-width: 1224px) {
@@ -99,6 +125,11 @@ body {
     padding-top: 1rem;
   }
 }
+@media (max-width: 1026px) {
+  .menu .pizza-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 @media (max-width: 768px) {
   .nav-container nav li:nth-child(-n+3) {
     display: none;
@@ -108,5 +139,8 @@ body {
   .container {
     padding-right: 1.4rem;
     padding-left: 1.4rem;
+  }
+  .menu .pizza-container {
+    grid-template-columns: 1fr;
   }
 }
