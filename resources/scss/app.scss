@@ -104,6 +104,15 @@ body {
         box-shadow: $shadow;
         border: 2px solid $grey;
 
+        .food {
+            transform: translateY(3rem);
+            z-index: 100;
+            top: -1.7rem;
+        }
+        .veg {
+            color: #40c057;
+        }
+
         button {
             background-color: $primary;
             color: white;

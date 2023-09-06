@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/tailwind.css">
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <title>PizzaRo | Track Order Live</title>
+</head>
+
+<body class="pb-40">
+    <!-- Nav Bar -->
+    <div class="nav-container">
+        <nav class="container mx-auto flex items-center justify-between px-12 py-5">
+            <div>
+                <div id="logo">
+                    <a href="#">
+                        <img src="/img/logo.png" alt="PzzoRo">
+                    </a>
+                </div>
+            </div>
+            <div>
+                <ul class="flex gap-6 items-center">
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#menu">Offers</a></li>
+                    <li><a href="#">Register</a></li>
+                    <li><a href="#">Login</a></li>
+                    <li>
+                        <a id="cart" class="flex gap-1" href="#">
+                            <i class="ri-shopping-bag-2-fill"></i>
+                            <span class="text-sm">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <%- body %>
+    </div>
+
+    <script src="/js/app.js" type="module"></script>
+</body>
+
+</html>

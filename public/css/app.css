@@ -94,6 +94,14 @@ body {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border: 2px solid #ccc;
 }
+.menu .card .food {
+  transform: translateY(3rem);
+  z-index: 100;
+  top: -1.7rem;
+}
+.menu .card .veg {
+  color: #40c057;
+}
 .menu .card button {
   background-color: #f03e3e;
   color: white;

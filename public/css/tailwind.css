@@ -578,8 +578,16 @@ video {
   visibility: collapse;
 }
 
+.absolute{
+  position: absolute;
+}
+
 .relative{
   position: relative;
+}
+
+.top-0{
+  top: 0px;
 }
 
 .mx-auto{
@@ -829,6 +837,10 @@ video {
   padding-bottom: 10rem;
 }
 
+.pb-5{
+  padding-bottom: 1.25rem;
+}
+
 .pb-6{
   padding-bottom: 1.5rem;
 }
@@ -1053,6 +1065,16 @@ body {
 .menu .card {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border: 2px solid #ccc;
+}
+
+.menu .card .food {
+  transform: translateY(3rem);
+  z-index: 100;
+  top: -1.7rem;
+}
+
+.menu .card .veg {
+  color: #40c057;
 }
 
 .menu .card button {
