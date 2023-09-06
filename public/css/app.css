@@ -87,6 +87,11 @@ body {
   grid-area: ar02;
 }
 
+.offer img {
+  width: 100%;
+  max-width: 35rem;
+}
+
 .menu select {
   background-color: rgba(85, 85, 85, 0.1843137255);
   padding: 0.2rem 0.4rem;
@@ -136,6 +141,10 @@ body {
   border-radius: 0.4rem;
 }
 
+.offer img {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
 footer {
   background-color: rgba(136, 136, 136, 0.137254902);
 }
@@ -156,7 +165,7 @@ footer .btn-md i {
   font-size: 1.2rem;
 }
 footer .btn-md:hover {
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 footer span {
   color: #f03e3e;
@@ -185,6 +194,9 @@ footer span {
   .hero h1 {
     font-size: 3.5rem;
     padding-top: 1rem;
+  }
+  .offer div {
+    flex-direction: column;
   }
   .cart .order {
     width: 80%;

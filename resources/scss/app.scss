@@ -95,6 +95,13 @@ body {
     }
 }
 
+.offer {
+    img {
+        width: 100%;
+        max-width: 35rem;
+    }
+}
+
 .menu {
     select {
         background-color: #5555552f;
@@ -146,6 +153,12 @@ body {
     }
     .btn-md {
         border-radius: 0.4rem;
+    }
+}
+
+.offer {
+    img {
+        box-shadow: $shadow;
     }
 }
 
@@ -206,6 +219,11 @@ footer {
         h1 {
             font-size: 3.5rem;
             padding-top: 1rem;
+        }
+    }
+    .offer {
+        div {
+            flex-direction: column;
         }
     }
     .cart {
