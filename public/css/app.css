@@ -93,8 +93,8 @@ body {
   border-radius: 0.4rem;
 }
 .menu .card {
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  border: 2px solid #ccc;
+  box-shadow: rgba(240, 62, 62, 0.2745098039) 0px 2px 8px 0px;
+  border: 2px solid #f03e3e;
 }
 .menu .card .food {
   transform: translateY(3rem);
@@ -103,6 +103,37 @@ body {
 }
 .menu .card .veg {
   color: #40c057;
+}
+
+.cart {
+  min-height: 50vh;
+}
+.cart h2 {
+  color: #f03e3e;
+}
+.cart .qty button {
+  background-color: white;
+  color: #f03e3e;
+  height: 1.6rem;
+  width: 1.6rem;
+  border: 2px solid #f03e3e;
+  border-radius: 100rem;
+  transition: all 0.3s ease-in-out;
+}
+.cart .qty button:hover {
+  background-color: #f03e3e;
+  color: white;
+}
+.cart .total {
+  color: #f03e3e;
+}
+.cart input {
+  max-width: 20rem;
+  width: 100%;
+  padding-left: 0.7rem;
+}
+.cart .btn-md {
+  border-radius: 0.4rem;
 }
 
 footer {
@@ -127,6 +158,10 @@ footer .btn-md i {
 footer .btn-md:hover {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
+footer span {
+  color: #f03e3e;
+  font-weight: bold;
+}
 
 @media (max-width: 1280px) {
   .hero h1 {
@@ -138,6 +173,9 @@ footer .btn-md:hover {
   .menu .pizza-container {
     grid-template-columns: 1fr 1fr 1fr;
   }
+  .cart .order {
+    width: 60%;
+  }
 }
 @media (max-width: 1224px) {
   .hero {
@@ -147,6 +185,9 @@ footer .btn-md:hover {
   .hero h1 {
     font-size: 3.5rem;
     padding-top: 1rem;
+  }
+  .cart .order {
+    width: 80%;
   }
 }
 @media (max-width: 1026px) {
@@ -158,13 +199,26 @@ footer .btn-md:hover {
   .nav-container nav li:nth-child(-n+3) {
     display: none;
   }
+  .cart .order {
+    width: 100%;
+  }
 }
 @media (max-width: 600px) {
   .container {
     padding-right: 1.4rem;
     padding-left: 1.4rem;
   }
+  .menu {
+    margin-top: 5rem;
+  }
   .menu .pizza-container {
     grid-template-columns: 1fr;
+  }
+  .cart .pizza-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .cart .pizza-item img {
+    transform: translateX(-1.5rem);
   }
 }

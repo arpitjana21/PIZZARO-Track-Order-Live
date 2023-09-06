@@ -594,6 +594,11 @@ video {
   margin: 3rem;
 }
 
+.mx-3{
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+}
+
 .mx-auto{
   margin-left: auto;
   margin-right: auto;
@@ -628,8 +633,20 @@ video {
   margin-bottom: 2rem;
 }
 
+.ml-3{
+  margin-left: 0.75rem;
+}
+
+.ml-4{
+  margin-left: 1rem;
+}
+
 .ml-6{
   margin-left: 1.5rem;
+}
+
+.mr-3{
+  margin-right: 0.75rem;
 }
 
 .mt-10{
@@ -652,6 +669,10 @@ video {
   margin-top: 4rem;
 }
 
+.mt-2{
+  margin-top: 0.5rem;
+}
+
 .mt-20{
   margin-top: 5rem;
 }
@@ -660,8 +681,16 @@ video {
   margin-top: 6rem;
 }
 
+.mt-3{
+  margin-top: 0.75rem;
+}
+
 .mt-32{
   margin-top: 8rem;
+}
+
+.mt-4{
+  margin-top: 1rem;
 }
 
 .mt-40{
@@ -670,6 +699,14 @@ video {
 
 .mt-6{
   margin-top: 1.5rem;
+}
+
+.mt-7{
+  margin-top: 1.75rem;
+}
+
+.mt-8{
+  margin-top: 2rem;
 }
 
 .block{
@@ -704,12 +741,28 @@ video {
   height: 4rem;
 }
 
+.w-1{
+  width: 0.25rem;
+}
+
+.w-1\/2{
+  width: 50%;
+}
+
 .w-10{
   width: 2.5rem;
 }
 
+.w-11{
+  width: 2.75rem;
+}
+
 .w-16{
   width: 4rem;
+}
+
+.w-32{
+  width: 8rem;
 }
 
 .w-36{
@@ -796,6 +849,10 @@ video {
   gap: 0.5rem;
 }
 
+.gap-3{
+  gap: 0.75rem;
+}
+
 .gap-4{
   gap: 1rem;
 }
@@ -824,12 +881,29 @@ video {
   border-radius: 0.5rem;
 }
 
+.rounded-md{
+  border-radius: 0.375rem;
+}
+
 .border{
   border-width: 1px;
 }
 
+.border-b{
+  border-bottom-width: 1px;
+}
+
+.border-gray-300{
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+}
+
 .p-12{
   padding: 3rem;
+}
+
+.p-2{
+  padding: 0.5rem;
 }
 
 .p-5{
@@ -895,6 +969,11 @@ video {
   padding-right: 2rem;
 }
 
+.py-4{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
 .py-5{
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
@@ -908,6 +987,10 @@ video {
 .py-8{
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.pb-4{
+  padding-bottom: 1rem;
 }
 
 .pb-40{
@@ -934,12 +1017,24 @@ video {
   padding-top: 3rem;
 }
 
+.pt-5{
+  padding-top: 1.25rem;
+}
+
+.pt-7{
+  padding-top: 1.75rem;
+}
+
 .pt-8{
   padding-top: 2rem;
 }
 
 .text-center{
   text-align: center;
+}
+
+.text-right{
+  text-align: right;
 }
 
 .text-2xl{
@@ -1010,6 +1105,10 @@ video {
 .antialiased{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.opacity-80{
+  opacity: 0.8;
 }
 
 .shadow-md{
@@ -1166,8 +1265,8 @@ body {
 }
 
 .menu .card {
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  border: 2px solid #ccc;
+  box-shadow: rgba(240, 62, 62, 0.2745098039) 0px 2px 8px 0px;
+  border: 2px solid #f03e3e;
 }
 
 .menu .card .food {
@@ -1178,6 +1277,43 @@ body {
 
 .menu .card .veg {
   color: #40c057;
+}
+
+.cart {
+  min-height: 50vh;
+}
+
+.cart h2 {
+  color: #f03e3e;
+}
+
+.cart .qty button {
+  background-color: white;
+  color: #f03e3e;
+  height: 1.6rem;
+  width: 1.6rem;
+  border: 2px solid #f03e3e;
+  border-radius: 100rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.cart .qty button:hover {
+  background-color: #f03e3e;
+  color: white;
+}
+
+.cart .total {
+  color: #f03e3e;
+}
+
+.cart input {
+  max-width: 20rem;
+  width: 100%;
+  padding-left: 0.7rem;
+}
+
+.cart .btn-md {
+  border-radius: 0.4rem;
 }
 
 footer {
@@ -1208,6 +1344,11 @@ footer .btn-md:hover {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
+footer span {
+  color: #f03e3e;
+  font-weight: bold;
+}
+
 @media (max-width: 1280px) {
   .hero h1 {
     font-size: 4rem;
@@ -1219,6 +1360,10 @@ footer .btn-md:hover {
 
   .menu .pizza-container {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .cart .order {
+    width: 60%;
   }
 }
 
@@ -1232,6 +1377,10 @@ footer .btn-md:hover {
     font-size: 3.5rem;
     padding-top: 1rem;
   }
+
+  .cart .order {
+    width: 80%;
+  }
 }
 
 @media (max-width: 1026px) {
@@ -1244,6 +1393,10 @@ footer .btn-md:hover {
   .nav-container nav li:nth-child(-n+3) {
     display: none;
   }
+
+  .cart .order {
+    width: 100%;
+  }
 }
 
 @media (max-width: 600px) {
@@ -1252,7 +1405,20 @@ footer .btn-md:hover {
     padding-left: 1.4rem;
   }
 
+  .menu {
+    margin-top: 5rem;
+  }
+
   .menu .pizza-container {
     grid-template-columns: 1fr;
+  }
+
+  .cart .pizza-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cart .pizza-item img {
+    transform: translateX(-1.5rem);
   }
 }

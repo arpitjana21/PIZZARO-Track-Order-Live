@@ -102,8 +102,8 @@ body {
         border-radius: 0.4rem;
     }
     .card {
-        box-shadow: $shadow;
-        border: 2px solid $grey;
+        box-shadow: $shadow-red;
+        border: 2px solid $primary;
 
         .food {
             transform: translateY(3rem);
@@ -113,6 +113,39 @@ body {
         .veg {
             color: #40c057;
         }
+    }
+}
+
+.cart {
+    min-height: 50vh;
+    h2 {
+        color: $primary;
+    }
+    .qty {
+        button {
+            background-color: white;
+            color: $primary;
+            height: 1.6rem;
+            width: 1.6rem;
+            border: 2px solid $primary;
+            border-radius: 100rem;
+            transition: $smooth;
+            &:hover {
+                background-color: $primary;
+                color: white;
+            }
+        }
+    }
+    .total {
+        color: $primary;
+    }
+    input {
+        max-width: 20rem;
+        width: 100%;
+        padding-left: 0.7rem;
+    }
+    .btn-md {
+        border-radius: 0.4rem;
     }
 }
 
@@ -137,6 +170,10 @@ footer {
             box-shadow: $shadow;
         }
     }
+    span {
+        color: $primary;
+        font-weight: bold;
+    }
 }
 
 @media (max-width: 1280px) {
@@ -154,6 +191,12 @@ footer {
             grid-template-columns: 1fr 1fr 1fr;
         }
     }
+
+    .cart {
+        .order {
+            width: 60%;
+        }
+    }
 }
 
 @media (max-width: 1224px) {
@@ -163,6 +206,11 @@ footer {
         h1 {
             font-size: 3.5rem;
             padding-top: 1rem;
+        }
+    }
+    .cart {
+        .order {
+            width: 80%;
         }
     }
 }
@@ -181,6 +229,11 @@ footer {
             display: none;
         }
     }
+    .cart {
+        .order {
+            width: 100%;
+        }
+    }
 }
 
 @media (max-width: 600px) {
@@ -189,8 +242,19 @@ footer {
         padding-left: 1.4rem;
     }
     .menu {
+        margin-top: 5rem;
         .pizza-container {
             grid-template-columns: 1fr;
+        }
+    }
+
+    .cart {
+        .pizza-item {
+            flex-direction: column;
+            align-items: flex-start;
+            img {
+                transform: translateX(-1.5rem);
+            }
         }
     }
 }
