@@ -1296,13 +1296,26 @@ body {
 }
 
 .menu .card .food {
-  transform: translateY(3rem);
+  transform: translate(-0.3rem, 3rem);
   z-index: 100;
   top: -1.7rem;
 }
 
-.menu .card .veg {
-  color: #40c057;
+.menu .card .food i {
+  border: 2px solid #495057;
+  padding: 0.2rem;
+  font-size: 0.8rem;
+  border-radius: 0.2rem;
+}
+
+.menu .card .food.veg i {
+  border-color: #37b24d;
+  color: #37b24d;
+}
+
+.menu .card .food.nveg i {
+  border-color: #f03e3e;
+  color: #f03e3e;
 }
 
 .cart {

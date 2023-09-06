@@ -113,12 +113,27 @@ body {
         border: 2px solid $primary;
 
         .food {
-            transform: translateY(3rem);
+            transform: translate(-0.3rem, 3rem);
             z-index: 100;
             top: -1.7rem;
+            i {
+                border: 2px solid $dark;
+                padding: 0.2rem;
+                font-size: 0.8rem;
+                border-radius: 0.2rem;
+            }
         }
-        .veg {
-            color: #40c057;
+        .food.veg {
+            i {
+                border-color: $green;
+                color: $green;
+            }
+        }
+        .food.nveg {
+            i {
+                border-color: $primary;
+                color: $primary;
+            }
         }
     }
 }
