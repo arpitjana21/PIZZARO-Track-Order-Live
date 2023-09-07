@@ -1,5 +1,7 @@
-const homeController = function (req, res) {
-    res.render('home');
+const {Menu} = require('../../models/menuModel');
+const homeController = async function (req, res) {
+    const pizzas = await Menu.find();
+    res.render('home', {pizzas: pizzas});
 };
 
 const cartController = function (req, res) {
