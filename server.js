@@ -15,7 +15,15 @@ app.get('/', function (req, res) {
 });
 
 app.get('/cart', function (req, res) {
-    res.render('customers_cart');
+    res.render('customer/cart');
+});
+
+app.get('/login', function (req, res) {
+    res.render('auth/login');
+});
+
+app.get('/register', function (req, res) {
+    res.render('auth/register');
 });
 
 app.listen(PORT, function () {

@@ -26,6 +26,14 @@
 ::-webkit-scrollbar-thumb:hover {
     background: $dark;
 }
+input {
+    border: 2px solid $grey;
+    transition: $smooth;
+    &:focus {
+        outline: none;
+        border-color: $dark;
+    }
+}
 html {
     scroll-behavior: smooth;
 }
@@ -95,10 +103,27 @@ body {
     }
 }
 
+.hero.donate {
+    span {
+        color: #1971c2;
+    }
+    img {
+        width: 100%;
+        box-shadow: $shadow;
+    }
+    .btn-md {
+        background-color: #1971c2;
+        &:hover {
+            box-shadow: #1970c246 0px 2px 8px 0px;
+        }
+    }
+}
+
 .offer {
     img {
         width: 100%;
         max-width: 35rem;
+        box-shadow: $shadow;
     }
 }
 
@@ -171,14 +196,51 @@ body {
     }
 }
 
-.offer {
-    img {
+.login-register {
+    min-height: 80vh;
+    .form-container {
+        width: 100%;
+        max-width: 25rem;
+        border: 2px solid $grey;
         box-shadow: $shadow;
+        padding: 2rem;
+        h1 {
+            color: $primary;
+        }
+
+        input {
+            border: 2px solid $grey;
+            padding: 0.3rem 0.5rem;
+            width: 100%;
+            border-radius: 0.3rem;
+            margin-top: 0.5rem;
+            transition: $smooth;
+            &:focus {
+                outline: none;
+                border-color: $primary;
+            }
+        }
+
+        button {
+            background-color: $primary;
+            color: white;
+            padding: 0.5rem 0.5rem;
+            transition: $smooth;
+            &:hover {
+                box-shadow: $shadow-red;
+            }
+        }
+
+        a {
+            color: $primary;
+        }
     }
 }
 
-footer {
+.footer {
     background-color: #88888823;
+    border-top: 2px solid $primary;
+    border-bottom: 10px solid $dark;
     img {
         width: 8rem;
         height: 8rem;
@@ -246,6 +308,12 @@ footer {
             width: 80%;
         }
     }
+
+    .hero.donate {
+        .img-box {
+            display: block;
+        }
+    }
 }
 
 @media (max-width: 1026px) {
@@ -271,11 +339,10 @@ footer {
 
 @media (max-width: 600px) {
     .container {
-        padding-right: 1.4rem;
-        padding-left: 1.4rem;
+        padding-right: 1.5rem;
+        padding-left: 1.5rem;
     }
     .menu {
-        margin-top: 5rem;
         .pizza-container {
             grid-template-columns: 1fr;
         }

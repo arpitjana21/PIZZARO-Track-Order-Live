@@ -24,6 +24,15 @@
   background: #495057;
 }
 
+input {
+  border: 2px solid #ccc;
+  transition: all 0.3s ease-in-out;
+}
+input:focus {
+  outline: none;
+  border-color: #495057;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -87,9 +96,24 @@ body {
   grid-area: ar02;
 }
 
+.hero.donate span {
+  color: #1971c2;
+}
+.hero.donate img {
+  width: 100%;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.hero.donate .btn-md {
+  background-color: #1971c2;
+}
+.hero.donate .btn-md:hover {
+  box-shadow: rgba(25, 112, 194, 0.2745098039) 0px 2px 8px 0px;
+}
+
 .offer img {
   width: 100%;
   max-width: 35rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .menu select {
@@ -152,33 +176,69 @@ body {
   border-radius: 0.4rem;
 }
 
-.offer img {
+.login-register {
+  min-height: 80vh;
+}
+.login-register .form-container {
+  width: 100%;
+  max-width: 25rem;
+  border: 2px solid #ccc;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 2rem;
+}
+.login-register .form-container h1 {
+  color: #f03e3e;
+}
+.login-register .form-container input {
+  border: 2px solid #ccc;
+  padding: 0.3rem 0.5rem;
+  width: 100%;
+  border-radius: 0.3rem;
+  margin-top: 0.5rem;
+  transition: all 0.3s ease-in-out;
+}
+.login-register .form-container input:focus {
+  outline: none;
+  border-color: #f03e3e;
+}
+.login-register .form-container button {
+  background-color: #f03e3e;
+  color: white;
+  padding: 0.5rem 0.5rem;
+  transition: all 0.3s ease-in-out;
+}
+.login-register .form-container button:hover {
+  box-shadow: rgba(240, 62, 62, 0.2745098039) 0px 2px 8px 0px;
+}
+.login-register .form-container a {
+  color: #f03e3e;
 }
 
-footer {
+.footer {
   background-color: rgba(136, 136, 136, 0.137254902);
+  border-top: 2px solid #f03e3e;
+  border-bottom: 10px solid #495057;
 }
-footer img {
+.footer img {
   width: 8rem;
   height: 8rem;
 }
-footer p {
+.footer p {
   max-width: 50rem;
 }
-footer .btn-md {
+.footer .btn-md {
   background-color: #495057;
   border-radius: 0.3rem;
   font-size: 0.95rem;
   padding: 0.2rem 0.6rem;
 }
-footer .btn-md i {
+.footer .btn-md i {
   font-size: 1.2rem;
 }
-footer .btn-md:hover {
+.footer .btn-md:hover {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
-footer span {
+.footer span {
   color: #f03e3e;
   font-weight: bold;
 }
@@ -212,6 +272,9 @@ footer span {
   .cart .order {
     width: 80%;
   }
+  .hero.donate .img-box {
+    display: block;
+  }
 }
 @media (max-width: 1026px) {
   .menu .pizza-container {
@@ -228,11 +291,8 @@ footer span {
 }
 @media (max-width: 600px) {
   .container {
-    padding-right: 1.4rem;
-    padding-left: 1.4rem;
-  }
-  .menu {
-    margin-top: 5rem;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
   }
   .menu .pizza-container {
     grid-template-columns: 1fr;
