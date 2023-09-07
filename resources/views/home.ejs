@@ -26,42 +26,40 @@
 </section>
 
 <!-- Menu Section -->
-<section id="menu" class="menu container mx-auto px-12 pb-20 pt-12">
-    <h1 class="mb-10 text-2xl font-bold">Our Menu.</h1>
-    <div class="pizza-container grid grid-cols-4 gap-10 ">
-
-        <% pizzas.forEach(function(pizza){ %>
-            <div class="relative card p-7 rounded-2xl">
-                <div class="top">
-                    <img src="/img/pizzas/<%= pizza.image %>" alt="pizza">
-                    <span class="<%= pizza.veg ? 'veg absolute food' : 'nveg absolute food' %>"><i
-                            class="ri-circle-fill"></i></span>
-                    <!-- <span class="veg absolute food"><i class="ri-circle-fill"></i></span> -->
-                </div>
-                <div class="flex flex-col items-center justify-center">
-                    <h2 class="text-3xl pb-6">
-                        <%= pizza.name %>
-                    </h2>
-                    <select class="mb-8">
-                        <option value="">Select Size</option>
-                        <option value="small">Small</option>
-                        <option value="medium">Medium</option>
-                        <option value="large">Large</option>
-                    </select>
-                    <div class="w-full flex justify-between">
-                        <span class="font-bold">Rs.<%= pizza.price %></span>
-                        <a class="btn-md">
-                            <span>+</span>
-                            <span>Add</span>
-                        </a>
+<section id="menu" class="menu">
+    <div class="container mx-auto px-12 pb-20 pt-12">
+        <h1 class="mb-10 text-2xl font-bold">Our Menu.</h1>
+        <div class="pizza-container grid grid-cols-4 gap-10 ">
+            <% pizzas.forEach(function(pizza){ %>
+                <div class="relative card p-7 rounded-2xl">
+                    <div class="top">
+                        <img src="/img/pizzas/<%= pizza.image %>" alt="pizza">
+                        <span class="<%= pizza.veg ? 'veg absolute food' : 'nveg absolute food' %>"><i
+                                class="ri-circle-fill"></i></span>
+                        <!-- <span class="veg absolute food"><i class="ri-circle-fill"></i></span> -->
+                    </div>
+                    <div class="flex flex-col items-center justify-center">
+                        <h2 class="text-2xl pb-6">
+                            <%= pizza.name %>
+                        </h2>
+                        <select class="mb-8">
+                            <option value="medium">Medium</option>
+                            <option value="small">Small</option>
+                            <option value="large">Large</option>
+                        </select>
+                        <div class="w-full flex justify-between">
+                            <span class="font-bold">Rs.<%= pizza.price %></span>
+                            <a class="btn-md">
+                                <span>+</span>
+                                <span>Add</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <% }) %>
-
-
-
+                <% }) %>
+        </div>
     </div>
+
 </section>
 
 <!-- Donate -->
