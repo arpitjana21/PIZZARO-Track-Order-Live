@@ -21,7 +21,7 @@ const createSendToken = function (user, statusCode, res) {
     user.password = undefined;
     return res.status(statusCode).json({
         status: 'success',
-        message: 'Registration Successfull !',
+        message: 'Successfull !',
         data: {
             token: token,
             user: user,
@@ -46,4 +46,22 @@ const register = async function (req, res) {
     }
 };
 
-module.exports = {register};
+const login = async function (req, res) {
+    try {
+        const {email, password} = req.body;
+        // Chect User Exist & Password is CORRECT
+        const user = await User.findOne({email: email}).select('+password');
+
+        if (!user || !(await user.correctPassword(password, user.password))) {
+            throw new Error('Incorrect Email or Password');
+        }
+        createSendToken(user, 200, res);
+    } catch (error) {
+        res.status(400).json({
+            status: 'fail',
+            message: error.message,
+        });
+    }
+};
+
+module.exports = {register, login};

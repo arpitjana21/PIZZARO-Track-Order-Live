@@ -131,17 +131,59 @@ if (cartPizzaItems) {
 ////////////////////////////////////////////////
 
 var registerForm = document.querySelector('#register-form');
-var nameInp = registerForm.querySelector('#name');
-var emailInp = registerForm.querySelector('#email');
-var passwordInp = registerForm.querySelector('#password');
-var passwordCInp = registerForm.querySelector('#passwordConfirm');
-registerForm.addEventListener('submit', function (e) {
+if (registerForm) registerForm.addEventListener('submit', function (e) {
   e.preventDefault();
+  var nameInp = registerForm.querySelector('#name');
+  var emailInp = registerForm.querySelector('#email');
+  var passwordInp = registerForm.querySelector('#password');
+  var passwordCInp = registerForm.querySelector('#passwordConfirm');
   axios__WEBPACK_IMPORTED_MODULE_1__["default"].post('/auth/register', {
     name: nameInp.value,
     email: emailInp.value,
     password: passwordInp.value,
     passwordConfirm: passwordCInp.value
+  }).then(function (res) {
+    new (noty__WEBPACK_IMPORTED_MODULE_0___default())({
+      type: 'alert',
+      theme: 'sunset',
+      text: "\u2714\uFE0F ".concat(res.data.message),
+      timeout: 3000,
+      progressBar: false
+    }).show();
+  })["catch"](function (err) {
+    console.log(err.response.data.message);
+    new (noty__WEBPACK_IMPORTED_MODULE_0___default())({
+      type: 'alert',
+      theme: 'sunset',
+      text: "\u274C ".concat(err.response.data.message),
+      timeout: 3000,
+      progressBar: false
+    }).show();
+  });
+});
+
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+// Login Page < LOGIN >
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+
+var loginForm = document.querySelector('#login-form');
+if (loginForm) loginForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+  var emailInp = loginForm.querySelector('#email');
+  var passwordInp = loginForm.querySelector('#password');
+  axios__WEBPACK_IMPORTED_MODULE_1__["default"].post('/auth/login', {
+    email: emailInp.value,
+    password: passwordInp.value
   }).then(function (res) {
     new (noty__WEBPACK_IMPORTED_MODULE_0___default())({
       type: 'alert',

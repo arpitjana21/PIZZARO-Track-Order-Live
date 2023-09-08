@@ -118,37 +118,85 @@ if (cartPizzaItems) {
 ////////////////////////////////////////////////
 
 const registerForm = document.querySelector('#register-form');
-const nameInp = registerForm.querySelector('#name');
-const emailInp = registerForm.querySelector('#email');
-const passwordInp = registerForm.querySelector('#password');
-const passwordCInp = registerForm.querySelector('#passwordConfirm');
 
-registerForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    axios
-        .post('/auth/register', {
-            name: nameInp.value,
-            email: emailInp.value,
-            password: passwordInp.value,
-            passwordConfirm: passwordCInp.value,
-        })
-        .then(function (res) {
-            new Noty({
-                type: 'alert',
-                theme: 'sunset',
-                text: `✔️ ${res.data.message}`,
-                timeout: 3000,
-                progressBar: false,
-            }).show();
-        })
-        .catch(function (err) {
-            console.log(err.response.data.message);
-            new Noty({
-                type: 'alert',
-                theme: 'sunset',
-                text: `❌ ${err.response.data.message}`,
-                timeout: 3000,
-                progressBar: false,
-            }).show();
-        });
-});
+if (registerForm)
+    registerForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const nameInp = registerForm.querySelector('#name');
+        const emailInp = registerForm.querySelector('#email');
+        const passwordInp = registerForm.querySelector('#password');
+        const passwordCInp = registerForm.querySelector('#passwordConfirm');
+        axios
+            .post('/auth/register', {
+                name: nameInp.value,
+                email: emailInp.value,
+                password: passwordInp.value,
+                passwordConfirm: passwordCInp.value,
+            })
+            .then(function (res) {
+                new Noty({
+                    type: 'alert',
+                    theme: 'sunset',
+                    text: `✔️ ${res.data.message}`,
+                    timeout: 3000,
+                    progressBar: false,
+                }).show();
+            })
+            .catch(function (err) {
+                console.log(err.response.data.message);
+                new Noty({
+                    type: 'alert',
+                    theme: 'sunset',
+                    text: `❌ ${err.response.data.message}`,
+                    timeout: 3000,
+                    progressBar: false,
+                }).show();
+            });
+    });
+
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+// Login Page < LOGIN >
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+
+const loginForm = document.querySelector('#login-form');
+
+if (loginForm)
+    loginForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const emailInp = loginForm.querySelector('#email');
+        const passwordInp = loginForm.querySelector('#password');
+        axios
+            .post('/auth/login', {
+                email: emailInp.value,
+                password: passwordInp.value,
+            })
+            .then(function (res) {
+                new Noty({
+                    type: 'alert',
+                    theme: 'sunset',
+                    text: `✔️ ${res.data.message}`,
+                    timeout: 3000,
+                    progressBar: false,
+                }).show();
+            })
+            .catch(function (err) {
+                console.log(err.response.data.message);
+                new Noty({
+                    type: 'alert',
+                    theme: 'sunset',
+                    text: `❌ ${err.response.data.message}`,
+                    timeout: 3000,
+                    progressBar: false,
+                }).show();
+            });
+    });
