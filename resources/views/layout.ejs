@@ -30,7 +30,9 @@
                     <li>
                         <a id="cart" class="flex gap-1" href="/cart">
                             <i class="ri-shopping-bag-2-fill"></i>
-                            <span class="text-sm">0</span>
+                            <span class="cartQty text-sm">
+                                <%= session.cart ? session.cart.totalQty :'0'%>
+                            </span>
                         </a>
                     </li>
                 </ul>

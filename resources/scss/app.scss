@@ -3,6 +3,8 @@
 @tailwind components;
 @tailwind utilities;
 @import './variable';
+@import '~noty/src/noty.scss';
+@import '~noty/src/themes/relax.scss';
 
 // Custom Scroll
 /* width */
@@ -26,6 +28,7 @@
 ::-webkit-scrollbar-thumb:hover {
     background: $dark;
 }
+
 input {
     border: 2px solid $grey;
     transition: $smooth;
@@ -34,6 +37,7 @@ input {
         border-color: $dark;
     }
 }
+
 html {
     scroll-behavior: smooth;
 }
