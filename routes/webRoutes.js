@@ -8,5 +8,7 @@ webRouter.route('/cart').get(viewController.cartController);
 webRouter.route('/login').get(viewController.loginController);
 webRouter.route('/register').get(viewController.registerController);
 webRouter.route('/update-cart').post(viewController.updateCart);
+webRouter.route('/plus-pizza').post(viewController.plusPizza);
+webRouter.route('/minus-pizza').post(viewController.minusPizza);
 
 module.exports = {webRouter};

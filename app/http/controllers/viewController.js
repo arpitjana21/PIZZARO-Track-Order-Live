@@ -62,10 +62,37 @@ const updateCart = function (req, res) {
     });
 };
 
+const plusPizza = function (req, res) {
+    const pizza = req.body;
+    updateSessionCart(req, pizza, 1);
+    return res.json({
+        status: 'success',
+        pizzaQty: req.session.cart.items[pizza.slug].qty,
+        totalQty: req.session.cart.totalQty,
+        totalPrice: req.session.cart.totalPrice,
+    });
+};
+
+const minusPizza = function (req, res) {
+    const pizza = req.body;
+    updateSessionCart(req, pizza, -1);
+    const pizzaQty = req.session.cart.items[pizza.slug]
+        ? req.session.cart.items[pizza.slug].qty
+        : 0;
+    return res.json({
+        status: 'success',
+        pizzaQty: pizzaQty,
+        totalQty: req.session.cart.totalQty,
+        totalPrice: req.session.cart.totalPrice,
+    });
+};
+
 module.exports = {
     homeController,
     registerController,
     loginController,
     cartController,
     updateCart,
+    plusPizza,
+    minusPizza,
 };

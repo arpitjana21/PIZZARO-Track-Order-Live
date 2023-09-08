@@ -21,7 +21,9 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 
 
 var menuCards = document.querySelectorAll('.menu-card');
+var cartPizzaItems = document.querySelectorAll('.cart-pizza-item');
 var cartQty = document.querySelector('.cartQty');
+var totalPrice = document.querySelector('.total-price');
 var size = ['small', 'medium', 'large'];
 function getSlug(pizza) {
   return pizza.name.toLowerCase().split(' ').join('-') + "-".concat(pizza.size);
@@ -39,21 +41,48 @@ function updateCart(pizza) {
     }).show();
   });
 }
-menuCards.forEach(function (card) {
-  var pizza = JSON.parse(card.dataset.pizza);
-  var sizeInp = card.querySelector('.size');
-  var addToCart = card.querySelector('.addToCart');
-  var selectSize = card.querySelector('.select-size');
-  var price = card.querySelector('.price');
-  selectSize.addEventListener('change', function (e) {
-    price.textContent = "Rs. ".concat(pizza.price[e.target.value]);
+if (menuCards) {
+  menuCards.forEach(function (card) {
+    var pizza = JSON.parse(card.dataset.pizza);
+    var sizeInp = card.querySelector('.size');
+    var addToCart = card.querySelector('.addToCart');
+    var selectSize = card.querySelector('.select-size');
+    var price = card.querySelector('.price');
+    selectSize.addEventListener('change', function (e) {
+      price.textContent = "Rs. ".concat(pizza.price[e.target.value]);
+    });
+    addToCart.addEventListener('click', function (e) {
+      updateCart(_objectSpread(_objectSpread({}, pizza), {}, {
+        size: +sizeInp.value
+      }));
+    });
   });
-  addToCart.addEventListener('click', function (e) {
-    updateCart(_objectSpread(_objectSpread({}, pizza), {}, {
-      size: +sizeInp.value
-    }));
+}
+if (cartPizzaItems) {
+  cartPizzaItems.forEach(function (card) {
+    var pizza = JSON.parse(card.dataset.pizza);
+    var plusPizza = card.querySelector('.plusPizza');
+    var minusPizza = card.querySelector('.minusPizza');
+    var pizzaCount = card.querySelector('.pizzaCount');
+    plusPizza.addEventListener('click', function (e) {
+      axios__WEBPACK_IMPORTED_MODULE_1__["default"].post('/plus-pizza', pizza).then(function (res) {
+        pizzaCount.textContent = res.data.pizzaQty;
+        cartQty.textContent = res.data.totalQty;
+        totalPrice.textContent = res.data.totalPrice + ' Rs.';
+      });
+    });
+    minusPizza.addEventListener('click', function (e) {
+      axios__WEBPACK_IMPORTED_MODULE_1__["default"].post('/minus-pizza', pizza).then(function (res) {
+        if (res.data.pizzaQty === 0) {
+          card.remove();
+        }
+        pizzaCount.textContent = res.data.pizzaQty;
+        cartQty.textContent = res.data.totalQty;
+        totalPrice.textContent = res.data.totalPrice + ' Rs.';
+      });
+    });
   });
-});
+}
 
 /***/ }),
 
