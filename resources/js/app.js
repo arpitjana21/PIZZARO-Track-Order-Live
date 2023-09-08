@@ -29,7 +29,7 @@ function updateCart(pizza) {
         new Noty({
             type: 'alert',
             theme: 'sunset',
-            text: `${pizza.name} ( ${size[pizza.size]} ) Added to Cart`,
+            text: `✔️ ${pizza.name} ( ${size[pizza.size]} ) Added to Cart`,
             timeout: 2000,
             progressBar: false,
         }).show();
@@ -121,6 +121,7 @@ const registerForm = document.querySelector('#register-form');
 const nameInp = registerForm.querySelector('#name');
 const emailInp = registerForm.querySelector('#email');
 const passwordInp = registerForm.querySelector('#password');
+const passwordCInp = registerForm.querySelector('#passwordConfirm');
 
 registerForm.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -129,8 +130,25 @@ registerForm.addEventListener('submit', function (e) {
             name: nameInp.value,
             email: emailInp.value,
             password: passwordInp.value,
+            passwordConfirm: passwordCInp.value,
         })
         .then(function (res) {
-            console.log(res.data);
+            new Noty({
+                type: 'alert',
+                theme: 'sunset',
+                text: `✔️ ${res.data.message}`,
+                timeout: 3000,
+                progressBar: false,
+            }).show();
+        })
+        .catch(function (err) {
+            console.log(err.response.data.message);
+            new Noty({
+                type: 'alert',
+                theme: 'sunset',
+                text: `❌ ${err.response.data.message}`,
+                timeout: 3000,
+                progressBar: false,
+            }).show();
         });
 });
