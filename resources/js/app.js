@@ -8,13 +8,13 @@ function updateCart(pizza) {
     axios.post('/update-cart', pizza).then(function (res) {
         cartQty.textContent = res.data.totalQty;
         new Noty({
-            type: 'success',
-            theme: 'relax',
-            text: 'Item Added to Cart',
-            animation: {
-                open: 'animated bounceInRight', // Animate.css class names
-                close: 'animated bounceOutRight', // Animate.css class names
-            },
+            type: 'alert',
+            theme: 'sunset',
+            text: `${
+                pizza.name
+            } ( ${pizza.size[0].toUpperCase()} ) Added to Cart`,
+            timeout: 2000,
+            progressBar: false,
         }).show();
     });
 }

@@ -26,14 +26,11 @@ function updateCart(pizza) {
   axios__WEBPACK_IMPORTED_MODULE_1__["default"].post('/update-cart', pizza).then(function (res) {
     cartQty.textContent = res.data.totalQty;
     new (noty__WEBPACK_IMPORTED_MODULE_0___default())({
-      type: 'success',
-      theme: 'relax',
-      text: 'Item Added to Cart',
-      animation: {
-        open: 'animated bounceInRight',
-        // Animate.css class names
-        close: 'animated bounceOutRight' // Animate.css class names
-      }
+      type: 'alert',
+      theme: 'sunset',
+      text: "".concat(pizza.name, " ( ").concat(pizza.size[0].toUpperCase(), " ) Added to Cart"),
+      timeout: 2000,
+      progressBar: false
     }).show();
   });
 }
