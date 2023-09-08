@@ -8,7 +8,8 @@ const flash = require('express-flash');
 const MongoStore = require('connect-mongo');
 
 // Routers
-const {webRouter} = require('./routes/webRoutes');
+const {viewRouter} = require('./routes/viewRoutes');
+const {authRouter} = require('./routes/authRoutes');
 
 const app = express();
 dotenv.config({path: './config.env'});
@@ -51,7 +52,8 @@ app.set('view engine', 'ejs');
 app.use(express.json());
 
 // Routes
-app.use('/', webRouter);
+app.use('/', viewRouter);
+app.use('/auth', authRouter);
 
 app.listen(PORT, function () {
     console.log('Connecting with database..');
