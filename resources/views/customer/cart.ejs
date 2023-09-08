@@ -6,39 +6,37 @@
                 <h1 class="font-bold ml-4 text-2xl">Order Summary</h1>
             </div>
             <div class="pizza-list">
-                <div class="pizza-item flex items-center gap-4 pb-4 pt-5 ">
-                    <img class="w-32" src="/img/heroPizza2.jpg" alt="pizza">
-                    <div class="w-full">
-                        <h2 class="text-lg font-bold">Marinara</h2>
-                        <div class="flex justify-between w-full">
-                            <span>Small</span>
-                            <div class="flex flex-col items-end gap-2">
-                                <span class="qty">1 <button class="mx-3"><i class="ri-add-line"></i></button><button><i
-                                            class="ri-subtract-line"></i></button></span>
-                                <span class="price">300 Rs.</span>
+                <%for(const pizza of Object.values(session.cart.items)){%>
+                    <div class="pizza-item flex items-center gap-4 pb-4 pt-5 ">
+                        <img class="w-32" src="/img/pizzas/<%=pizza.data.image%>" alt="pizza">
+                        <div class="w-full">
+                            <h2 class="text-lg font-bold">
+                                <%=pizza.data.name%>
+                            </h2>
+                            <div class="flex justify-between w-full">
+                                <span>
+                                    <%=pizza.data.size===0 ? 'small' : pizza.data.size===1 ? 'medium' : 'large' %>
+                                </span>
+                                <div class="flex flex-col items-end gap-2">
+                                    <span class="qty">
+                                        <%=pizza.qty%>
+                                            <button class="mx-3 plusPizza"><i class="ri-add-line"></i></button>
+                                            <button class="minusPizza"><i class="ri-subtract-line"></i></button>
+                                    </span>
+                                    <span class="price">
+                                        <%=pizza.data.price[pizza.data.size]%> Rs.
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <%}%>
 
-                </div>
-                <div class="pizza-item flex items-center gap-4 pb-4 pt-5 ">
-                    <img class="w-32" src="/img/heroPizza2.jpg" alt="pizza">
-                    <div class="w-full">
-                        <h2 class="text-lg font-bold">Marinara</h2>
-                        <div class="flex justify-between w-full">
-                            <span>Small</span>
-                            <div class="flex flex-col items-end gap-2">
-                                <span class="qty">1 <button class="mx-3"><i class="ri-add-line"></i></button><button><i
-                                            class="ri-subtract-line"></i></button></span>
-                                <span class="price">300 Rs.</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
             </div>
             <div>
-                <p class="mt-7 text-lg font-bold text-right px-8">Total Amount : <span class="total">1002 Rs.</span></p>
+                <p class="mt-7 text-lg font-bold text-right">Total Amount : <span class="total">
+                        <%= session.cart.totalPrice %> Rs.
+                    </span></p>
                 <form class="flex flex-col justify-end items-end gap-2 pt-7">
                     <input required class=" p-2 rounded-md" type="text" placeholder="address">
                     <input required class=" p-2 rounded-md" type="number" placeholder="phone-number">

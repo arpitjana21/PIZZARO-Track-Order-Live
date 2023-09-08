@@ -1,4 +1,5 @@
 const {Menu} = require('../../models/menuModel');
+
 const homeController = async function (req, res) {
     const pizzas = await Menu.find();
     res.render('home', {pizzas: pizzas});
@@ -16,7 +17,7 @@ const registerController = function (req, res) {
     res.render('auth/register');
 };
 
-const updateCart = function (req, res) {
+const updateSessionCart = function (req, pizza, type) {
     if (!req.session.cart) {
         req.session.cart = {
             items: {},
@@ -26,21 +27,35 @@ const updateCart = function (req, res) {
     }
 
     const cart = req.session.cart;
-    const pizza = req.body;
 
     // Check if items does not exist in cart
-    if (!cart.items[pizza._id]) {
-        cart.items[pizza._id] = {
-            pizza: pizza,
+    if (!cart.items[pizza.slug]) {
+        cart.items[pizza.slug] = {
+            data: pizza,
             qty: 1,
         };
         cart.totalQty++;
-        cart.totalPrice += pizza.price;
+        cart.totalPrice += pizza.price[pizza.size];
     } else {
-        cart.items[pizza._id].qty++;
-        cart.totalQty++;
-        cart.totalPrice += pizza.price;
+        if (type === 1) {
+            cart.items[pizza.slug].qty++;
+            cart.totalQty++;
+            cart.totalPrice += pizza.price[pizza.size];
+        }
+        if (type === -1) {
+            cart.items[pizza.slug].qty--;
+            if (cart.items[pizza.slug].qty === 0) {
+                delete cart.items[pizza.slug];
+            }
+            cart.totalQty--;
+            cart.totalPrice -= pizza.price[pizza.size];
+        }
     }
+};
+
+const updateCart = function (req, res) {
+    const pizza = req.body;
+    updateSessionCart(req, pizza, 1);
 
     return res.json({
         totalQty: req.session.cart.totalQty,

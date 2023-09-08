@@ -22,13 +22,18 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 
 var menuCards = document.querySelectorAll('.menu-card');
 var cartQty = document.querySelector('.cartQty');
+var size = ['small', 'medium', 'large'];
+function getSlug(pizza) {
+  return pizza.name.toLowerCase().split(' ').join('-') + "-".concat(pizza.size);
+}
 function updateCart(pizza) {
+  pizza.slug = getSlug(pizza);
   axios__WEBPACK_IMPORTED_MODULE_1__["default"].post('/update-cart', pizza).then(function (res) {
     cartQty.textContent = res.data.totalQty;
     new (noty__WEBPACK_IMPORTED_MODULE_0___default())({
       type: 'alert',
       theme: 'sunset',
-      text: "".concat(pizza.name, " ( ").concat(pizza.size[0].toUpperCase(), " ) Added to Cart"),
+      text: "".concat(pizza.name, " ( ").concat(size[pizza.size], " ) Added to Cart"),
       timeout: 2000,
       progressBar: false
     }).show();
@@ -38,9 +43,14 @@ menuCards.forEach(function (card) {
   var pizza = JSON.parse(card.dataset.pizza);
   var sizeInp = card.querySelector('.size');
   var addToCart = card.querySelector('.addToCart');
+  var selectSize = card.querySelector('.select-size');
+  var price = card.querySelector('.price');
+  selectSize.addEventListener('change', function (e) {
+    price.textContent = "Rs. ".concat(pizza.price[e.target.value]);
+  });
   addToCart.addEventListener('click', function (e) {
     updateCart(_objectSpread(_objectSpread({}, pizza), {}, {
-      size: sizeInp.value
+      size: +sizeInp.value
     }));
   });
 });

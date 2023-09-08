@@ -13,10 +13,7 @@ const menuSchema = new mongoose.Schema({
         trim: true,
     },
     price: {
-        type: Number,
-        required: [true, 'A Pizza must have a price<=150 && price>=400'],
-        min: 150,
-        max: 400,
+        type: [Number],
     },
     veg: {
         type: Boolean,
