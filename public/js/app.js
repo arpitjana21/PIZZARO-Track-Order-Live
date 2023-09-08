@@ -68,7 +68,7 @@ if (cartPizzaItems) {
       axios__WEBPACK_IMPORTED_MODULE_1__["default"].post('/plus-pizza', pizza).then(function (res) {
         pizzaCount.textContent = res.data.pizzaQty;
         cartQty.textContent = res.data.totalQty;
-        totalPrice.textContent = res.data.totalPrice + ' Rs.';
+        totalPrice.textContent = res.data.totalPrice;
       });
     });
     minusPizza.addEventListener('click', function (e) {
@@ -78,7 +78,10 @@ if (cartPizzaItems) {
         }
         pizzaCount.textContent = res.data.pizzaQty;
         cartQty.textContent = res.data.totalQty;
-        totalPrice.textContent = res.data.totalPrice + ' Rs.';
+        totalPrice.textContent = res.data.totalPrice;
+        if (totalPrice.textContent === '0') {
+          location.reload();
+        }
       });
     });
   });

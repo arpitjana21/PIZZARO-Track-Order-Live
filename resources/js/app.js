@@ -55,7 +55,7 @@ if (cartPizzaItems) {
             axios.post('/plus-pizza', pizza).then(function (res) {
                 pizzaCount.textContent = res.data.pizzaQty;
                 cartQty.textContent = res.data.totalQty;
-                totalPrice.textContent = res.data.totalPrice + ' Rs.';
+                totalPrice.textContent = res.data.totalPrice;
             });
         });
 
@@ -66,7 +66,10 @@ if (cartPizzaItems) {
                 }
                 pizzaCount.textContent = res.data.pizzaQty;
                 cartQty.textContent = res.data.totalQty;
-                totalPrice.textContent = res.data.totalPrice + ' Rs.';
+                totalPrice.textContent = res.data.totalPrice;
+                if (totalPrice.textContent === '0') {
+                    location.reload();
+                }
             });
         });
     });

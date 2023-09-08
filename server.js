@@ -62,7 +62,7 @@ mongoose
     .connect(DATABASE)
     .then(function () {
         console.log('Database Connection Successful.');
-        console.log(`URl : http://127.0.0.1:${PORT}/`);
+        console.log(`URL : http://127.0.0.1:${PORT}/`);
     })
     .catch(function (err) {
         console.log('\n⚠ DATABASE CONNECTION ERROR ⚠\n');
