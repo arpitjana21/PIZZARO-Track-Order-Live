@@ -9,14 +9,14 @@ const cartController = function (req, res) {
     res.render('customer/cart');
 };
 
-const loginController = function (req, res, next) {
+const loginController = function (req, res) {
     if (!res.user) return res.render('auth/login');
-    next();
+    return res.redirect('/');
 };
 
-const registerController = function (req, res, next) {
+const registerController = function (req, res) {
     if (!res.user) return res.render('auth/register');
-    next();
+    return res.redirect('/');
 };
 
 const accountController = function (req, res, next) {

@@ -1,0 +1,43 @@
+const mongoose = require('mongoose');
+const validator = require('validator');
+
+const orderSchema = mongoose.Schema({
+    user: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        required: [true, 'Order Must have a User'],
+    },
+    items: {
+        type: Object,
+        required: [true, 'Order Must have items'],
+    },
+    address: {
+        type: String,
+        required: [true, 'Order Must have Address'],
+    },
+    phone: {
+        type: String,
+        validate: {
+            validator: function (val) {
+                return /^\+91[1-9][0-9]{9}$/.test(val);
+            },
+            message: 'Please Enter valid phone number: e.g: +91<10 digit>',
+        },
+    },
+    status: {
+        type: String,
+        default: 'order_placed',
+    },
+    payment: {
+        type: String,
+        default: 'COD',
+    },
+});
+
+orderSchema.pre(/^find/, function (next) {
+    this.populate('user');
+    next();
+});
+
+const Order = mongoose.model('Order', orderSchema);
+module.exports = {Order};

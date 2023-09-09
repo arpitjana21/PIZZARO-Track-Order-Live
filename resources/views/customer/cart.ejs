@@ -48,21 +48,24 @@
         <%}%>
       </div>
       
-        <p class="mt-7 text-lg font-bold text-right">Total Amount : <span class="total">
-                <span class="total-price"> <%= session.cart.totalPrice %> </span> Rs. </span>
+        <p class="mt-7 text-lg font-bold text-right">
+            Total Amount : 
+            <span class="total">
+                <span class="total-price"> <%= session.cart.totalPrice %> </span>
+        Rs. </span>
         </p>
+
+        <%if(user){%>
         <form class="flex flex-col justify-end items-end gap-2 pt-7">
           <input required class=" p-2 rounded-md" type="text" placeholder="address">
           <input required class=" p-2 rounded-md" type="number" placeholder="phone-number">
-          <%if(user){%>
           <button class="btn-md mt-2">Order Now</button>
-          <%}%>
         </form>
-        <%if(!user){%>
-          <div class="flex justify-end">
-            <a href="/login"><button class="btn-md mt-2">Login to Continue</button></a>
-          </div>
-          <%}%>
+        <%}else{%>
+        <div class="flex justify-end">
+          <a href="/login"><button class="btn-md mt-6">Login to Continue</button></a>
+        </div>
+        <%}%>
         <div class="flex justify-end">
         </div>
       </div>
