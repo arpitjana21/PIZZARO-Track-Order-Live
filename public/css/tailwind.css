@@ -2071,6 +2071,8 @@ nav #drop-down:hover ul {
 }
 
 .orders .card {
+  width: 100%;
+  max-width: 25rem;
   background-color: #f3f3f3;
   border: 2px solid #ccc;
 }

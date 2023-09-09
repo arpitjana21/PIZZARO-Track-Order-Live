@@ -644,6 +644,8 @@ nav #drop-down:hover ul {
   min-height: 80vh;
 }
 .orders .card {
+  width: 100%;
+  max-width: 25rem;
   background-color: #f3f3f3;
   border: 2px solid #ccc;
 }
