@@ -39,10 +39,10 @@ const orderSchema = mongoose.Schema({
     },
 });
 
-orderSchema.pre(/^find/, function (next) {
-    this.populate('user');
-    next();
-});
+// orderSchema.pre(/^find/, function (next) {
+//     this.populate('user');
+//     next();
+// });
 
 const Order = mongoose.model('Order', orderSchema);
 module.exports = {Order};

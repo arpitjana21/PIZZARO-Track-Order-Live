@@ -1,28 +1,53 @@
-<section class="orders flex flex-col gap-6 container mx-auto px-12 pb-14">
-  <div class="card">
-    <span class="orderid">12JLER4RFH4ERHF4H64FD64H6R</span>
-    <div>
-      <span class="address">Sripur, Ghatal</span>
-      <span class="phone">+917047809373</span>
+<section class="orders  container mx-auto px-12 pb-14">
+  <%if(orders){%>
+
+  <div class="flex flex-col gap-6 pt-6">
+    <!-- <div class="columns-3"> -->
+    <%orders.forEach(function(order){%>
+    <div class="card p-5 rounded-2xl">
+      <p class="orderid mb-28"><%=String(order._id).toUpperCase()%></p>
+      <div>
+        <p class="address"><i class="ri-map-pin-fill"></i> <%=order.address%></p>
+        <p class="phone"><i class="ri-phone-fill"></i> <%=order.phone%></p>
+      </div>
+      <div class="items pt-4">
+        <table class="mb-3">
+          <div>
+            <%Object.values(order.items).forEach(function(item){%>
+            <tr>
+              <td class="qty"><%=item.qty%></td>
+              <td class="name"><%=item.data.name%></td>
+              <td class="size"><%=item.data.size === 0 ? 'Small' : item.data.size === 1 ? 'Medium' : 'Large'%></td>
+              <td class="price"><%=item.data.price[item.data.size]%> Rs.</td>
+            </tr>
+            <%})%>
+            <tr class="total-row">
+              <td></td>
+              <td></td>
+              <td>Total</td>
+              <td><%=order.amount%> Rs.</td>
+            </tr>
+        </table>
+        <button class="cancleOrder mr-1">cancle</button>
+        <button class="cancleOrder">track</button>
+      </div>
     </div>
-    <div class="items">
-      <div class="item">
-        <span class="name">Super Veg</span>
-        <span class="size">medium</span>
-        <span class="price">250Rs.</span>
-      </div>
-      <div class="item">
-        <span class="name">Super Veg</span>
-        <span class="size">medium</span>
-        <span class="price">250Rs.</span>
-      </div>
-      <div class="item">
-        <span class="name">Super Veg</span>
-        <span class="size">medium</span>
-        <span class="price">250Rs.</span>
-      </div>
-    </div>
-    <div>Total Amounnt <span class="totalPrice">405 Rs.</span></div>
-    <button class="cancleOrder">cancle</button>
+    <%})%>
   </div>
+  <%}else{%>
+  <div class="empty-cart">
+    <div class="container mx-auto px-12 flex flex-col items-center justify-center mt-20">
+      <h1 class="text-3xl font-bold mb-2 text-center">Nothing Ordered Yet !</h1>
+      <img class="w-48 m-12" src="/img/empty-cart.png" alt="">
+      <p class="text-center">You probably haven't ordered a pizza yet.<br>
+        To order a pizza, go to the main page.
+      </p>
+      <a class="btn-md mt-6" href="/">Go Back</a>
+    </div>
+  </div>
+  <%}%>
+  
+
+  
+
 </section>

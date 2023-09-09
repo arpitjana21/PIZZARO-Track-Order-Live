@@ -1,4 +1,5 @@
 const {Menu} = require('../../models/menuModel');
+const {Order} = require('../../models/orderModel');
 
 const homeController = async function (req, res) {
     const pizzas = await Menu.find();
@@ -26,9 +27,12 @@ const accountController = function (req, res, next) {
     next();
 };
 
-const ordersController = function (req, res, next) {
+const ordersController = async function (req, res, next) {
     if (req.user) {
-        return res.render('customer/orders');
+        const userId = req.user._id;
+        const orders = await Order.find({user: userId});
+        console.log(orders);
+        return res.render('customer/orders', {orders: orders});
     }
     next();
 };

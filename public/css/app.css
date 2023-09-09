@@ -639,3 +639,46 @@ nav #drop-down:hover ul {
 .account .form-container a:hover {
   box-shadow: rgba(240, 62, 62, 0.2745098039) 0px 2px 8px 0px;
 }
+
+.orders {
+  min-height: 80vh;
+}
+.orders .card {
+  background-color: #f3f3f3;
+  border: 2px solid #ccc;
+}
+.orders .card .orderid {
+  color: white;
+  background-color: #f03e3e;
+  padding: 0.2rem 0.8rem;
+  border-radius: 0.5rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-bottom: 0.3rem;
+}
+.orders .card button {
+  background-color: transparent;
+  color: #495057;
+  border: 2px solid #ccc;
+  padding: 0rem 0.7rem;
+  border-radius: 0.4rem;
+  transition: all 0.3s ease-in-out;
+}
+.orders .card button:hover {
+  border-color: #495057;
+}
+.orders .card .total-row {
+  color: #f03e3e;
+}
+.orders .card .items h3 {
+  color: #f03e3e;
+}
+.orders .card .items table,
+.orders .card .items th,
+.orders .card .items td {
+  border: 2px solid #ccc;
+  border-collapse: collapse;
+}
+.orders .card .items td {
+  padding: 0.2rem 0.7rem;
+}
