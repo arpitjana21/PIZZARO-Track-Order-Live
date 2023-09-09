@@ -28,7 +28,7 @@
             <div class="flex justify-between w-full">
               <span>
                 <%=pizza.data.size===0 ? 'small' : pizza.data.size===1 ? 'medium' : 'large'
-                                                %>
+                %>
               </span>
               <div class="flex flex-col items-end gap-2">
                 <span class="qty">
@@ -56,9 +56,9 @@
         </p>
 
         <%if(user){%>
-        <form class="flex flex-col justify-end items-end gap-2 pt-7">
-          <input required class=" p-2 rounded-md" type="text" placeholder="address">
-          <input required class=" p-2 rounded-md" type="number" placeholder="phone-number">
+        <form class="order-form flex flex-col justify-end items-end gap-2 pt-7">
+          <input required class="address p-2 rounded-md" type="text" placeholder="Your Address">
+          <input required class="phone p-2 rounded-md" type="tel" pattern="[0-9]{10}" title="Please enter a 10-digit mobile phone number" placeholder="10 Digit Phone-Number">
           <button class="btn-md mt-2">Order Now</button>
         </form>
         <%}else{%>

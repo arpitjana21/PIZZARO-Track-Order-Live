@@ -26,7 +26,9 @@ function notify(message) {
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
+
 const menuCards = document.querySelectorAll('.menu-card');
+const cartQtys = document.querySelectorAll('.cartQty');
 
 function getSlug(pizza) {
     return pizza.name.toLowerCase().split(' ').join('-') + `-${pizza.size}`;
@@ -35,7 +37,9 @@ function getSlug(pizza) {
 function updateCart(pizza) {
     pizza.slug = getSlug(pizza);
     axios.post('/update-cart', pizza).then(function (res) {
-        cartQty.textContent = res.data.totalQty;
+        cartQtys.forEach(function (el) {
+            el.textContent = res.data.totalQty;
+        });
         notify(`✔️ ${pizza.name} ( ${size[pizza.size]} ) Added to Cart`);
     });
 }
@@ -73,7 +77,7 @@ if (menuCards) {
 ////////////////////////////////////////////////
 
 const cartPizzaItems = document.querySelectorAll('.cart-pizza-item');
-const cartQty = document.querySelector('.cartQty');
+
 const totalPrice = document.querySelector('.total-price');
 
 if (cartPizzaItems) {
@@ -86,7 +90,9 @@ if (cartPizzaItems) {
         plusPizza.addEventListener('click', function (e) {
             axios.post('/plus-pizza', pizza).then(function (res) {
                 pizzaCount.textContent = res.data.pizzaQty;
-                cartQty.textContent = res.data.totalQty;
+                cartQtys.forEach(function (el) {
+                    el.textContent = res.data.totalQty;
+                });
                 totalPrice.textContent = res.data.totalPrice;
             });
         });
@@ -97,7 +103,9 @@ if (cartPizzaItems) {
                     card.remove();
                 }
                 pizzaCount.textContent = res.data.pizzaQty;
-                cartQty.textContent = res.data.totalQty;
+                cartQtys.forEach(function (el) {
+                    el.textContent = res.data.totalQty;
+                });
                 totalPrice.textContent = res.data.totalPrice;
                 if (totalPrice.textContent === '0') {
                     location.reload();
@@ -200,6 +208,7 @@ if (loginForm)
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
+
 const logoutBtns = document.querySelectorAll('.logout');
 
 logoutBtns.forEach(function (btn) {
@@ -219,3 +228,43 @@ logoutBtns.forEach(function (btn) {
             });
     });
 });
+
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+// Cart Page < Order Now >
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+
+const orderForm = document.querySelector('.order-form');
+
+if (orderForm) {
+    const addressInp = orderForm.querySelector('.address');
+    const phoneInp = orderForm.querySelector('.phone');
+    orderForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        axios
+            .post('/order/', {
+                address: addressInp.value,
+                phone: phoneInp.value,
+            })
+            .then(function (res) {
+                notify(`✔️ ${res.data.message}`);
+                window.setTimeout(function () {
+                    location.assign('/');
+                }, 2000);
+            })
+            .catch(function (err) {
+                console.log(err);
+                notify(`❌ ${err.response.data.message}`);
+            });
+    });
+}

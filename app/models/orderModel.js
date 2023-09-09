@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
 
 const orderSchema = mongoose.Schema({
     user: {
@@ -31,6 +30,12 @@ const orderSchema = mongoose.Schema({
     payment: {
         type: String,
         default: 'COD',
+    },
+    itemCount: Number,
+    amount: Number,
+    placedAt: {
+        type: Date,
+        default: Date.now(),
     },
 });
 

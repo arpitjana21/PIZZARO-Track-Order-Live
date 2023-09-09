@@ -44,14 +44,18 @@ function notify(message) {
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
+
 var menuCards = document.querySelectorAll('.menu-card');
+var cartQtys = document.querySelectorAll('.cartQty');
 function getSlug(pizza) {
   return pizza.name.toLowerCase().split(' ').join('-') + "-".concat(pizza.size);
 }
 function updateCart(pizza) {
   pizza.slug = getSlug(pizza);
   axios__WEBPACK_IMPORTED_MODULE_1__["default"].post('/update-cart', pizza).then(function (res) {
-    cartQty.textContent = res.data.totalQty;
+    cartQtys.forEach(function (el) {
+      el.textContent = res.data.totalQty;
+    });
     notify("\u2714\uFE0F ".concat(pizza.name, " ( ").concat(size[pizza.size], " ) Added to Cart"));
   });
 }
@@ -88,7 +92,6 @@ if (menuCards) {
 ////////////////////////////////////////////////
 
 var cartPizzaItems = document.querySelectorAll('.cart-pizza-item');
-var cartQty = document.querySelector('.cartQty');
 var totalPrice = document.querySelector('.total-price');
 if (cartPizzaItems) {
   cartPizzaItems.forEach(function (card) {
@@ -99,7 +102,9 @@ if (cartPizzaItems) {
     plusPizza.addEventListener('click', function (e) {
       axios__WEBPACK_IMPORTED_MODULE_1__["default"].post('/plus-pizza', pizza).then(function (res) {
         pizzaCount.textContent = res.data.pizzaQty;
-        cartQty.textContent = res.data.totalQty;
+        cartQtys.forEach(function (el) {
+          el.textContent = res.data.totalQty;
+        });
         totalPrice.textContent = res.data.totalPrice;
       });
     });
@@ -109,7 +114,9 @@ if (cartPizzaItems) {
           card.remove();
         }
         pizzaCount.textContent = res.data.pizzaQty;
-        cartQty.textContent = res.data.totalQty;
+        cartQtys.forEach(function (el) {
+          el.textContent = res.data.totalQty;
+        });
         totalPrice.textContent = res.data.totalPrice;
         if (totalPrice.textContent === '0') {
           location.reload();
@@ -202,6 +209,7 @@ if (loginForm) loginForm.addEventListener('submit', function (e) {
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
+
 var logoutBtns = document.querySelectorAll('.logout');
 logoutBtns.forEach(function (btn) {
   btn.addEventListener('click', function (e) {
@@ -217,6 +225,41 @@ logoutBtns.forEach(function (btn) {
     });
   });
 });
+
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+// Cart Page < Order Now >
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+
+var orderForm = document.querySelector('.order-form');
+if (orderForm) {
+  var addressInp = orderForm.querySelector('.address');
+  var phoneInp = orderForm.querySelector('.phone');
+  orderForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    axios__WEBPACK_IMPORTED_MODULE_1__["default"].post('/order/', {
+      address: addressInp.value,
+      phone: phoneInp.value
+    }).then(function (res) {
+      notify("\u2714\uFE0F ".concat(res.data.message));
+      window.setTimeout(function () {
+        location.assign('/');
+      }, 2000);
+    })["catch"](function (err) {
+      console.log(err);
+      notify("\u274C ".concat(err.response.data.message));
+    });
+  });
+}
 
 /***/ }),
 
