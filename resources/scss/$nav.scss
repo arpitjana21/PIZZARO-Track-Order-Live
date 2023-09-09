@@ -1,5 +1,5 @@
 nav {
-    li a {
+    li {
         transition: $smooth;
         &:hover {
             color: $primary;
@@ -25,5 +25,58 @@ nav {
         color: $pure;
         padding: 0.2rem 0.35rem;
         border-radius: 0.2rem;
+    }
+
+    #drop-down {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        background-color: #49505713;
+        padding: 0.1rem 0.7rem;
+        padding-right: 1.4rem;
+        border-radius: 0.2rem;
+        display: none;
+
+        ul {
+            position: absolute;
+            background-color: #f1f2f2;
+            transform: translateX(-70.5%);
+            padding: 1rem;
+            padding-right: 1.3rem;
+            border-radius: 0.2rem;
+            transition: $smooth;
+            opacity: 0;
+            pointer-events: none;
+            box-shadow: $shadow;
+
+            li {
+                padding: 0.4rem 0.1rem;
+                span {
+                    display: inline-block;
+                    transform: translateY(-0.5rem);
+                    padding-left: 0.3rem;
+                }
+            }
+        }
+
+        &:hover {
+            background-color: transparent;
+            ul {
+                opacity: 1;
+                pointer-events: all;
+            }
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    nav {
+        #drop-down {
+            display: block;
+        }
+        #flat-menu {
+            display: none;
+        }
     }
 }

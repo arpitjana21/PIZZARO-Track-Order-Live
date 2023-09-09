@@ -1,79 +1,77 @@
 <!-- Hero Section -->
 <section class="hero container mx-auto grid px-12 pb-14">
-    <div class="flex justify-center items-start flex-col ar01">
-        <h1 class="text-8xl font-bold pt-10">
-            Satisfy Your Cravings With Our <span>Delicious</span> Pizzas.
-        </h1>
-        <a class="btn-md mt-10" href="#menu">Order Now</a>
-    </div>
-    <div class="flex items-center justify-center ar02">
-        <img src="/img/heroPizza2.jpg" alt="pizza">
-    </div>
+  <div class="flex justify-center items-start flex-col ar01">
+    <h1 class="text-8xl font-bold pt-10">
+      Satisfy Your Cravings With Our <span>Delicious</span> Pizzas.
+    </h1>
+    <a class="btn-md mt-10" href="#menu">Order Now</a>
+  </div>
+  <div class="flex items-center justify-center ar02">
+    <img src="/img/heroPizza2.jpg" alt="pizza">
+  </div>
 </section>
 
 <!-- Offer Section -->
 <section id="offer" class="offer  container mx-auto px-12 py-20">
-    <h1 class="mb-10 text-2xl font-bold">Just for you.</h1>
-    <div class="flex gap-10">
-        <div>
-            <img class="rounded-2xl" src="/img/offer1.jpg" alt="offer">
-        </div>
-        <div>
-            <img class="rounded-2xl" src="/img/offer2.jpg" alt="offer">
-        </div>
+  <h1 class="mb-10 text-2xl font-bold">Just for you.</h1>
+  <div class="flex gap-10">
+    <div>
+      <img class="rounded-2xl" src="/img/offer1.jpg" alt="offer">
     </div>
+    <div>
+      <img class="rounded-2xl" src="/img/offer2.jpg" alt="offer">
+    </div>
+  </div>
 
 </section>
 
 <!-- Menu Section -->
 <section id="menu" class="menu">
-    <div class="container mx-auto px-12 pb-20 pt-12">
-        <h1 class="mb-10 text-2xl font-bold">Our Menu.</h1>
-        <div class="pizza-container grid grid-cols-4 gap-10 ">
-            <% pizzas.forEach(function(pizza){ %>
-                <div data-pizza="<%= JSON.stringify(pizza)%>" class="relative card p-7 rounded-2xl menu-card">
-                    <div class="top">
-                        <img src="/img/pizzas/<%= pizza.image %>" alt="pizza">
-                        <span class="<%= pizza.veg ? 'veg absolute food' : 'nveg absolute food' %>"><i
-                                class="ri-circle-fill"></i></span>
-                        <!-- <span class="veg absolute food"><i class="ri-circle-fill"></i></span> -->
-                    </div>
-                    <div class="flex flex-col items-center justify-center">
-                        <h2 class="text-2xl pb-6">
-                            <%= pizza.name %>
-                        </h2>
-                        <select class="mb-8 size select-size">
-                            <option value="2">Large</option>
-                            <option value="1">Medium</option>
-                            <option value="0">Small</option>
-                        </select>
-                        <div class="w-full flex justify-between">
-                            <span class="font-bold price">Rs.<%= pizza.price[2] %></span>
-                            <a class="btn-md addToCart cursor-pointer">
-                                <span>+</span>
-                                <span>Add</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <% }) %>
+  <div class="container mx-auto px-12 pb-20 pt-12">
+    <h1 class="mb-10 text-2xl font-bold">Our Menu.</h1>
+    <div class="pizza-container grid grid-cols-4 gap-10 ">
+      <% pizzas.forEach(function(pizza){ %>
+      <div data-pizza="<%= JSON.stringify(pizza)%>" class="relative card p-7 rounded-2xl menu-card">
+        <div class="top">
+          <img src="/img/pizzas/<%= pizza.image %>" alt="pizza">
+          <span class="<%=`${pizza.veg ? 'veg' : 'nveg'} absolute food`%>"><i class="ri-circle-fill"></i></span>
         </div>
+        <div class="flex flex-col items-center justify-center">
+          <h2 class="text-2xl pb-6">
+            <%= pizza.name %>
+          </h2>
+          <select class="mb-8 size select-size">
+            <option value="2">Large</option>
+            <option value="1">Medium</option>
+            <option value="0">Small</option>
+          </select>
+          <div class="w-full flex justify-between">
+            <span class="font-bold price">Rs.<%= pizza.price[2] %></span>
+            <a class="btn-md addToCart cursor-pointer">
+              <span>+</span>
+              <span>Add</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <% }) %>
     </div>
+  </div>
 
 </section>
 
 <!-- Donate -->
 <section class="hero donate container mx-auto grid gap-5 px-12 py-20">
-    <div class="flex justify-center items-start flex-col ar01">
-        <h1 class="text-8xl font-bold pt-10">
-            Help Nourish a <span>Child's Future</span> with Just ₹29.
-        </h1>
-        <form class="flex flex-col justify-end items-start gap-2 pt-7">
-            <input required class=" p-4 rounded-md" type="email" placeholder="youremail@email.com">
-            <button class="btn-md mt-2">Donate</button>
-        </form>
-    </div>
-    <div class="img-box flex justify-center ar02">
-        <img class="rounded-2xl" src="/img/littleGirl.jpg" alt="pizza">
-    </div>
+  <div class="flex justify-center items-start flex-col ar01">
+    <h1 class="text-8xl font-bold pt-10">
+      Help Nourish a <span>Child's Future</span> with Just ₹29.
+    </h1>
+    <form class="flex flex-col justify-end items-start gap-2 pt-7">
+      <input required class=" p-4 rounded-md" type="email" placeholder="youremail@email.com">
+      <button class="btn-md mt-2">Donate</button>
+    </form>
+  </div>
+  <div class="img-box flex justify-center ar02">
+    <img class="rounded-2xl" src="/img/littleGirl.jpg" alt="pizza">
+  </div>
 </section>
