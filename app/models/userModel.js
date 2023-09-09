@@ -36,6 +36,11 @@ const userSchema = new mongoose.Schema({
             message: 'Passwords are not Same',
         },
     },
+    active: {
+        type: Boolean,
+        default: true,
+        select: false,
+    },
 });
 
 userSchema.pre('save', async function (next) {
@@ -44,6 +49,12 @@ userSchema.pre('save', async function (next) {
 
     // Delet passwordConfirmed field
     this.passwordConfirm = undefined;
+    next();
+});
+
+userSchema.pre(/^find/, function (next) {
+    // this points
+    this.find({active: true});
     next();
 });
 

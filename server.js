@@ -6,6 +6,7 @@ const expressLayouts = require('express-ejs-layouts');
 const session = require('express-session');
 const flash = require('express-flash');
 const MongoStore = require('connect-mongo');
+const cookieParser = require('cookie-parser');
 
 // Routers
 const {viewRouter} = require('./routes/viewRoutes');
@@ -39,8 +40,12 @@ app.use(flash());
 // Global Middleware
 app.use(function (req, res, next) {
     res.locals.session = req.session;
+    res.locals.user = null;
     next();
 });
+
+// Receive Cookie from Browser
+app.use(cookieParser());
 
 // Setting View
 app.use(express.static('public'));

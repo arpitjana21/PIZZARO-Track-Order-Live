@@ -3,6 +3,16 @@ import Noty from 'noty';
 
 const size = ['small', 'medium', 'large'];
 
+function notify(message) {
+    new Noty({
+        type: 'alert',
+        theme: 'sunset',
+        text: message,
+        timeout: 3000,
+        progressBar: false,
+    }).show();
+}
+
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
@@ -26,13 +36,7 @@ function updateCart(pizza) {
     pizza.slug = getSlug(pizza);
     axios.post('/update-cart', pizza).then(function (res) {
         cartQty.textContent = res.data.totalQty;
-        new Noty({
-            type: 'alert',
-            theme: 'sunset',
-            text: `✔️ ${pizza.name} ( ${size[pizza.size]} ) Added to Cart`,
-            timeout: 2000,
-            progressBar: false,
-        }).show();
+        notify(`✔️ ${pizza.name} ( ${size[pizza.size]} ) Added to Cart`);
     });
 }
 
@@ -134,23 +138,14 @@ if (registerForm)
                 passwordConfirm: passwordCInp.value,
             })
             .then(function (res) {
-                new Noty({
-                    type: 'alert',
-                    theme: 'sunset',
-                    text: `✔️ ${res.data.message}`,
-                    timeout: 3000,
-                    progressBar: false,
-                }).show();
+                notify(`✔️ ${res.data.message}`);
+                window.setTimeout(function () {
+                    location.assign('/');
+                }, 2000);
             })
             .catch(function (err) {
                 console.log(err.response.data.message);
-                new Noty({
-                    type: 'alert',
-                    theme: 'sunset',
-                    text: `❌ ${err.response.data.message}`,
-                    timeout: 3000,
-                    progressBar: false,
-                }).show();
+                notify(`❌ ${err.response.data.message}`);
             });
     });
 
@@ -181,22 +176,46 @@ if (loginForm)
                 password: passwordInp.value,
             })
             .then(function (res) {
-                new Noty({
-                    type: 'alert',
-                    theme: 'sunset',
-                    text: `✔️ ${res.data.message}`,
-                    timeout: 3000,
-                    progressBar: false,
-                }).show();
+                notify(`✔️ ${res.data.message}`);
+                window.setTimeout(function () {
+                    location.assign('/');
+                }, 2000);
             })
             .catch(function (err) {
                 console.log(err.response.data.message);
-                new Noty({
-                    type: 'alert',
-                    theme: 'sunset',
-                    text: `❌ ${err.response.data.message}`,
-                    timeout: 3000,
-                    progressBar: false,
-                }).show();
+                notify(`❌ ${err.response.data.message}`);
             });
     });
+
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+// Login Page < LOGOUT >
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+const logoutBtns = document.querySelectorAll('.logout');
+
+logoutBtns.forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        axios
+            .get('/auth/logout')
+            .then(function (res) {
+                notify(`✔️ ${res.data.message}`);
+                window.setTimeout(function () {
+                    location.assign('/');
+                }, 2000);
+            })
+            .catch(function (err) {
+                console.log(err);
+                notify(`❌ ${err.response.data.message}`);
+            });
+    });
+});

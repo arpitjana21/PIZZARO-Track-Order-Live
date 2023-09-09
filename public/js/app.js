@@ -21,6 +21,15 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 
 
 var size = ['small', 'medium', 'large'];
+function notify(message) {
+  new (noty__WEBPACK_IMPORTED_MODULE_0___default())({
+    type: 'alert',
+    theme: 'sunset',
+    text: message,
+    timeout: 3000,
+    progressBar: false
+  }).show();
+}
 
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
@@ -43,13 +52,7 @@ function updateCart(pizza) {
   pizza.slug = getSlug(pizza);
   axios__WEBPACK_IMPORTED_MODULE_1__["default"].post('/update-cart', pizza).then(function (res) {
     cartQty.textContent = res.data.totalQty;
-    new (noty__WEBPACK_IMPORTED_MODULE_0___default())({
-      type: 'alert',
-      theme: 'sunset',
-      text: "\u2714\uFE0F ".concat(pizza.name, " ( ").concat(size[pizza.size], " ) Added to Cart"),
-      timeout: 2000,
-      progressBar: false
-    }).show();
+    notify("\u2714\uFE0F ".concat(pizza.name, " ( ").concat(size[pizza.size], " ) Added to Cart"));
   });
 }
 if (menuCards) {
@@ -143,22 +146,13 @@ if (registerForm) registerForm.addEventListener('submit', function (e) {
     password: passwordInp.value,
     passwordConfirm: passwordCInp.value
   }).then(function (res) {
-    new (noty__WEBPACK_IMPORTED_MODULE_0___default())({
-      type: 'alert',
-      theme: 'sunset',
-      text: "\u2714\uFE0F ".concat(res.data.message),
-      timeout: 3000,
-      progressBar: false
-    }).show();
+    notify("\u2714\uFE0F ".concat(res.data.message));
+    window.setTimeout(function () {
+      location.assign('/');
+    }, 2000);
   })["catch"](function (err) {
     console.log(err.response.data.message);
-    new (noty__WEBPACK_IMPORTED_MODULE_0___default())({
-      type: 'alert',
-      theme: 'sunset',
-      text: "\u274C ".concat(err.response.data.message),
-      timeout: 3000,
-      progressBar: false
-    }).show();
+    notify("\u274C ".concat(err.response.data.message));
   });
 });
 
@@ -185,22 +179,42 @@ if (loginForm) loginForm.addEventListener('submit', function (e) {
     email: emailInp.value,
     password: passwordInp.value
   }).then(function (res) {
-    new (noty__WEBPACK_IMPORTED_MODULE_0___default())({
-      type: 'alert',
-      theme: 'sunset',
-      text: "\u2714\uFE0F ".concat(res.data.message),
-      timeout: 3000,
-      progressBar: false
-    }).show();
+    notify("\u2714\uFE0F ".concat(res.data.message));
+    window.setTimeout(function () {
+      location.assign('/');
+    }, 2000);
   })["catch"](function (err) {
     console.log(err.response.data.message);
-    new (noty__WEBPACK_IMPORTED_MODULE_0___default())({
-      type: 'alert',
-      theme: 'sunset',
-      text: "\u274C ".concat(err.response.data.message),
-      timeout: 3000,
-      progressBar: false
-    }).show();
+    notify("\u274C ".concat(err.response.data.message));
+  });
+});
+
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+// Login Page < LOGOUT >
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+var logoutBtns = document.querySelectorAll('.logout');
+logoutBtns.forEach(function (btn) {
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    axios__WEBPACK_IMPORTED_MODULE_1__["default"].get('/auth/logout').then(function (res) {
+      notify("\u2714\uFE0F ".concat(res.data.message));
+      window.setTimeout(function () {
+        location.assign('/');
+      }, 2000);
+    })["catch"](function (err) {
+      console.log(err);
+      notify("\u274C ".concat(err.response.data.message));
+    });
   });
 });
 

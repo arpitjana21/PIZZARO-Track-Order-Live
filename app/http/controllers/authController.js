@@ -64,4 +64,43 @@ const login = async function (req, res) {
     }
 };
 
-module.exports = {register, login};
+const logout = async function (req, res) {
+    try {
+        res.cookie('jwt', 'loggedout', {
+            expires: new Date(Date.now() + 10 * 1000),
+            httpOnly: true,
+        });
+        res.status(200).json({
+            status: 'success',
+            message: 'Logout Successful',
+        });
+    } catch (error) {
+        res.status(400).json({
+            status: 'success',
+            message: error.message,
+        });
+    }
+};
+
+const isloggedIn = async function (req, res, next) {
+    try {
+        const seckey = process.env.JWT_SECRET;
+        const token = req.cookies.jwt;
+        if (!token) return next();
+
+        // Verify Token
+        const decoded = jwt.verify(token, seckey);
+
+        // Check if User Still Exist
+        const currentUser = await User.findById(decoded.id);
+        if (!currentUser) {
+            return next();
+        }
+        res.locals.user = currentUser;
+        return next();
+    } catch (error) {
+        return next();
+    }
+};
+
+module.exports = {register, login, isloggedIn, logout};

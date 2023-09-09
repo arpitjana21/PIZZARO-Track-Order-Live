@@ -16,26 +16,34 @@
             <li><i class="ri-shopping-cart-line pr-3"></i><a href="/cart">Cart</a><span class="cartQty text-sm">
                 <%= session.cart ? session.cart.totalQty :'0'%>
               </span></li>
-            <li><i class="ri-bard-line pr-3"></i><a href="/#offer">Offers</a></li>
+            <li><i class="ri-shining-line pr-3"></i><a href="/#offer">Offers</a></li>
             <li><i class="ri-circle-line pr-3"></i><a href="/#menu">Menu</a></li>
+            <%if(user){%>
+            <li class="user-account"><a href="/account"><i class="ri-user-line pr-3"></i><%=user.name%></a></li>
+            <%}else{%>
             <li><i class="ri-user-add-line pr-3"></i><a href="/register">Register</a></li>
             <li><i class="ri-user-follow-line pr-3"></i><a href="/login">Login</a></li>
-            <li><i class="ri-user-shared-line pr-3"></i><a href="/login">Logout</a></li>
+            <%}%>
+            <li><i class="ri-user-shared-line pr-3"></i><a class="logout" href="/">Logout</a></li>
           </ul>
         </div>
         <div class="flex gap-6 items-center" id="flat-menu">
           <li><a href="/#offer">Offers</a></li>
           <li><a href="/#menu">Menu</a></li>
-          <li><a href="/register">Register</a></li>
-          <li><a href="/login">Login</a></li>
+          <%if(user){%>
+            <li class="user-account"><a href="/account"><i class="ri-user-line pr-2"></i><%=user.name%></a></li>
+            <%}else{%>
+            <li><a href="/register">Register</a></li>
+            <li><a href="/login">Login</a></li>
+            <%}%>
           <li>
             <a id="cart" class="flex gap-1" href="/cart">
               <i class="ri-shopping-bag-2-fill"></i>
               <span class="cartQty text-sm">
                 <%= session.cart ? session.cart.totalQty :'0'%>
-              </span>
+            </span>
             </a>
-          </li>
+            </li>
         </div>
       </ul>
     </div>
