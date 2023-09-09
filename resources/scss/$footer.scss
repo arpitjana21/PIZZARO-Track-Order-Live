@@ -1,0 +1,28 @@
+.footer {
+    background-color: #dadada54;
+    border-top: 2px solid $primary;
+    border-bottom: 10px solid $dark;
+    img {
+        width: 8rem;
+        height: 8rem;
+    }
+    p {
+        max-width: 50rem;
+    }
+    .btn-md {
+        background-color: $dark;
+        border-radius: 0.3rem;
+        font-size: 0.95rem;
+        padding: 0.2rem 0.6rem;
+        i {
+            font-size: 1.2rem;
+        }
+        &:hover {
+            box-shadow: $shadow;
+        }
+    }
+    span {
+        color: $primary;
+        font-weight: bold;
+    }
+}

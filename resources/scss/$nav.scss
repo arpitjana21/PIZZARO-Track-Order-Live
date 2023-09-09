@@ -1,0 +1,29 @@
+nav {
+    li a {
+        transition: $smooth;
+        &:hover {
+            color: $primary;
+        }
+    }
+
+    #logo {
+        img {
+            height: 4.5rem;
+        }
+    }
+
+    #logo span {
+        color: $primary;
+    }
+
+    #cart {
+        &:hover {
+            box-shadow: $shadow-red;
+        }
+        background-color: $primary;
+        font-size: 1.3rem;
+        color: $pure;
+        padding: 0.2rem 0.35rem;
+        border-radius: 0.2rem;
+    }
+}

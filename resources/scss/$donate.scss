@@ -1,0 +1,15 @@
+.donate {
+    span {
+        color: #1971c2;
+    }
+    img {
+        width: 100%;
+        box-shadow: $shadow;
+    }
+    .btn-md {
+        background-color: #1971c2;
+        &:hover {
+            box-shadow: #1970c246 0px 2px 8px 0px;
+        }
+    }
+}

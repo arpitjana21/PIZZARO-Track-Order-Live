@@ -1,0 +1,40 @@
+.login-register {
+    min-height: 80vh;
+    .form-container {
+        width: 100%;
+        max-width: 25rem;
+        border: 2px solid $grey;
+        box-shadow: $shadow;
+        padding: 2rem;
+        h1 {
+            color: $primary;
+        }
+
+        input {
+            border: 2px solid $grey;
+            padding: 0.3rem 0.5rem;
+            width: 100%;
+            border-radius: 0.3rem;
+            margin-top: 0.5rem;
+            transition: $smooth;
+            &:focus {
+                outline: none;
+                border-color: $primary;
+            }
+        }
+
+        button {
+            background-color: $primary;
+            color: white;
+            padding: 0.5rem 0.5rem;
+            transition: $smooth;
+            &:hover {
+                box-shadow: $shadow-red;
+            }
+        }
+
+        a {
+            color: $primary;
+        }
+    }
+}

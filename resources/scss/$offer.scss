@@ -1,0 +1,15 @@
+.offer {
+    img {
+        width: 100%;
+        max-width: 35rem;
+        box-shadow: $shadow;
+    }
+}
+
+@media (max-width: 1224px) {
+    .offer {
+        div {
+            flex-direction: column;
+        }
+    }
+}

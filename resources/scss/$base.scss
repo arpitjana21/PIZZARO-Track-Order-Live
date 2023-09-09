@@ -1,0 +1,65 @@
+// Custom Scroll
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: $dark;
+    border-radius: 0.12rem;
+    cursor: pointer;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: $dark;
+}
+
+// Noty Theme
+.noty_theme__sunset {
+    border-radius: 0.7rem !important;
+    padding: 0.4rem 0.6rem;
+}
+
+input {
+    border: 2px solid $grey;
+    transition: $smooth;
+    &:focus {
+        outline: none;
+        border-color: $dark;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: $dark;
+}
+
+.btn-md {
+    background-color: $primary;
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 100rem;
+    width: fit-content;
+    &:hover {
+        box-shadow: $shadow-red;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding-right: 1.5rem;
+        padding-left: 1.5rem;
+    }
+}

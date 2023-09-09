@@ -1,0 +1,28 @@
+<nav>
+  <div class="nav-container container mx-auto flex items-center justify-between px-12 py-5">
+    <div>
+      <div id="logo">
+        <a href="/">
+          <img src="/img/logo.png" alt="PzzoRo">
+        </a>
+      </div>
+    </div>
+    <div>
+      <ul class="flex gap-6 items-center">
+        <li><a href="/#offer">Offers</a></li>
+        <li><a href="/#menu">Menu</a></li>
+        <li><a href="/register">Register</a></li>
+        <li><a href="/login">Login</a></li>
+        <li class="username"><a>hi Aipit !</a></li>
+        <li>
+          <a id="cart" class="flex gap-1" href="/cart">
+            <i class="ri-shopping-bag-2-fill"></i>
+            <span class="cartQty text-sm">
+              <%= session.cart ? session.cart.totalQty :'0'%>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

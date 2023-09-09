@@ -1,0 +1,61 @@
+.menu {
+    background-color: #dadada54;
+    select {
+        background-color: #5555552f;
+        padding: 0.2rem 0.4rem;
+        border-radius: 0.4rem;
+    }
+    .card {
+        box-shadow: $shadow;
+        border: 2px solid $grey;
+        background-color: white;
+
+        .food {
+            transform: translate(-0.3rem, 3rem);
+            z-index: 100;
+            top: -1.7rem;
+            i {
+                border: 2px solid $dark;
+                padding: 0.2rem;
+                font-size: 0.8rem;
+                border-radius: 0.2rem;
+            }
+        }
+        .food.veg {
+            i {
+                border-color: $green;
+                color: $green;
+            }
+        }
+        .food.nveg {
+            i {
+                border-color: $primary;
+                color: $primary;
+            }
+        }
+    }
+}
+
+@media (max-width: 1280px) {
+    .menu {
+        .pizza-container {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+}
+
+@media (max-width: 1026px) {
+    .menu {
+        .pizza-container {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .menu {
+        .pizza-container {
+            grid-template-columns: 1fr;
+        }
+    }
+}
