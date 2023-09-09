@@ -97,6 +97,7 @@ const isloggedIn = async function (req, res, next) {
             return next();
         }
         res.locals.user = currentUser;
+        res.user = currentUser;
         return next();
     } catch (error) {
         return next();

@@ -1,73 +1,74 @@
 <section class="cart mb-20">
-    <%if(Object.values(session.cart.items).length===0){%>
-        <div class="empty-cart">
-            <div class="container mx-auto px-12 flex flex-col items-center justify-center mt-20">
-                <h1 class="text-3xl font-bold mb-2 text-center">Oops! Your Cart is Empty.</h1>
-                <img class="w-48 m-12" src="/img/empty-cart.png" alt="">
-                <p class="text-center">You probably haven't ordered a pizza yet.<br>
-                    To order a pizza, go to the main page.
-                </p>
-                <a class="btn-md mt-6" href="/">Go Back</a>
-            </div>
-        </div>
-        <%}else{%>
-            <div class="container mx-auto px-12">
-                <div class="orders mx-auto">
-                    <div class="title flex items-center pb-5">
-                        <i class="ri-shopping-cart-fill text-4xl"></i>
-                        <h1 class="font-bold ml-4 text-2xl">Order Summary</h1>
-                    </div>
-                    <div class="pizza-list">
-                        <%for(const pizza of Object.values(session.cart.items)){%>
-                            <div data-pizza="<%= JSON.stringify(pizza.data)%>"
-                                class="cart-pizza-item flex items-center gap-4 pb-4 pt-5 ">
-                                <img class="w-32" src="/img/pizzas/<%=pizza.data.image%>" alt="pizza">
-                                <div class="w-full">
-                                    <h2 class="text-lg font-bold">
-                                        <%=pizza.data.name%>
-                                    </h2>
-                                    <div class="flex justify-between w-full">
-                                        <span>
-                                            <%=pizza.data.size===0 ? 'small' : pizza.data.size===1 ? 'medium' : 'large'
+  <%if(Object.values(session.cart.items).length===0){%>
+  <div class="empty-cart">
+    <div class="container mx-auto px-12 flex flex-col items-center justify-center mt-20">
+      <h1 class="text-3xl font-bold mb-2 text-center">Oops! Your Cart is Empty.</h1>
+      <img class="w-48 m-12" src="/img/empty-cart.png" alt="">
+      <p class="text-center">You probably haven't ordered a pizza yet.<br>
+        To order a pizza, go to the main page.
+      </p>
+      <a class="btn-md mt-6" href="/">Go Back</a>
+    </div>
+  </div>
+  <%}else{%>
+  <div class="container mx-auto px-12">
+    <div class="orders mx-auto">
+      <div class="title flex items-center pb-5">
+        <i class="ri-shopping-cart-fill text-4xl"></i>
+        <h1 class="font-bold ml-4 text-2xl">Order Summary</h1>
+      </div>
+      <div class="pizza-list">
+        <%for(const pizza of Object.values(session.cart.items)){%>
+        <div data-pizza="<%= JSON.stringify(pizza.data)%>" class="cart-pizza-item flex items-center gap-4 pb-4 pt-5 ">
+          <img class="w-32" src="/img/pizzas/<%=pizza.data.image%>" alt="pizza">
+          <div class="w-full">
+            <h2 class="text-lg font-bold">
+              <%=pizza.data.name%>
+            </h2>
+            <div class="flex justify-between w-full">
+              <span>
+                <%=pizza.data.size===0 ? 'small' : pizza.data.size===1 ? 'medium' : 'large'
                                                 %>
-                                        </span>
-                                        <div class="flex flex-col items-end gap-2">
-                                            <span class="qty">
-                                                <span class="pizzaCount">
-                                                    <%=pizza.qty%>
-                                                </span>
-                                                <button class="mx-3 plusPizza"><i class="ri-add-line"></i></button>
-                                                <button class="minusPizza"><i class="ri-subtract-line"></i></button>
-                                            </span>
-                                            <span class="price">
-                                                <%=pizza.data.price[pizza.data.size]%> Rs.
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <%}%>
-
-                    </div>
-                    <div>
-                        <p class="mt-7 text-lg font-bold text-right">Total Amount : <span class="total ">
-                                <span class="total-price">
-                                    <%= session.cart.totalPrice %>
-                                </span> Rs.
-                            </span></p>
-                        <form class="flex flex-col justify-end items-end gap-2 pt-7">
-                            <input required class=" p-2 rounded-md" type="text" placeholder="address">
-                            <input required class=" p-2 rounded-md" type="number" placeholder="phone-number">
-                            <button class="btn-md mt-2">Order Now</button>
-                        </form>
-                        <div class="flex justify-end">
-                        </div>
-                    </div>
-                </div>
-
-
+              </span>
+              <div class="flex flex-col items-end gap-2">
+                <span class="qty">
+                  <span class="pizzaCount">
+                    <%=pizza.qty%>
+                  </span>
+                  <button class="mx-3 plusPizza"><i class="ri-add-line"></i></button>
+                  <button class="minusPizza"><i class="ri-subtract-line"></i></button>
+                </span>
+                <span class="price">
+                  <%=pizza.data.price[pizza.data.size]%> Rs.
+                </span>
+              </div>
             </div>
-            <%}%>
+          </div>
+        </div>
+        <%}%>
+      </div>
+      
+        <p class="mt-7 text-lg font-bold text-right">Total Amount : <span class="total">
+                <span class="total-price"> <%= session.cart.totalPrice %> </span> Rs. </span>
+        </p>
+        <form class="flex flex-col justify-end items-end gap-2 pt-7">
+          <input required class=" p-2 rounded-md" type="text" placeholder="address">
+          <input required class=" p-2 rounded-md" type="number" placeholder="phone-number">
+          <%if(user){%>
+          <button class="btn-md mt-2">Order Now</button>
+          <%}%>
+        </form>
+        <%if(!user){%>
+          <div class="flex justify-end">
+            <a href="/login"><button class="btn-md mt-2">Login to Continue</button></a>
+          </div>
+          <%}%>
+        <div class="flex justify-end">
+        </div>
+      </div>
+    </div>
+  </div>
+  <%}%>
 
 
 

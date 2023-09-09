@@ -26,4 +26,8 @@ viewRouter
     .route('/minus-pizza')
     .post(authController.isloggedIn, viewController.minusPizza);
 
+viewRouter
+    .route('/account')
+    .get(authController.isloggedIn, viewController.accountController);
+
 module.exports = {viewRouter};

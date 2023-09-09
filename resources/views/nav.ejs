@@ -20,11 +20,12 @@
             <li><i class="ri-circle-line pr-3"></i><a href="/#menu">Menu</a></li>
             <%if(user){%>
             <li class="user-account"><a href="/account"><i class="ri-user-line pr-3"></i><%=user.name%></a></li>
+            <li><i class="ri-user-shared-line pr-3"></i><a class="logout" href="/">Logout</a></li>
             <%}else{%>
             <li><i class="ri-user-add-line pr-3"></i><a href="/register">Register</a></li>
             <li><i class="ri-user-follow-line pr-3"></i><a href="/login">Login</a></li>
             <%}%>
-            <li><i class="ri-user-shared-line pr-3"></i><a class="logout" href="/">Logout</a></li>
+            
           </ul>
         </div>
         <div class="flex gap-6 items-center" id="flat-menu">

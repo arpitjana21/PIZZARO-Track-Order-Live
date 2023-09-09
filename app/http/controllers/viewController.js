@@ -9,12 +9,21 @@ const cartController = function (req, res) {
     res.render('customer/cart');
 };
 
-const loginController = function (req, res) {
-    res.render('auth/login');
+const loginController = function (req, res, next) {
+    if (!res.user) return res.render('auth/login');
+    next();
 };
 
-const registerController = function (req, res) {
-    res.render('auth/register');
+const registerController = function (req, res, next) {
+    if (!res.user) return res.render('auth/register');
+    next();
+};
+
+const accountController = function (req, res, next) {
+    if (res.user) {
+        return res.render('customer/account');
+    }
+    next();
 };
 
 const updateSessionCart = function (req, pizza, type) {
@@ -92,6 +101,7 @@ module.exports = {
     registerController,
     loginController,
     cartController,
+    accountController,
     updateCart,
     plusPizza,
     minusPizza,
