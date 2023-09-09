@@ -1,5 +1,5 @@
 <section class="cart mb-20">
-  <%if(Object.values(session.cart.items).length===0){%>
+  <%if(!session.cart || session.cart.totalQty === 0){%>
   <div class="empty-cart">
     <div class="container mx-auto px-12 flex flex-col items-center justify-center mt-20">
       <h1 class="text-3xl font-bold mb-2 text-center">Oops! Your Cart is Empty.</h1>

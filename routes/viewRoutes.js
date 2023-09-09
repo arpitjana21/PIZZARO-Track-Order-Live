@@ -30,4 +30,8 @@ viewRouter
     .route('/account')
     .get(authController.isloggedIn, viewController.accountController);
 
+viewRouter
+    .route('/customer/orders')
+    .get(authController.isloggedIn, viewController.ordersController);
+
 module.exports = {viewRouter};

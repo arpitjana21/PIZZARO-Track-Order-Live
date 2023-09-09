@@ -20,8 +20,15 @@ const registerController = function (req, res) {
 };
 
 const accountController = function (req, res, next) {
-    if (res.user) {
+    if (req.user) {
         return res.render('customer/account');
+    }
+    next();
+};
+
+const ordersController = function (req, res, next) {
+    if (req.user) {
+        return res.render('customer/orders');
     }
     next();
 };
@@ -101,6 +108,7 @@ module.exports = {
     registerController,
     loginController,
     cartController,
+    ordersController,
     accountController,
     updateCart,
     plusPizza,

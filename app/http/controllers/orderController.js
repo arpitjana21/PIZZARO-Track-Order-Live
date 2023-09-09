@@ -15,7 +15,11 @@ const placeOrder = async function (req, res) {
         };
 
         const newOrder = await Order.create(orderData);
-        req.session.cart = null;
+        req.session.cart = {
+            items: {},
+            totalQty: 0,
+            totalPrice: 0,
+        };
 
         res.status(200).json({
             status: 'success',

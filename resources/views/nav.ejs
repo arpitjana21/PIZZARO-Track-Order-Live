@@ -17,9 +17,10 @@
                 <%= session.cart ? session.cart.totalQty :'0'%>
               </span></li>
             <li><i class="ri-shining-line pr-3"></i><a href="/#offer">Offers</a></li>
-            <li><i class="ri-circle-line pr-3"></i><a href="/#menu">Menu</a></li>
+            <li><i class="ri-bubble-chart-line pr-3"></i><a href="/#menu">Menu</a></li>
             <%if(user){%>
             <li class="user-account"><a href="/account"><i class="ri-user-line pr-3"></i><%=user.name%></a></li>
+            <li><i class="ri-shopping-bag-line pr-3"></i><a class="orders" href="/user/orders">Orders</a></li>
             <li><i class="ri-user-shared-line pr-3"></i><a class="logout" href="/">Logout</a></li>
             <%}else{%>
             <li><i class="ri-user-add-line pr-3"></i><a href="/register">Register</a></li>
@@ -29,17 +30,18 @@
           </ul>
         </div>
         <div class="flex gap-6 items-center" id="flat-menu">
-          <li><a href="/#offer">Offers</a></li>
-          <li><a href="/#menu">Menu</a></li>
+          <li><i class="ri-shining-line pr-2"></i><a href="/#offer">Offers</a></li>
+          <li><i class="ri-bubble-chart-line pr-2"></i><a href="/#menu">Menu</a></li>
           <%if(user){%>
+            <li><i class="ri-shopping-bag-line pr-2"></i><a href="/user/orders">Orders</a></li>
             <li class="user-account"><a href="/account"><i class="ri-user-line pr-2"></i><%=user.name%></a></li>
             <%}else{%>
-            <li><a href="/register">Register</a></li>
-            <li><a href="/login">Login</a></li>
+            <li><i class="ri-user-add-line pr-2"></i><a href="/register">Register</a></li>
+            <li><i class="ri-user-follow-line pr-2"></i><a href="/login">Login</a></li>
             <%}%>
           <li>
             <a id="cart" class="flex gap-1" href="/cart">
-              <i class="ri-shopping-bag-2-fill"></i>
+              <i class="ri-shopping-cart-fill"></i>
               <span class="cartQty text-sm">
                 <%= session.cart ? session.cart.totalQty :'0'%>
             </span>

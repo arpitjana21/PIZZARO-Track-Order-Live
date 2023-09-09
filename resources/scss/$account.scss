@@ -1,0 +1,40 @@
+.account {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .form-container {
+        width: 100%;
+        max-width: 25rem;
+        border: 2px solid $grey;
+        box-shadow: $shadow;
+        padding: 2rem;
+        h1 {
+            color: $primary;
+        }
+
+        input {
+            border: 2px solid $grey;
+            padding: 0.3rem 0.5rem;
+            width: 100%;
+            border-radius: 0.3rem;
+            margin-top: 0.5rem;
+            transition: $smooth;
+            &:focus {
+                outline: none;
+                border-color: $primary;
+            }
+        }
+
+        a {
+            background-color: $primary;
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 0.3rem;
+            width: fit-content;
+            &:hover {
+                box-shadow: $shadow-red;
+            }
+        }
+    }
+}

@@ -1925,3 +1925,49 @@ nav #drop-down:hover ul {
   color: #f03e3e;
   font-weight: bold;
 }
+
+.account {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.account .form-container {
+  width: 100%;
+  max-width: 25rem;
+  border: 2px solid #ccc;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 2rem;
+}
+
+.account .form-container h1 {
+  color: #f03e3e;
+}
+
+.account .form-container input {
+  border: 2px solid #ccc;
+  padding: 0.3rem 0.5rem;
+  width: 100%;
+  border-radius: 0.3rem;
+  margin-top: 0.5rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.account .form-container input:focus {
+  outline: none;
+  border-color: #f03e3e;
+}
+
+.account .form-container a {
+  background-color: #f03e3e;
+  color: white;
+  padding: 0.3rem 1rem;
+  border-radius: 0.3rem;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.account .form-container a:hover {
+  box-shadow: rgba(240, 62, 62, 0.2745098039) 0px 2px 8px 0px;
+}
