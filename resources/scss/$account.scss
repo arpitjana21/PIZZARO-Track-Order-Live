@@ -23,6 +23,12 @@
             &:focus {
                 outline: none;
                 border-color: $primary;
+                &::placeholder {
+                    color: transparent;
+                }
+            }
+            &::placeholder {
+                color: $dark;
             }
         }
 

@@ -1734,16 +1734,27 @@ nav #drop-down ul {
   opacity: 0;
   pointer-events: none;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 nav #drop-down ul li {
   padding: 0.4rem 0.1rem;
 }
 
+nav #drop-down ul li a {
+  width: -moz-fit-content;
+  width: fit-content;
+  word-wrap: normal;
+}
+
 nav #drop-down ul li span {
   display: inline-block;
   transform: translateY(-0.5rem);
   padding-left: 0.3rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  word-wrap: normal;
 }
 
 nav #drop-down:hover {
@@ -2057,6 +2068,22 @@ nav #drop-down:hover ul {
 .account .form-container input:focus {
   outline: none;
   border-color: #f03e3e;
+}
+
+.account .form-container input:focus::-moz-placeholder {
+  color: transparent;
+}
+
+.account .form-container input:focus::placeholder {
+  color: transparent;
+}
+
+.account .form-container input::-moz-placeholder {
+  color: #495057;
+}
+
+.account .form-container input::placeholder {
+  color: #495057;
 }
 
 .account .form-container a {

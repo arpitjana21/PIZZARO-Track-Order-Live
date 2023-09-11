@@ -2,16 +2,17 @@
   <div class="container mx-auto flex flex-col items-center justify-center px-12 py-5">
     <div class="form-container rounded-md">
       <h1 class="text-2xl font-bold pb-6">Your Account Deatils.</h1>
-      <form>
+      <form id="user-details">
         <div class="pb-4">
           <div>Name</div>
-          <input required type="text" id="email" value="<%=user.name%>">
+          <input required type="text" id="name" placeholder="<%=user.name%>">
         </div>
         <div class="pb-4">
           <div>Email</div>
-          <input required type="email" id="email" value="<%=user.email%>">
+          <input required type="email" id="email" placeholder="<%=user.email%>">
         </div>
         <div class="flex justify-end">
+          <a class="mr-4 update-user" href="/">Update</a>
           <a class="logout" href="/">Logout</a>
         </div>
       </form>

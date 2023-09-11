@@ -1,6 +1,19 @@
 const {User} = require('../../models/userModel');
 const jwt = require('jsonwebtoken');
 
+function formatName(name) {
+    const names = name.split(' ');
+
+    const formattedNames = names.map((namePart) => {
+        if (namePart) {
+            return namePart[0].toUpperCase() + namePart.slice(1);
+        }
+        return '';
+    });
+
+    return formattedNames.join(' ');
+}
+
 const signToken = function (id) {
     const secKey = process.env.JWT_SECRET;
     const expTime = process.env.JWT_EXPIRES_IN;
@@ -32,7 +45,7 @@ const createSendToken = function (user, statusCode, res) {
 const register = async function (req, res) {
     try {
         const newUser = await User.create({
-            name: req.body.name,
+            name: formatName(req.body.name),
             email: req.body.email,
             password: req.body.password,
             passwordConfirm: req.body.passwordConfirm,
@@ -76,7 +89,7 @@ const logout = async function (req, res) {
         });
     } catch (error) {
         res.status(400).json({
-            status: 'success',
+            status: 'fail',
             message: error.message,
         });
     }
@@ -104,4 +117,31 @@ const isloggedIn = async function (req, res, next) {
     }
 };
 
-module.exports = {register, login, isloggedIn, logout};
+const updateUser = async function (req, res, next) {
+    try {
+        if (!req.user) next();
+
+        let {name, email} = req.body;
+        if (!name) name = req.user.name;
+        if (!email) email = req.user.email;
+
+        const updatedUser = await User.findByIdAndUpdate(req.user.id, {
+            name: formatName(name),
+            email: email,
+        });
+
+        console.log(updatedUser);
+
+        return res.status(200).json({
+            status: 'success',
+            message: 'User Detail Updated.',
+        });
+    } catch (error) {
+        res.status(400).json({
+            status: 'fail',
+            message: error.message,
+        });
+    }
+};
+
+module.exports = {register, login, isloggedIn, logout, updateUser};

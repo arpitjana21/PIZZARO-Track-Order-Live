@@ -26,9 +26,19 @@ function notify(message) {
     type: 'alert',
     theme: 'sunset',
     text: message,
-    timeout: 3000,
+    timeout: 2000,
     progressBar: false
   }).show();
+}
+function formatName(name) {
+  var names = name.split(' ');
+  var formattedNames = names.map(function (namePart) {
+    if (namePart) {
+      return namePart[0].toUpperCase() + namePart.slice(1);
+    }
+    return '';
+  });
+  return formattedNames.join(' ');
 }
 
 ////////////////////////////////////////////////
@@ -153,7 +163,7 @@ if (registerForm) registerForm.addEventListener('submit', function (e) {
     password: passwordInp.value,
     passwordConfirm: passwordCInp.value
   }).then(function (res) {
-    notify("\u2714\uFE0F ".concat(res.data.message));
+    notify("\u2714\uFE0F Registration Successfull");
     window.setTimeout(function () {
       location.assign('/');
     }, 2000);
@@ -186,7 +196,7 @@ if (loginForm) loginForm.addEventListener('submit', function (e) {
     email: emailInp.value,
     password: passwordInp.value
   }).then(function (res) {
-    notify("\u2714\uFE0F ".concat(res.data.message));
+    notify("\u2714\uFE0F Login Successfull");
     window.setTimeout(function () {
       location.assign('/');
     }, 2000);
@@ -202,7 +212,7 @@ if (loginForm) loginForm.addEventListener('submit', function (e) {
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
-// Login Page < LOGOUT >
+// < LOGOUT >
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
@@ -225,6 +235,41 @@ logoutBtns.forEach(function (btn) {
     });
   });
 });
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+// < Update User >
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+var updateUser = document.querySelector('.update-user');
+var userForm = document.querySelector('#user-details');
+if (updateUser) {
+  updateUser.addEventListener('click', function (e) {
+    e.preventDefault();
+    var newUserData = {
+      name: formatName(userForm.querySelector('#name').value),
+      email: userForm.querySelector('#email').value
+    };
+    axios__WEBPACK_IMPORTED_MODULE_1__["default"].post('/auth/updateUser', newUserData).then(function (res) {
+      notify("\u2714\uFE0F ".concat(res.data.message));
+      if (newUserData.name) window.setTimeout(function () {
+        document.querySelectorAll('.user-account').forEach(function (el) {
+          el.querySelector('a').textContent = newUserData.name.split(' ')[0];
+        });
+      }, 4000);
+    })["catch"](function (err) {
+      console.log(err);
+      notify("\u274C ".concat(err.response.data.message));
+    });
+  });
+}
 
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
