@@ -1,10 +1,10 @@
 <section class="orders  container mx-auto px-12 pb-14">
   <%if(orders){%>
 
-  <div class="flex flex-wrap gap-6 pt-6">
+  <div class="flex flex-wrap gap-6 pt-6 justify-center">
     <%orders.forEach(function(order){%>
     <div class="card p-5 rounded-2xl">
-      <p class="orderid mb-28"><%=String(order._id).toUpperCase()%></p>
+      <p class="orderid mb-28">ID : <%=String(order._id).toUpperCase()%></p>
       <div>
         <p class="address"><i class="ri-map-pin-fill"></i> <%=order.address%></p>
         <p class="phone"><i class="ri-phone-fill"></i> <%=order.phone%></p>

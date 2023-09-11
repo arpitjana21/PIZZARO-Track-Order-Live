@@ -1710,14 +1710,20 @@ nav #drop-down {
   display: flex;
   flex-direction: column;
   position: relative;
-  background-color: rgba(73, 80, 87, 0.0745098039);
+  background-color: #f03e3e;
+  color: white;
   padding: 0.1rem 0.7rem;
   padding-right: 1.4rem;
   border-radius: 0.2rem;
   display: none;
 }
 
+nav #drop-down i {
+  font-size: 1.2rem;
+}
+
 nav #drop-down ul {
+  color: #495057;
   position: absolute;
   background-color: #f1f2f2;
   transform: translateX(-70.5%);
