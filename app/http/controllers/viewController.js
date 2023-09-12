@@ -26,7 +26,7 @@ const accountView = function (req, res) {
 
 const customerOrdersView = async function (req, res) {
     const userId = req.user._id;
-    const orders = await Order.find({user: userId});
+    const orders = await Order.find({user: userId}).sort('-statusUpdatedAt');
     return res.render('customer/orders', {orders: orders});
 };
 

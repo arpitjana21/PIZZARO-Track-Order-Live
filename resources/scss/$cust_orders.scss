@@ -1,0 +1,89 @@
+.orders {
+    min-height: 80vh;
+    .card {
+        width: 100%;
+        max-width: 50rem;
+        background-color: #f3f3f3;
+        border: 2px solid $grey;
+
+        .orderData {
+            .orderid {
+                color: white;
+                background-color: $primary;
+                padding: 0.2rem 0.8rem;
+                border-radius: 0.2rem;
+                width: fit-content;
+                margin-bottom: 0.3rem;
+            }
+            button {
+                background-color: transparent;
+                color: $dark;
+                border: 2px solid $grey;
+                padding: 0rem 0.7rem;
+                border-radius: 0.2rem;
+                transition: $smooth;
+                &:hover {
+                    border-color: $dark;
+                }
+            }
+
+            .total-row {
+                color: $primary;
+            }
+
+            .items {
+                h3 {
+                    color: $primary;
+                }
+
+                table,
+                th,
+                td {
+                    border: 2px solid $grey;
+                    border-collapse: collapse;
+                }
+                td {
+                    padding: 0.2rem 0.7rem;
+                }
+            }
+        }
+
+        .orderStatus {
+            .bar {
+                height: 0.2rem;
+                width: 6rem;
+                top: 0.95rem;
+                left: -67%;
+                background-color: $dark;
+                border-radius: 1rem;
+            }
+            .flex {
+                display: flex;
+                gap: 2rem;
+            }
+
+            .status {
+                z-index: 10;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-end;
+                padding: 0.3rem;
+                width: 6rem;
+                .time {
+                    font-size: 0.9rem;
+                }
+            }
+
+            .status.red {
+                color: $primary;
+                span {
+                    font-weight: 500;
+                }
+                .bar {
+                    background-color: $primary;
+                }
+            }
+        }
+    }
+}

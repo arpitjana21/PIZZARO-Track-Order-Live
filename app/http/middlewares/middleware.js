@@ -1,5 +1,4 @@
 const userView = function (req, res, next) {
-    console.log('I am userview');
     if (req.user) {
         next();
     } else {

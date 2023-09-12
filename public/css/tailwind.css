@@ -915,6 +915,10 @@ video {
   gap: 2.75rem;
 }
 
+.gap-14{
+  gap: 3.5rem;
+}
+
 .gap-2{
   gap: 0.5rem;
 }
@@ -941,6 +945,10 @@ video {
 
 .gap-8{
   gap: 2rem;
+}
+
+.gap-9{
+  gap: 2.25rem;
 }
 
 .space-y-4 > :not([hidden]) ~ :not([hidden]){
@@ -2176,49 +2184,89 @@ nav #drop-down:hover ul {
 
 .orders .card {
   width: 100%;
-  max-width: 25rem;
+  max-width: 50rem;
   background-color: #f3f3f3;
   border: 2px solid #ccc;
 }
 
-.orders .card .orderid {
+.orders .card .orderData .orderid {
   color: white;
   background-color: #f03e3e;
   padding: 0.2rem 0.8rem;
-  border-radius: 0.5rem;
+  border-radius: 0.2rem;
   width: -moz-fit-content;
   width: fit-content;
   margin-bottom: 0.3rem;
 }
 
-.orders .card button {
+.orders .card .orderData button {
   background-color: transparent;
   color: #495057;
   border: 2px solid #ccc;
   padding: 0rem 0.7rem;
-  border-radius: 0.4rem;
+  border-radius: 0.2rem;
   transition: all 0.3s ease-in-out;
 }
 
-.orders .card button:hover {
+.orders .card .orderData button:hover {
   border-color: #495057;
 }
 
-.orders .card .total-row {
+.orders .card .orderData .total-row {
   color: #f03e3e;
 }
 
-.orders .card .items h3 {
+.orders .card .orderData .items h3 {
   color: #f03e3e;
 }
 
-.orders .card .items table,
-.orders .card .items th,
-.orders .card .items td {
+.orders .card .orderData .items table,
+.orders .card .orderData .items th,
+.orders .card .orderData .items td {
   border: 2px solid #ccc;
   border-collapse: collapse;
 }
 
-.orders .card .items td {
+.orders .card .orderData .items td {
   padding: 0.2rem 0.7rem;
+}
+
+.orders .card .orderStatus .bar {
+  height: 0.2rem;
+  width: 6rem;
+  top: 0.95rem;
+  left: -67%;
+  background-color: #495057;
+  border-radius: 1rem;
+}
+
+.orders .card .orderStatus .flex {
+  display: flex;
+  gap: 2rem;
+}
+
+.orders .card .orderStatus .status {
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0.3rem;
+  width: 6rem;
+}
+
+.orders .card .orderStatus .status .time {
+  font-size: 0.9rem;
+}
+
+.orders .card .orderStatus .status.red {
+  color: #f03e3e;
+}
+
+.orders .card .orderStatus .status.red span {
+  font-weight: 500;
+}
+
+.orders .card .orderStatus .status.red .bar {
+  background-color: #f03e3e;
 }

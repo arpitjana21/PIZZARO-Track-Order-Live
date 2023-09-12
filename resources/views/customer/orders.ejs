@@ -1,33 +1,69 @@
 <section class="orders container mx-auto px-12 pb-14">
   <%if(orders.length){%>
-  <div class="flex flex-wrap gap-6 pt-6 justify-center">
+  <div class="pt-6 justify-center flex flex-col items-center">
     <%orders.forEach(function(order){%>
-    <div class="card p-5 rounded-2xl">
-      <p class="orderid mb-28">ID : <%=String(order._id).toUpperCase()%></p>
-      <div>
-        <p class="address"><i class="ri-map-pin-fill"></i> <%=order.address%></p>
-        <p class="phone"><i class="ri-phone-fill"></i> <%=order.phone%></p>
-      </div>
-      <div class="items pt-4">
-        <table class="mb-3">
+    <div id="card_<%= order._id%>" class="card p-5 rounded mb-8">
+
+      <div class="flex flex-col gap-5">
+
+        <div class="orderData">
+          <p class="orderid mb-28">ID : <%=String(order._id).toUpperCase()%></p>
           <div>
-            <%Object.values(order.items).forEach(function(item){%>
-            <tr>
-              <td class="qty"><%=item.qty%></td>
-              <td class="name"><%=item.data.name%></td>
-              <td class="size"><%=item.data.size === 0 ? 'Small' : item.data.size === 1 ? 'Medium' : 'Large'%></td>
-              <td class="price"><%=item.data.price[item.data.size]%> Rs.</td>
-            </tr>
-            <%})%>
-            <tr class="total-row">
-              <td></td>
-              <td></td>
-              <td>Total</td>
-              <td><%=order.amount%> Rs.</td>
-            </tr>
-        </table>
-        <button class="cancleOrder mr-1">cancle</button>
-        <button class="cancleOrder">track</button>
+            <p class="address"><i class="ri-map-pin-fill"></i> <%=order.address%></p>
+            <p class="phone"><i class="ri-phone-fill"></i> <%=order.phone%></p>
+          </div>
+          <div class="items pt-4">
+            <table class="mb-3">
+              <div>
+                <%Object.values(order.items).forEach(function(item){%>
+                <tr>
+                  <td class="qty"><%=item.qty%></td>
+                  <td class="name"><%=item.data.name%></td>
+                  <td class="size"><%=item.data.size === 0 ? 'Small' : item.data.size === 1 ? 'Medium' : 'Large'%></td>
+                  <td class="price"><%=item.data.price[item.data.size]%> Rs.</td>
+                </tr>
+                <%})%>
+                <tr class="total-row">
+                  <td></td>
+                  <td></td>
+                  <td>Total</td>
+                  <td><%=order.amount%> Rs.</td>
+                </tr>
+            </table>
+            <button class="cancleOrder mr-1">cancle order</button>
+          </div>
+        </div>
+
+
+        <div id="status_<%= order._id%>" data-order="<%=JSON.stringify(order)%>" class="orderStatus relative">
+          <div class="flex">
+            <div class="status order_placed">
+              <i class="ri-circle-fill"></i>
+              <span>Received</span><span class="time hide">5.36pm</span>
+            </div>
+            <div class="status order_confirmed relative">
+              <div class="bar absolute"></div>
+              <i class="ri-circle-fill"></i>
+              <span>Confirmed</span><span class="time hide">5.36pm</span>
+            </div>
+            <div class="status order_prepared relative">
+              <div class="bar absolute"></div>
+              <i class="ri-circle-fill"></i>
+              <span>Prepared</span><span class="time hide">5.36pm</span>
+            </div>
+            <div class="status out_for_delivery relative">
+              <div class="bar absolute"></div>
+              <i class="ri-circle-fill"></i>
+              <span>Delivery</span><span class="time hide">5.36pm</span>
+            </div>
+            <div class="status order_compleated relative">
+              <div class="bar absolute"></div>
+              <i class="ri-circle-fill"></i>
+              <span>Completed</span><span class="time hide">5.36pm</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
     <%})%>

@@ -26,6 +26,29 @@ function formatName(name) {
     return formattedNames.join(' ');
 }
 
+function getTime(str) {
+    const timeString = new Date(str).toLocaleTimeString('en-IN');
+    const [time, ampm] = timeString.split(' ');
+    const [hours, minutes] = time.split(':');
+    const formattedTime = `${hours}:${minutes} ${ampm}`;
+    return formattedTime;
+}
+
+function updateOrderStats(orderStats, orderData) {
+    const {statusUpdatedAt, status} = orderData;
+    const allStats = orderStats.querySelectorAll('.status');
+
+    allStats.forEach(function (stats, index) {
+        if (index <= status) {
+            stats.classList.add('red');
+            stats.querySelector('.time').classList.remove('hide');
+            stats.querySelector('.time').textContent = getTime(
+                statusUpdatedAt[status]
+            );
+        }
+    });
+}
+
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
@@ -377,5 +400,28 @@ if (orderForm) {
                 console.log(err);
                 notify(`❌ ${err.response.data.message}`);
             });
+    });
+}
+
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+// < Order Status >
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+
+const orderStatus = document.querySelectorAll('.orderStatus');
+
+if (orderStatus) {
+    orderStatus.forEach(function (orderStats) {
+        const orderData = JSON.parse(orderStats.dataset.order);
+        updateOrderStats(orderStats, orderData);
     });
 }

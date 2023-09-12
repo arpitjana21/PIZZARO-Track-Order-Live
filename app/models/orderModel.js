@@ -24,8 +24,13 @@ const orderSchema = mongoose.Schema({
         },
     },
     status: {
-        type: String,
-        default: 'order_placed',
+        type: Number,
+        enum: [0, 1, 2, 3, 4],
+        default: 0,
+    },
+    statusUpdatedAt: {
+        type: [Date],
+        default: Date.now(),
     },
     payment: {
         type: String,
