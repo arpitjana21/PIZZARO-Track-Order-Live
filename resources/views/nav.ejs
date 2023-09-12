@@ -21,7 +21,7 @@
               </span></li>
             <%if(user){%>
             <li class="user-account"><i class="ri-user-line pr-3"></i><a href="/account"><%=user.name.split(' ')[0]%></a><span class="<%= user.isAdmin? 'show' : 'hide'%>">admin</span></li>
-            <li><i class="ri-shopping-bag-line pr-3"></i><a class="orders" href="/customer/orders">Orders</a></li>
+            <li><i class="ri-shopping-bag-line pr-3"></i><a class="orders" href="/<%=user.isAdmin ? 'admin' : 'customer' %>/orders">Orders</a></li>
             <li><i class="ri-user-shared-line pr-3"></i><a class="logout" href="/">Logout</a></li>
             <%}else{%>
             <li><i class="ri-user-add-line pr-3"></i><a href="/register">Register</a></li>
@@ -35,7 +35,7 @@
           <li><i class="ri-shining-line pr-2"></i><a href="/#offer">Offers</a></li>
           <li><i class="ri-bubble-chart-line pr-2"></i><a href="/#menu">Menu</a></li>
           <%if(user){%>
-            <li><i class="ri-shopping-bag-line pr-2"></i><a href="/customer/orders">Orders</a></li>
+            <li><i class="ri-shopping-bag-line pr-2"></i><a href="/<%=user.isAdmin ? 'admin' : 'customer' %>/orders">Orders</a></li>
             <li class="user-account"><i class="ri-user-line pr-2"></i><a href="/account"><%=user.name.split(' ')[0]%></a> <span class="<%= user.isAdmin? 'show' : 'hide'%>">admin</span> </li>
             <%}else{%>
             <li><i class="ri-user-add-line pr-2"></i><a href="/register">Register</a></li>

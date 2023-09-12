@@ -1,39 +1,33 @@
 const {Menu} = require('../../models/menuModel');
 const {Order} = require('../../models/orderModel');
 
-const homeController = async function (req, res) {
+const homeView = async function (req, res) {
     const pizzas = await Menu.find();
     res.render('home', {pizzas: pizzas});
 };
 
-const cartController = function (req, res) {
+const cartView = function (req, res) {
     res.render('customer/cart');
 };
 
-const loginController = function (req, res, next) {
+const loginView = function (req, res, next) {
     if (!res.user) return res.render('auth/login');
     next();
 };
 
-const registerController = function (req, res, next) {
+const registerView = function (req, res, next) {
     if (!res.user) return res.render('auth/register');
     next();
 };
 
-const accountController = function (req, res, next) {
-    if (req.user) {
-        return res.render('customer/account');
-    }
-    next();
+const accountView = function (req, res) {
+    return res.render('customer/account');
 };
 
-const ordersController = async function (req, res, next) {
-    if (req.user) {
-        const userId = req.user._id;
-        const orders = await Order.find({user: userId});
-        return res.render('customer/orders', {orders: orders});
-    }
-    next();
+const customerOrdersView = async function (req, res) {
+    const userId = req.user._id;
+    const orders = await Order.find({user: userId});
+    return res.render('customer/orders', {orders: orders});
 };
 
 const updateSessionCart = function (req, pizza, type) {
@@ -107,12 +101,12 @@ const minusPizza = function (req, res) {
 };
 
 module.exports = {
-    homeController,
-    registerController,
-    loginController,
-    cartController,
-    ordersController,
-    accountController,
+    homeView,
+    registerView,
+    loginView,
+    cartView,
+    customerOrdersView,
+    accountView,
     updateCart,
     plusPizza,
     minusPizza,
