@@ -15,7 +15,7 @@
         <div>Email</div>
         <input required type="emil" id="email" placeholder="<%=user.email%>">
       </div>
-      <div class="flex justify-end mt-6">
+      <div class="flex justify-end">
         <a class="mr-4 update-user" href="/">Update</a>
         <a class="logout" href="/">Logout</a>
       </div>
@@ -23,23 +23,22 @@
   </div>
   <div class="form-container rounded-2xl">
     <h1 class="text-2xl font-bold pb-6">Update Password.</h1>
-    <form id="user-details">
+    <form id="user-password">
       <div class="pb-4">
         <div>Current Password</div>
-        <input required type="password" placeholder="#########">
+        <input required id="password" type="password" placeholder="#########">
       </div>
       <div class="pb-4">
         <div>New Password</div>
-        <input required type="password" placeholder="#########">
+        <input required id="passwordNew" type="password" placeholder="#########">
       </div>
       <div class="pb-4">
         <div>Password Confirm</div>
-        <input required type="password" placeholder="#########">
+        <input required id="passwordConfirm" type="password" placeholder="#########">
       </div>
 
-      <div class="flex justify-end mt-6">
-        <a class="mr-4 update-user" href="/">Update</a>
-        <a class="logout" href="/">Logout</a>
+      <div class="flex justify-end">
+        <button>Update Password</button>
       </div>
     </form>
   </div>

@@ -669,7 +669,8 @@ nav #drop-down:hover ul {
 .account .form-container input::placeholder {
   color: #495057;
 }
-.account .form-container a {
+.account .form-container a,
+.account .form-container button {
   background-color: #f03e3e;
   color: white;
   padding: 0.3rem 1rem;
@@ -677,7 +678,8 @@ nav #drop-down:hover ul {
   width: -moz-fit-content;
   width: fit-content;
 }
-.account .form-container a:hover {
+.account .form-container a:hover,
+.account .form-container button:hover {
   box-shadow: rgba(240, 62, 62, 0.2745098039) 0px 2px 8px 0px;
 }
 

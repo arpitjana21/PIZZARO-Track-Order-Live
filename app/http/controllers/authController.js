@@ -136,7 +136,7 @@ const updateUser = async function (req, res, next) {
 
         return res.status(200).json({
             status: 'success',
-            message: 'User Detail Updated.',
+            message: 'User Detail Updated Successfully.',
         });
     } catch (error) {
         res.status(400).json({
@@ -146,4 +146,35 @@ const updateUser = async function (req, res, next) {
     }
 };
 
-module.exports = {register, login, isloggedIn, logout, updateUser};
+const updatePassword = async function (req, res, next) {
+    try {
+        if (!req.user) next();
+        let {password, passwordNew, passwordConfirm} = req.body;
+
+        const user = await User.findById(req.user._id).select('+password');
+
+        if (!(await user.correctPassword(password, user.password))) {
+            throw new Error('Incorrect Password');
+        }
+
+        user.password = passwordNew;
+        user.passwordConfirm = passwordConfirm;
+        await user.save();
+
+        createSendToken(user, 200, res);
+    } catch (error) {
+        res.status(400).json({
+            status: 'fail',
+            message: error.message,
+        });
+    }
+};
+
+module.exports = {
+    register,
+    login,
+    isloggedIn,
+    logout,
+    updateUser,
+    updatePassword,
+};

@@ -10,4 +10,8 @@ authRouter
     .route('/updateUser')
     .post(authController.isloggedIn, authController.updateUser);
 
+authRouter
+    .route('/updatePassword')
+    .post(authController.isloggedIn, authController.updatePassword);
+
 module.exports = {authRouter};
