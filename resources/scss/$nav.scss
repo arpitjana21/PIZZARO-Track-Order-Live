@@ -1,8 +1,23 @@
 nav {
     li {
         transition: $smooth;
+        cursor: pointer;
         &:hover {
             color: $primary;
+        }
+    }
+    .user-account {
+        position: relative;
+        span {
+            position: absolute;
+            top: -1.5rem;
+            font-size: 0.8rem;
+            left: 30%;
+            padding: 0.1rem 0.5rem;
+            background-color: #f1f3f5;
+            color: #868e96;
+            border-radius: 0.3rem;
+            pointer-events: none;
         }
     }
 
@@ -38,6 +53,14 @@ nav {
         padding-right: 1.4rem;
         border-radius: 0.2rem;
         display: none;
+        .user-account {
+            span {
+                top: 0.1rem;
+                left: 40%;
+                background-color: transparent;
+                color: $primary;
+            }
+        }
         i {
             font-size: 1.2rem;
         }
@@ -46,7 +69,7 @@ nav {
             color: $dark;
             position: absolute;
             background-color: #f1f2f2;
-            transform: translateX(-69%);
+            transform: translateX(-68%);
             top: 2rem;
             padding: 1rem;
             padding-right: 1.3rem;
@@ -58,6 +81,7 @@ nav {
             // width: 15rem;
             width: fit-content;
             li {
+                width: 6rem;
                 padding: 0.4rem 0.1rem;
                 a {
                     width: fit-content;

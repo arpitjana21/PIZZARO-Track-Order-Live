@@ -16,7 +16,6 @@ const loginController = function (req, res, next) {
 };
 
 const registerController = function (req, res, next) {
-    console.log(!req.user);
     if (!res.user) return res.render('auth/register');
     next();
 };

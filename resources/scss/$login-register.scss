@@ -4,10 +4,13 @@
         width: 100%;
         max-width: 25rem;
     }
+
     .form-container {
         border: 2px solid $grey;
         box-shadow: $shadow;
         padding: 2rem;
+        width: 100%;
+        max-width: 40rem;
 
         h1 {
             color: $primary;

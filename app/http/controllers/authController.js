@@ -44,8 +44,6 @@ const createSendToken = function (user, statusCode, res) {
 
 const register = async function (req, res) {
     try {
-        console.log(req.body.name);
-        console.log(formatName(req.body.name));
         const newUser = await User.create({
             name: formatName(req.body.name),
             email: req.body.email,

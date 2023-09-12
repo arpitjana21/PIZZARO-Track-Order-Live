@@ -57,6 +57,16 @@ body {
     }
 }
 
+.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
 @media (max-width: 600px) {
     .container {
         padding-right: 1.5rem;

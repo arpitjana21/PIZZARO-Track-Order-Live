@@ -1687,6 +1687,16 @@ body {
   box-shadow: rgba(240, 62, 62, 0.2745098039) 0px 2px 8px 0px;
 }
 
+.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
 @media (max-width: 600px) {
   .container {
     padding-right: 1.5rem;
@@ -1696,10 +1706,27 @@ body {
 
 nav li {
   transition: all 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 nav li:hover {
   color: #f03e3e;
+}
+
+nav .user-account {
+  position: relative;
+}
+
+nav .user-account span {
+  position: absolute;
+  top: -1.5rem;
+  font-size: 0.8rem;
+  left: 30%;
+  padding: 0.1rem 0.5rem;
+  background-color: #f1f3f5;
+  color: #868e96;
+  border-radius: 0.3rem;
+  pointer-events: none;
 }
 
 nav #logo img {
@@ -1735,6 +1762,13 @@ nav #drop-down {
   display: none;
 }
 
+nav #drop-down .user-account span {
+  top: 0.1rem;
+  left: 40%;
+  background-color: transparent;
+  color: #f03e3e;
+}
+
 nav #drop-down i {
   font-size: 1.2rem;
 }
@@ -1743,7 +1777,7 @@ nav #drop-down ul {
   color: #495057;
   position: absolute;
   background-color: #f1f2f2;
-  transform: translateX(-69%);
+  transform: translateX(-68%);
   top: 2rem;
   padding: 1rem;
   padding-right: 1.3rem;
@@ -1757,6 +1791,7 @@ nav #drop-down ul {
 }
 
 nav #drop-down ul li {
+  width: 6rem;
   padding: 0.4rem 0.1rem;
 }
 
@@ -1984,6 +2019,8 @@ nav #drop-down:hover ul {
   border: 2px solid #ccc;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding: 2rem;
+  width: 100%;
+  max-width: 40rem;
 }
 
 .login-register .form-container h1 {
