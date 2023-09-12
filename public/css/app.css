@@ -354,7 +354,8 @@ nav #drop-down ul {
   color: #495057;
   position: absolute;
   background-color: #f1f2f2;
-  transform: translateX(-70.5%);
+  transform: translateX(-69%);
+  top: 2rem;
   padding: 1rem;
   padding-right: 1.3rem;
   border-radius: 0.2rem;
@@ -380,9 +381,6 @@ nav #drop-down ul li span {
   width: -moz-fit-content;
   width: fit-content;
   word-wrap: normal;
-}
-nav #drop-down:hover {
-  background-color: transparent;
 }
 nav #drop-down:hover ul {
   opacity: 1;

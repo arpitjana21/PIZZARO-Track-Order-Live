@@ -110,7 +110,7 @@ if (cartPizzaItems) {
     var minusPizza = card.querySelector('.minusPizza');
     var pizzaCount = card.querySelector('.pizzaCount');
     plusPizza.addEventListener('click', function (e) {
-      axios__WEBPACK_IMPORTED_MODULE_1__["default"].post('/plus-pizza', pizza).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_1__["default"].post('/plus-pizza', pizza.data).then(function (res) {
         pizzaCount.textContent = res.data.pizzaQty;
         cartQtys.forEach(function (el) {
           el.textContent = res.data.totalQty;
@@ -119,7 +119,7 @@ if (cartPizzaItems) {
       });
     });
     minusPizza.addEventListener('click', function (e) {
-      axios__WEBPACK_IMPORTED_MODULE_1__["default"].post('/minus-pizza', pizza).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_1__["default"].post('/minus-pizza', pizza.data).then(function (res) {
         if (res.data.pizzaQty === 0) {
           card.remove();
         }

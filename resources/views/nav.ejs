@@ -13,11 +13,12 @@
         <div id="drop-down">
           <i class="ri-arrow-down-s-line"></i>
           <ul>
+            <li><i class="ri-home-4-line pr-3"></i></i><a href="/">Home</a></li>
+            <li><i class="ri-shining-line pr-3"></i><a href="/#offer">Offers</a></li>
+            <li><i class="ri-bubble-chart-line pr-3"></i><a href="/#menu">Menu</a></li>
             <li><i class="ri-shopping-cart-line pr-3"></i><a href="/cart">Cart</a><span class="cartQty text-sm">
                 <%= session.cart ? session.cart.totalQty :'0'%>
               </span></li>
-            <li><i class="ri-shining-line pr-3"></i><a href="/#offer">Offers</a></li>
-            <li><i class="ri-bubble-chart-line pr-3"></i><a href="/#menu">Menu</a></li>
             <%if(user){%>
             <li class="user-account"><i class="ri-user-line pr-3"></i><a href="/account"><%=user.name.split(' ')[0]%></a></li>
             <li><i class="ri-shopping-bag-line pr-3"></i><a class="orders" href="/customer/orders">Orders</a></li>
@@ -30,6 +31,7 @@
           </ul>
         </div>
         <div class="flex gap-6 items-center" id="flat-menu">
+          <li><i class="ri-home-4-line pr-2"></i><a href="/">Home</a></li>
           <li><i class="ri-shining-line pr-2"></i><a href="/#offer">Offers</a></li>
           <li><i class="ri-bubble-chart-line pr-2"></i><a href="/#menu">Menu</a></li>
           <%if(user){%>

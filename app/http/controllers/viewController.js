@@ -31,7 +31,6 @@ const ordersController = async function (req, res, next) {
     if (req.user) {
         const userId = req.user._id;
         const orders = await Order.find({user: userId});
-        console.log(orders);
         return res.render('customer/orders', {orders: orders});
     }
     next();

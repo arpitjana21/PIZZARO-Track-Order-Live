@@ -101,7 +101,7 @@ if (cartPizzaItems) {
         const pizzaCount = card.querySelector('.pizzaCount');
 
         plusPizza.addEventListener('click', function (e) {
-            axios.post('/plus-pizza', pizza).then(function (res) {
+            axios.post('/plus-pizza', pizza.data).then(function (res) {
                 pizzaCount.textContent = res.data.pizzaQty;
                 cartQtys.forEach(function (el) {
                     el.textContent = res.data.totalQty;
@@ -111,7 +111,7 @@ if (cartPizzaItems) {
         });
 
         minusPizza.addEventListener('click', function (e) {
-            axios.post('/minus-pizza', pizza).then(function (res) {
+            axios.post('/minus-pizza', pizza.data).then(function (res) {
                 if (res.data.pizzaQty === 0) {
                     card.remove();
                 }

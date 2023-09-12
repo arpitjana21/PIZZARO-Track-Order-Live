@@ -19,7 +19,7 @@
       </div>
       <div class="pizza-list">
         <%for(const pizza of Object.values(session.cart.items)){%>
-        <div data-pizza="<%= JSON.stringify(pizza.data)%>" class="cart-pizza-item flex items-center gap-4 pb-4 pt-5 ">
+        <div data-pizza="<%= JSON.stringify(pizza)%>" class="cart-pizza-item flex items-center gap-4 pb-4 pt-5 ">
           <img class="w-32" src="/img/pizzas/<%=pizza.data.image%>" alt="pizza">
           <div class="w-full">
             <h2 class="text-lg font-bold">
