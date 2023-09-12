@@ -10,14 +10,15 @@ const cartController = function (req, res) {
     res.render('customer/cart');
 };
 
-const loginController = function (req, res) {
+const loginController = function (req, res, next) {
     if (!res.user) return res.render('auth/login');
-    return res.redirect('/');
+    next();
 };
 
-const registerController = function (req, res) {
+const registerController = function (req, res, next) {
+    console.log(!req.user);
     if (!res.user) return res.render('auth/register');
-    return res.redirect('/');
+    next();
 };
 
 const accountController = function (req, res, next) {

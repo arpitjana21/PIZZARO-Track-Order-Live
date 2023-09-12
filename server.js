@@ -7,6 +7,7 @@ const session = require('express-session');
 const flash = require('express-flash');
 const MongoStore = require('connect-mongo');
 const cookieParser = require('cookie-parser');
+const authController = require('./app/http/controllers/authController');
 
 // Routers
 const {viewRouter} = require('./routes/viewRoutes');
@@ -61,6 +62,9 @@ app.use(express.json());
 app.use('/', viewRouter);
 app.use('/auth', authRouter);
 app.use('/order', orderRouter);
+app.all('*', authController.isloggedIn, function (req, res) {
+    res.render('404');
+});
 
 app.listen(PORT, function () {
     console.log('Connecting with database..');
