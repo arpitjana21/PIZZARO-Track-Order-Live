@@ -45,7 +45,7 @@ const orderSchema = mongoose.Schema({
 });
 
 // orderSchema.pre(/^find/, function (next) {
-//     this.populate('user');
+//     this.populate({path: 'user', select: '_id'});
 //     next();
 // });
 

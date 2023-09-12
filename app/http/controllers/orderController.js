@@ -36,4 +36,26 @@ const placeOrder = async function (req, res) {
     }
 };
 
-module.exports = {placeOrder};
+const cancleOrder = async function (req, res) {
+    try {
+        const userID = req.user._id;
+        const orderID = req.params.id;
+
+        const order = await Order.findById(orderID);
+
+        if (!order.user.toString() === userID.toString())
+            throw Error('User Not Identified');
+
+        await Order.findByIdAndDelete(orderID);
+        return res.status(200).json({
+            status: 'success',
+        });
+    } catch (error) {
+        res.status(400).json({
+            status: 'fail',
+            message: error.message,
+        });
+    }
+};
+
+module.exports = {placeOrder, cancleOrder};
