@@ -551,9 +551,11 @@ nav #drop-down:hover ul {
 .login-register {
   min-height: 80vh;
 }
-.login-register .form-container {
+.login-register #login-form {
   width: 100%;
   max-width: 25rem;
+}
+.login-register .form-container {
   border: 2px solid #ccc;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding: 2rem;
@@ -585,7 +587,20 @@ nav #drop-down:hover ul {
 .login-register .form-container a {
   color: #f03e3e;
 }
+.login-register .form-container .flex {
+  width: 100%;
+  max-width: 60rem;
+}
 
+@media (max-width: 640px) {
+  .login-register.register .form-container {
+    width: 100%;
+  }
+  .login-register.register #register-form .flex {
+    flex-direction: column;
+    gap: 0;
+  }
+}
 .footer {
   background-color: rgba(218, 218, 218, 0.3294117647);
   border-top: 2px solid #f03e3e;
@@ -622,8 +637,7 @@ nav #drop-down:hover ul {
   justify-content: center;
 }
 .account .form-container {
-  width: 100%;
-  max-width: 25rem;
+  min-width: 25rem;
   border: 2px solid #ccc;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding: 2rem;

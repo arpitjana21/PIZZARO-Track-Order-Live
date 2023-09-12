@@ -153,12 +153,19 @@ if (cartPizzaItems) {
 var registerForm = document.querySelector('#register-form');
 if (registerForm) registerForm.addEventListener('submit', function (e) {
   e.preventDefault();
-  var nameInp = registerForm.querySelector('#name');
+  var fnameInp = registerForm.querySelector('#fname');
+  var lnameInp = registerForm.querySelector('#lname');
   var emailInp = registerForm.querySelector('#email');
   var passwordInp = registerForm.querySelector('#password');
   var passwordCInp = registerForm.querySelector('#passwordConfirm');
+  console.log({
+    name: "".concat(fnameInp.value, " ").concat(lnameInp.value),
+    email: emailInp.value,
+    password: passwordInp.value,
+    passwordConfirm: passwordCInp.value
+  });
   axios__WEBPACK_IMPORTED_MODULE_1__["default"].post('/auth/register', {
-    name: nameInp.value,
+    name: "".concat(fnameInp.value, " ").concat(lnameInp.value),
     email: emailInp.value,
     password: passwordInp.value,
     passwordConfirm: passwordCInp.value
@@ -253,8 +260,9 @@ var userForm = document.querySelector('#user-details');
 if (updateUser) {
   updateUser.addEventListener('click', function (e) {
     e.preventDefault();
+    var name = formatName("".concat(userForm.querySelector('#fname').value, " ").concat(userForm.querySelector('#lname').value));
     var newUserData = {
-      name: formatName(userForm.querySelector('#name').value),
+      name: name,
       email: userForm.querySelector('#email').value
     };
     axios__WEBPACK_IMPORTED_MODULE_1__["default"].post('/auth/updateUser', newUserData).then(function (res) {

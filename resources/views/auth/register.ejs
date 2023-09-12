@@ -1,24 +1,38 @@
-<section class="register login-register flex justify-center items-center px-6 pt-16 pb-20">
+<section class="register login-register flex justify-center items-center px-12 pt-16 pb-20 container mx-auto">
 
-  <div class="form-container rounded-md">
+  <div class="form-container rounded-2xl">
     <h1 class="text-2xl font-bold pb-6">Create New Account.</h1>
     <form id="register-form">
-      <div class="pb-4">
-        <div>Name</div>
-        <input required type="text" id="name" placeholder="Tony Stark">
+      <div class="flex gap-6">
+        <div>
+          <div class="pb-4">
+            <div>First Name</div>
+            <input required type="text" id="fname" placeholder="Tony">
+          </div>
+          <div class="pb-4">
+            <div>Last Name</div>
+            <input required type="text" id="lname" placeholder="Stark">
+          </div>
+          <div class="pb-4">
+            <div>Email</div>
+            <input required type="email" id="email" placeholder="tonystark@gmai.com">
+          </div>
+        </div>
+
+        <div>
+          <div class="pb-4">
+            <div>Password</div>
+            <input required type="password" id="password" placeholder="8 Character Password">
+          </div>
+          <div class="pb-4">
+            <div>Password Confirm</div>
+            <input required type="password" id="passwordConfirm" placeholder="Password Confirm">
+          </div>
+        </div>
       </div>
-      <div class="pb-4">
-        <div>Email</div>
-        <input required type="email" id="email" placeholder="tonystark@gmai.com">
-      </div>
-      <div class="pb-4">
-        <div>Password</div>
-        <input required type="password" id="password" placeholder="8 Character Password">
-      </div>
-      <div class="pb-4">
-        <div>Password Confirm</div>
-        <input required type="password" id="passwordConfirm" placeholder="Password Confirm">
-      </div>
+
+
+
       <button class="w-full rounded">Sign Up</button>
       <div class="flex justify-end">
         <a class="pt-5" href="/login">Have Account ? Login</a>

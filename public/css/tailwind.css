@@ -879,6 +879,14 @@ video {
   align-items: center;
 }
 
+.items-baseline{
+  align-items: baseline;
+}
+
+.justify-start{
+  justify-content: flex-start;
+}
+
 .justify-end{
   justify-content: flex-end;
 }
@@ -925,6 +933,10 @@ video {
 
 .gap-6{
   gap: 1.5rem;
+}
+
+.gap-7{
+  gap: 1.75rem;
 }
 
 .gap-8{
@@ -1062,6 +1074,11 @@ video {
 .py-1{
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+}
+
+.py-12{
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 .py-14{
@@ -1961,9 +1978,12 @@ nav #drop-down:hover ul {
   min-height: 80vh;
 }
 
-.login-register .form-container {
+.login-register #login-form {
   width: 100%;
   max-width: 25rem;
+}
+
+.login-register .form-container {
   border: 2px solid #ccc;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding: 2rem;
@@ -2000,6 +2020,22 @@ nav #drop-down:hover ul {
 
 .login-register .form-container a {
   color: #f03e3e;
+}
+
+.login-register .form-container .flex {
+  width: 100%;
+  max-width: 60rem;
+}
+
+@media (max-width: 640px) {
+  .login-register.register .form-container {
+    width: 100%;
+  }
+
+  .login-register.register #register-form .flex {
+    flex-direction: column;
+    gap: 0;
+  }
 }
 
 .footer {
@@ -2045,8 +2081,7 @@ nav #drop-down:hover ul {
 }
 
 .account .form-container {
-  width: 100%;
-  max-width: 25rem;
+  min-width: 25rem;
   border: 2px solid #ccc;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding: 2rem;

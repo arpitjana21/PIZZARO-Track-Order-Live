@@ -147,13 +147,20 @@ const registerForm = document.querySelector('#register-form');
 if (registerForm)
     registerForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        const nameInp = registerForm.querySelector('#name');
+        const fnameInp = registerForm.querySelector('#fname');
+        const lnameInp = registerForm.querySelector('#lname');
         const emailInp = registerForm.querySelector('#email');
         const passwordInp = registerForm.querySelector('#password');
         const passwordCInp = registerForm.querySelector('#passwordConfirm');
+        console.log({
+            name: `${fnameInp.value} ${lnameInp.value}`,
+            email: emailInp.value,
+            password: passwordInp.value,
+            passwordConfirm: passwordCInp.value,
+        });
         axios
             .post('/auth/register', {
-                name: nameInp.value,
+                name: `${fnameInp.value} ${lnameInp.value}`,
                 email: emailInp.value,
                 password: passwordInp.value,
                 passwordConfirm: passwordCInp.value,
@@ -260,10 +267,17 @@ if (updateUser) {
     updateUser.addEventListener('click', function (e) {
         e.preventDefault();
 
+        let name = formatName(
+            `${userForm.querySelector('#fname').value} ${
+                userForm.querySelector('#lname').value
+            }`
+        );
+
         let newUserData = {
-            name: formatName(userForm.querySelector('#name').value),
+            name: name,
             email: userForm.querySelector('#email').value,
         };
+
         axios
             .post('/auth/updateUser', newUserData)
             .then(function (res) {

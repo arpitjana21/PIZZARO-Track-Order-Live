@@ -1,11 +1,14 @@
 .login-register {
     min-height: 80vh;
-    .form-container {
+    #login-form {
         width: 100%;
         max-width: 25rem;
+    }
+    .form-container {
         border: 2px solid $grey;
         box-shadow: $shadow;
         padding: 2rem;
+
         h1 {
             color: $primary;
         }
@@ -35,6 +38,24 @@
 
         a {
             color: $primary;
+        }
+        .flex {
+            width: 100%;
+            max-width: 60rem;
+        }
+    }
+}
+
+@media (max-width: 640px) {
+    .login-register.register {
+        .form-container {
+            width: 100%;
+        }
+        #register-form {
+            .flex {
+                flex-direction: column;
+                gap: 0;
+            }
         }
     }
 }

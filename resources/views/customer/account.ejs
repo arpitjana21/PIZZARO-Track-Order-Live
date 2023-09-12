@@ -1,23 +1,49 @@
-<section class="account">
-  <div class="container mx-auto flex flex-col items-center justify-center px-12 py-5">
-    <div class="form-container rounded-md">
-      <h1 class="text-2xl font-bold pb-6">Your Account Deatils.</h1>
-      <form id="user-details">
-        <div class="pb-4">
-          <div>Name</div>
-          <input required type="text" id="name" placeholder="<%=user.name%>">
-        </div>
-        <div class="pb-4">
-          <div>Email</div>
-          <input required type="email" id="email" placeholder="<%=user.email%>">
-        </div>
-        <div class="flex justify-end">
-          <a class="mr-4 update-user" href="/">Update</a>
-          <a class="logout" href="/">Logout</a>
-        </div>
-      </form>
-    </div>
+<section class="account flex items-baseline flex-wrap px-12 gap-10 py-12">
+
+  <div class="form-container rounded-2xl">
+    <h1 class="text-2xl font-bold pb-6">Your Account Deatils.</h1>
+    <form id="user-details">
+      <div class="pb-4">
+        <div>First Name</div>
+        <input required type="text" id="fname" placeholder="<%=user.name.split(' ')[0]%>">
+      </div>
+      <div class="pb-4">
+        <div>Last Name</div>
+        <input required type="text" id="lname" placeholder="<%=user.name.split(' ')[1]%>">
+      </div>
+      <div class="pb-4">
+        <div>Email</div>
+        <input required type="emil" id="email" placeholder="<%=user.email%>">
+      </div>
+      <div class="flex justify-end mt-6">
+        <a class="mr-4 update-user" href="/">Update</a>
+        <a class="logout" href="/">Logout</a>
+      </div>
+    </form>
   </div>
+  <div class="form-container rounded-2xl">
+    <h1 class="text-2xl font-bold pb-6">Update Password.</h1>
+    <form id="user-details">
+      <div class="pb-4">
+        <div>Current Password</div>
+        <input required type="password" placeholder="#########">
+      </div>
+      <div class="pb-4">
+        <div>New Password</div>
+        <input required type="password" placeholder="#########">
+      </div>
+      <div class="pb-4">
+        <div>Password Confirm</div>
+        <input required type="password" placeholder="#########">
+      </div>
+
+      <div class="flex justify-end mt-6">
+        <a class="mr-4 update-user" href="/">Update</a>
+        <a class="logout" href="/">Logout</a>
+      </div>
+    </form>
   </div>
+
+
 
 </section>

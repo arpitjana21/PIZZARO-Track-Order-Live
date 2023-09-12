@@ -4,8 +4,7 @@
     align-items: center;
     justify-content: center;
     .form-container {
-        width: 100%;
-        max-width: 25rem;
+        min-width: 25rem;
         border: 2px solid $grey;
         box-shadow: $shadow;
         padding: 2rem;
