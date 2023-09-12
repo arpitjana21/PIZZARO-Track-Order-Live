@@ -13,7 +13,7 @@
                 padding: 0.2rem 0.8rem;
                 border-radius: 0.2rem;
                 width: fit-content;
-                margin-bottom: 0.3rem;
+                margin-bottom: 0.6rem;
             }
             button {
                 background-color: transparent;
@@ -82,6 +82,59 @@
                 }
                 .bar {
                     background-color: $primary;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .orders {
+        .card {
+            .orderStatus {
+                padding-top: 1rem;
+                .bar {
+                    height: 2.5rem;
+                    width: 0.2rem;
+                    left: 0.7rem;
+                    top: -2.3rem;
+                    background-color: $dark;
+                    border-radius: 1rem;
+                }
+                .flex {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2rem;
+                }
+
+                .status {
+                    z-index: 10;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: flex-start;
+                    justify-content: flex-start;
+                    gap: 1rem;
+                    width: 100%;
+                    max-width: 20rem;
+                    span {
+                        width: 5rem;
+                    }
+                    span.time {
+                        font-size: 0.95rem;
+                        padding-top: 0.1rem;
+                        width: 6rem;
+                        padding-left: 1rem;
+                    }
+                }
+
+                .status.red {
+                    color: $primary;
+                    span {
+                        font-weight: 500;
+                    }
+                    .bar {
+                        background-color: $primary;
+                    }
                 }
             }
         }

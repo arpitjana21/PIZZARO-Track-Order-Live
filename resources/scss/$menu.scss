@@ -1,5 +1,8 @@
 .menu {
-    background-color: #dadada54;
+    background-color: $dark;
+    h1 {
+        color: white;
+    }
     select {
         background-color: #5555552f;
         padding: 0.2rem 0.4rem;

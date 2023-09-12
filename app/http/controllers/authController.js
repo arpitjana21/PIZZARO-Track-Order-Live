@@ -121,16 +121,16 @@ const updateUser = async function (req, res, next) {
     try {
         if (!req.user) next();
 
-        let {name, email} = req.body;
-        if (!name) name = req.user.name;
+        let {fname, lname, email} = req.body;
+
+        if (!fname) fname = req.user.name.split(' ')[0];
+        if (!lname) lname = req.user.name.split(' ')[1];
         if (!email) email = req.user.email;
 
         const updatedUser = await User.findByIdAndUpdate(req.user.id, {
-            name: formatName(name),
+            name: formatName(`${fname} ${lname}`),
             email: email,
         });
-
-        console.log(updatedUser);
 
         return res.status(200).json({
             status: 'success',

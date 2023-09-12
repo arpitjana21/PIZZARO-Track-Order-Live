@@ -1646,7 +1646,7 @@ video {
 /* Handle */
 
 ::-webkit-scrollbar-thumb {
-  background: #495057;
+  background: #343a40;
   border-radius: 0.12rem;
   cursor: pointer;
 }
@@ -1654,7 +1654,7 @@ video {
 /* Handle on hover */
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #495057;
+  background: #343a40;
 }
 
 .noty_theme__sunset {
@@ -1669,7 +1669,7 @@ input {
 
 input:focus {
   outline: none;
-  border-color: #495057;
+  border-color: #343a40;
 }
 
 html {
@@ -1679,7 +1679,7 @@ html {
 body {
   font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
-  color: #495057;
+  color: #343a40;
 }
 
 .btn-md {
@@ -1782,7 +1782,7 @@ nav #drop-down i {
 }
 
 nav #drop-down ul {
-  color: #495057;
+  color: #343a40;
   position: absolute;
   background-color: #f1f2f2;
   transform: translateX(-68%);
@@ -1834,6 +1834,7 @@ nav #drop-down:hover ul {
 }
 
 .hero {
+  background-color: white;
   grid-template-columns: 1.5fr 2fr;
   grid-template-areas: "ar01 ar02";
 }
@@ -1877,6 +1878,10 @@ nav #drop-down:hover ul {
   }
 }
 
+.donate {
+  background-color: #f8f9fa;
+}
+
 .donate span {
   color: #1971c2;
 }
@@ -1907,7 +1912,11 @@ nav #drop-down:hover ul {
 }
 
 .menu {
-  background-color: rgba(218, 218, 218, 0.3294117647);
+  background-color: #343a40;
+}
+
+.menu h1 {
+  color: white;
 }
 
 .menu select {
@@ -1929,7 +1938,7 @@ nav #drop-down:hover ul {
 }
 
 .menu .card .food i {
-  border: 2px solid #495057;
+  border: 2px solid #343a40;
   padding: 0.2rem;
   font-size: 0.8rem;
   border-radius: 0.2rem;
@@ -2083,7 +2092,7 @@ nav #drop-down:hover ul {
 .footer {
   background-color: rgba(218, 218, 218, 0.3294117647);
   border-top: 2px solid #f03e3e;
-  border-bottom: 10px solid #495057;
+  border-bottom: 10px solid #343a40;
 }
 
 .footer img {
@@ -2096,7 +2105,7 @@ nav #drop-down:hover ul {
 }
 
 .footer .btn-md {
-  background-color: #495057;
+  background-color: #343a40;
   border-radius: 0.3rem;
   font-size: 0.95rem;
   padding: 0.2rem 0.6rem;
@@ -2156,11 +2165,11 @@ nav #drop-down:hover ul {
 }
 
 .account .form-container input::-moz-placeholder {
-  color: #495057;
+  color: #343a40;
 }
 
 .account .form-container input::placeholder {
-  color: #495057;
+  color: #343a40;
 }
 
 .account .form-container a,
@@ -2196,12 +2205,12 @@ nav #drop-down:hover ul {
   border-radius: 0.2rem;
   width: -moz-fit-content;
   width: fit-content;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.6rem;
 }
 
 .orders .card .orderData button {
   background-color: transparent;
-  color: #495057;
+  color: #343a40;
   border: 2px solid #ccc;
   padding: 0rem 0.7rem;
   border-radius: 0.2rem;
@@ -2209,7 +2218,7 @@ nav #drop-down:hover ul {
 }
 
 .orders .card .orderData button:hover {
-  border-color: #495057;
+  border-color: #343a40;
 }
 
 .orders .card .orderData .total-row {
@@ -2236,7 +2245,7 @@ nav #drop-down:hover ul {
   width: 6rem;
   top: 0.95rem;
   left: -67%;
-  background-color: #495057;
+  background-color: #343a40;
   border-radius: 1rem;
 }
 
@@ -2269,4 +2278,59 @@ nav #drop-down:hover ul {
 
 .orders .card .orderStatus .status.red .bar {
   background-color: #f03e3e;
+}
+
+@media (max-width: 768px) {
+  .orders .card .orderStatus {
+    padding-top: 1rem;
+  }
+
+  .orders .card .orderStatus .bar {
+    height: 2.5rem;
+    width: 0.2rem;
+    left: 0.7rem;
+    top: -2.3rem;
+    background-color: #343a40;
+    border-radius: 1rem;
+  }
+
+  .orders .card .orderStatus .flex {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .orders .card .orderStatus .status {
+    z-index: 10;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1rem;
+    width: 100%;
+    max-width: 20rem;
+  }
+
+  .orders .card .orderStatus .status span {
+    width: 5rem;
+  }
+
+  .orders .card .orderStatus .status span.time {
+    font-size: 0.95rem;
+    padding-top: 0.1rem;
+    width: 6rem;
+    padding-left: 1rem;
+  }
+
+  .orders .card .orderStatus .status.red {
+    color: #f03e3e;
+  }
+
+  .orders .card .orderStatus .status.red span {
+    font-weight: 500;
+  }
+
+  .orders .card .orderStatus .status.red .bar {
+    background-color: #f03e3e;
+  }
 }

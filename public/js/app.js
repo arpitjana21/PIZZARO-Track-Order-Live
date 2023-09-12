@@ -291,17 +291,15 @@ var userForm = document.querySelector('#user-details');
 if (updateUser) {
   updateUser.addEventListener('click', function (e) {
     e.preventDefault();
-    var name = formatName("".concat(userForm.querySelector('#fname').value, " ").concat(userForm.querySelector('#lname').value));
     var newUserData = {
-      name: name,
+      fname: userForm.querySelector('#fname').value,
+      lname: userForm.querySelector('#lname').value,
       email: userForm.querySelector('#email').value
     };
     axios__WEBPACK_IMPORTED_MODULE_1__["default"].post('/auth/updateUser', newUserData).then(function (res) {
       notify("\u2714\uFE0F ".concat(res.data.message));
-      if (newUserData.name) window.setTimeout(function () {
-        document.querySelectorAll('.user-account').forEach(function (el) {
-          el.querySelector('a').textContent = newUserData.name.split(' ')[0];
-        });
+      window.setTimeout(function () {
+        location.reload();
       }, 4000);
     })["catch"](function (err) {
       console.log(err);

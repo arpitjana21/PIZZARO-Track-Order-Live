@@ -290,14 +290,9 @@ if (updateUser) {
     updateUser.addEventListener('click', function (e) {
         e.preventDefault();
 
-        let name = formatName(
-            `${userForm.querySelector('#fname').value} ${
-                userForm.querySelector('#lname').value
-            }`
-        );
-
         let newUserData = {
-            name: name,
+            fname: userForm.querySelector('#fname').value,
+            lname: userForm.querySelector('#lname').value,
             email: userForm.querySelector('#email').value,
         };
 
@@ -305,15 +300,9 @@ if (updateUser) {
             .post('/auth/updateUser', newUserData)
             .then(function (res) {
                 notify(`✔️ ${res.data.message}`);
-                if (newUserData.name)
-                    window.setTimeout(function () {
-                        document
-                            .querySelectorAll('.user-account')
-                            .forEach(function (el) {
-                                el.querySelector('a').textContent =
-                                    newUserData.name.split(' ')[0];
-                            });
-                    }, 4000);
+                window.setTimeout(function () {
+                    location.reload();
+                }, 4000);
             })
             .catch(function (err) {
                 console.log(err);
