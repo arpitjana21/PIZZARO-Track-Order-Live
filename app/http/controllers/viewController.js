@@ -30,6 +30,11 @@ const customerOrdersView = async function (req, res) {
     return res.render('customer/orders', {orders: orders});
 };
 
+const adminOrdersView = async function (req, res) {
+    const orders = await Order.find();
+    return res.render('admin/orders', {orders: orders});
+};
+
 const updateSessionCart = function (req, pizza, type) {
     if (!req.session.cart) {
         req.session.cart = {
@@ -106,6 +111,7 @@ module.exports = {
     loginView,
     cartView,
     customerOrdersView,
+    adminOrdersView,
     accountView,
     updateCart,
     plusPizza,

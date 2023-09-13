@@ -19,6 +19,10 @@ viewRouter
     .route('/customer/orders')
     .get(middleware.customerView, viewController.customerOrdersView);
 
+viewRouter
+    .route('/admin/orders')
+    .get(middleware.adminView, viewController.adminOrdersView);
+
 viewRouter.route('/update-cart').post(viewController.updateCart);
 viewRouter.route('/plus-pizza').post(viewController.plusPizza);
 viewRouter.route('/minus-pizza').post(viewController.minusPizza);

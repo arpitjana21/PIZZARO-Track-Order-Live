@@ -43,8 +43,8 @@ const cancleOrder = async function (req, res) {
 
         const order = await Order.findById(orderID);
 
-        if (!order.user.toString() === userID.toString())
-            throw Error('User Not Identified');
+        if (!(order.user.toString() === userID.toString()) && !req.user.isAdmin)
+            throw new Error('User Not Identified');
 
         await Order.findByIdAndDelete(orderID);
         return res.status(200).json({

@@ -384,7 +384,7 @@ if (orderForm) {
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
-// < Display Order Status On Page Load>
+// < Display Order Status On Page Load Customer>
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
@@ -392,9 +392,9 @@ if (orderForm) {
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 
-var orderStatus = document.querySelectorAll('.orderStatus');
-if (orderStatus) {
-  orderStatus.forEach(function (orderStats) {
+var orderStatusCustomer = document.querySelectorAll('.orderStatus.customer');
+if (orderStatusCustomer) {
+  orderStatusCustomer.forEach(function (orderStats) {
     var orderData = JSON.parse(orderStats.dataset.order);
     updateOrderStats(orderStats, orderData);
   });
@@ -430,6 +430,9 @@ if (orderCards) {
             location.reload();
           }, 4000);
         }
+      })["catch"](function (err) {
+        console.log(err);
+        notify("\u274C ".concat(err.response.data.message));
       });
     });
   });

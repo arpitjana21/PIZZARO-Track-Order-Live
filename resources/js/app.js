@@ -398,7 +398,7 @@ if (orderForm) {
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
-// < Display Order Status On Page Load>
+// < Display Order Status On Page Load Customer>
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
@@ -406,10 +406,10 @@ if (orderForm) {
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 
-const orderStatus = document.querySelectorAll('.orderStatus');
+const orderStatusCustomer = document.querySelectorAll('.orderStatus.customer');
 
-if (orderStatus) {
-    orderStatus.forEach(function (orderStats) {
+if (orderStatusCustomer) {
+    orderStatusCustomer.forEach(function (orderStats) {
         const orderData = JSON.parse(orderStats.dataset.order);
         updateOrderStats(orderStats, orderData);
     });
@@ -437,16 +437,22 @@ if (orderCards) {
         const orderID = JSON.parse(card.dataset.order)._id;
         const cancleBtn = card.querySelector('.cancleOrder');
         cancleBtn.addEventListener('click', function (e) {
-            axios.delete(`/order/${orderID}`).then(function (data) {
-                notify('✔️ Order Cancled Successfully');
-                card.remove();
-                cardsQty--;
-                if (!cardsQty) {
-                    window.setTimeout(function () {
-                        location.reload();
-                    }, 4000);
-                }
-            });
+            axios
+                .delete(`/order/${orderID}`)
+                .then(function (data) {
+                    notify('✔️ Order Cancled Successfully');
+                    card.remove();
+                    cardsQty--;
+                    if (!cardsQty) {
+                        window.setTimeout(function () {
+                            location.reload();
+                        }, 4000);
+                    }
+                })
+                .catch(function (err) {
+                    console.log(err);
+                    notify(`❌ ${err.response.data.message}`);
+                });
         });
     });
 }

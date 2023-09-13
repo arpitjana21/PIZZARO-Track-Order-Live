@@ -1,4 +1,4 @@
-<section class="orders customer container mx-auto px-12 pb-14">
+<section class="orders admin container mx-auto px-12 pb-14">
   <%if(orders.length){%>
   <div class="pt-6 justify-center flex flex-col items-center">
     <%orders.forEach(function(order){%>
@@ -35,7 +35,7 @@
         </div>
 
 
-        <div id="status_<%= order._id%>" data-order="<%=JSON.stringify(order)%>" class="orderStatus customer relative">
+        <div id="status_<%= order._id%>" data-order="<%=JSON.stringify(order)%>" class="orderStatus admin relative">
           <div class="flex">
             <div class="status order_placed">
               <i class="ri-circle-fill"></i>
@@ -73,8 +73,7 @@
     <div class="container mx-auto px-12 flex flex-col items-center justify-center mt-20">
       <h1 class="text-3xl font-bold mb-2 text-center">Nothing Ordered Yet !</h1>
       <img class="w-48 m-12" src="/img/empty-cart.png" alt="">
-      <p class="text-center">You probably haven't ordered a pizza yet.<br>
-        To order a pizza, go to the main page.
+      <p class="text-center">No customer has been ordered a pizza yet.
       </p>
       <a class="btn-md mt-6" href="/">Go Back</a>
     </div>
