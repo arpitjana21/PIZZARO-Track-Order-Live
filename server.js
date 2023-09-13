@@ -90,11 +90,18 @@ mongoose
 // Socket
 const io = require('socket.io')(server);
 io.on('connection', function (socket) {
-    socket.on('client-join', (room) => {
+    socket.on('join-customer', (room) => {
+        socket.join(room);
+    });
+    socket.on('join-admin', (room) => {
         socket.join(room);
     });
 });
 
 eventEmmiter.on('orderUpdated', (order) => {
-    io.to(`room_${order.user._id}`).emit('orderUpdated', order);
+    io.to(`room_${order.user._id}_customer`).emit('orderUpdated', order);
+});
+
+eventEmmiter.on('orderPlaced', (order) => {
+    io.to('admin-room').emit('orderPlaced', order);
 });

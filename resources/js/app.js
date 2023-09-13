@@ -512,7 +512,6 @@ if (orderCards) {
         });
     });
 }
-
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
@@ -530,12 +529,22 @@ if (orderCards) {
 let socket = io();
 if (user) {
     user = JSON.parse(user);
-    // JOIN CLIENT
-    socket.emit('client-join', `room_${user._id}`);
-}
+    if (!user.isAdmin) {
+        socket.emit('join-customer', `room_${user._id}_customer`);
+        socket.on('orderUpdated', (order) => {
+            const currOrderStats = document.querySelector(
+                `#status_${order._id}`
+            );
+            if (currOrderStats) updateOrderStats(currOrderStats, order);
+            notify(`✅ Order Status Updated`);
+        });
+    }
 
-socket.on('orderUpdated', (order) => {
-    const currOrderStats = document.querySelector(`#status_${order._id}`);
-    updateOrderStats(currOrderStats, order);
-    notify(`✅ Order Status Updated`);
-});
+    if (user.isAdmin) {
+        socket.emit('join-admin', 'admin-room');
+        socket.on('orderPlaced', (order) => {
+            // console.log(order);
+            notify(`✅ New Order Placed`);
+        });
+    }
+}

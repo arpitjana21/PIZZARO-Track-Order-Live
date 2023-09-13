@@ -22,6 +22,9 @@ const placeOrder = async function (req, res) {
             totalPrice: 0,
         };
 
+        const eventEmmiter = req.app.get('eventEmmiter');
+        eventEmmiter.emit('orderPlaced', newOrder);
+
         res.status(200).json({
             status: 'success',
             message: 'Order Places Sussesfully',

@@ -1,6 +1,6 @@
 <section class="orders admin container mx-auto px-12 pb-14">
   <%if(orders.length){%>
-  <div class="pt-6 justify-center flex flex-col items-center">
+  <div class="pt-6 justify-center flex flex-col items-center admin-order-card-container">
     <%orders.forEach(function(order){%>
     <div data-order="<%=JSON.stringify(order)%>" id="card_<%= order._id%>" class="card p-5 rounded mb-8">
 

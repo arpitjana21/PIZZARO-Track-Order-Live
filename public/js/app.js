@@ -486,7 +486,6 @@ if (orderCards) {
     });
   });
 }
-
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
@@ -504,14 +503,22 @@ if (orderCards) {
 var socket = io();
 if (user) {
   user = JSON.parse(user);
-  // JOIN CLIENT
-  socket.emit('client-join', "room_".concat(user._id));
+  if (!user.isAdmin) {
+    socket.emit('join-customer', "room_".concat(user._id, "_customer"));
+    socket.on('orderUpdated', function (order) {
+      var currOrderStats = document.querySelector("#status_".concat(order._id));
+      if (currOrderStats) updateOrderStats(currOrderStats, order);
+      notify("\u2705 Order Status Updated");
+    });
+  }
+  if (user.isAdmin) {
+    socket.emit('join-admin', 'admin-room');
+    socket.on('orderPlaced', function (order) {
+      // console.log(order);
+      notify("\u2705 New Order Placed");
+    });
+  }
 }
-socket.on('orderUpdated', function (order) {
-  var currOrderStats = document.querySelector("#status_".concat(order._id));
-  updateOrderStats(currOrderStats, order);
-  notify("\u2705 Order Status Updated");
-});
 
 /***/ }),
 
