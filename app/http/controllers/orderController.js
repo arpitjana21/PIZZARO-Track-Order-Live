@@ -94,6 +94,10 @@ const updateOrderStatus = async function (req, res) {
 
         const updatedOrder = await order.save();
 
+        // Emmite Event
+        const eventEmmiter = req.app.get('eventEmmiter');
+        eventEmmiter.emit('orderUpdated', updatedOrder);
+
         res.status(200).json({
             status: 'sussess',
             order: updatedOrder,

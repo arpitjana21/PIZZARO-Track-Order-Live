@@ -18,7 +18,7 @@
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: $dark;
+    background: #868e96;
 }
 
 // Noty Theme
@@ -43,6 +43,8 @@ input {
 
 html {
     scroll-behavior: smooth;
+    scrollbar-color: $dark white;
+    scrollbar-width: thin;
 }
 
 body {

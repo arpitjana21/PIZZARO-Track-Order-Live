@@ -31,7 +31,8 @@ const customerOrdersView = async function (req, res) {
 };
 
 const adminOrdersView = async function (req, res) {
-    const orders = await Order.find().sort('-updatedAt');
+    const orders = await Order.find().sort('-createdAt');
+    // const orders = await Order.find().sort('-updatedAt');
     return res.render('admin/orders', {orders: orders});
 };
 

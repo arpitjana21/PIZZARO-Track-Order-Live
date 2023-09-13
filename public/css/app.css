@@ -268,7 +268,7 @@
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #343a40;
+  background: #868e96;
 }
 
 .noty_theme__sunset {
@@ -282,7 +282,7 @@
 }
 
 input {
-  border: 2px solid #ccc;
+  border: 2px solid #868e96;
   transition: all 0.3s ease-in-out;
 }
 input:focus {
@@ -292,6 +292,8 @@ input:focus {
 
 html {
   scroll-behavior: smooth;
+  scrollbar-color: #343a40 white;
+  scrollbar-width: thin;
 }
 
 body {
@@ -510,7 +512,7 @@ nav #drop-down:hover ul {
 }
 .menu .card {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  border: 2px solid #ccc;
+  border: 2px solid #868e96;
   background-color: white;
 }
 .menu .card .food {
@@ -584,10 +586,10 @@ nav #drop-down:hover ul {
   max-width: 50rem;
 }
 .cart .orders .title {
-  border-bottom: 2px solid #ccc;
+  border-bottom: 2px solid #868e96;
 }
 .cart .orders .pizza-list .cart-pizza-item {
-  border-bottom: 2px solid #ccc;
+  border-bottom: 2px solid #868e96;
 }
 
 .login-register {
@@ -598,7 +600,7 @@ nav #drop-down:hover ul {
   max-width: 25rem;
 }
 .login-register .form-container {
-  border: 2px solid #ccc;
+  border: 2px solid #868e96;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding: 2rem;
   width: 100%;
@@ -608,7 +610,7 @@ nav #drop-down:hover ul {
   color: #f03e3e;
 }
 .login-register .form-container input {
-  border: 2px solid #ccc;
+  border: 2px solid #868e96;
   padding: 0.3rem 0.5rem;
   width: 100%;
   border-radius: 0.3rem;
@@ -682,7 +684,7 @@ nav #drop-down:hover ul {
 }
 .account .form-container {
   min-width: 25rem;
-  border: 2px solid #ccc;
+  border: 2px solid #868e96;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding: 2rem;
 }
@@ -690,7 +692,7 @@ nav #drop-down:hover ul {
   color: #f03e3e;
 }
 .account .form-container input {
-  border: 2px solid #ccc;
+  border: 2px solid #868e96;
   padding: 0.3rem 0.5rem;
   width: 100%;
   border-radius: 0.3rem;
@@ -748,7 +750,7 @@ nav #drop-down:hover ul {
 .orders .card .orderData button {
   background-color: transparent;
   color: #343a40;
-  border: 2px solid #ccc;
+  border: 2px solid #868e96;
   padding: 0rem 0.7rem;
   border-radius: 0.2rem;
   transition: all 0.3s ease-in-out;
@@ -777,7 +779,7 @@ nav #drop-down:hover ul {
 .orders .card .orderData .items table,
 .orders .card .orderData .items th,
 .orders .card .orderData .items td {
-  border: 2px solid #ccc;
+  border: 2px solid #868e96;
   border-collapse: collapse;
 }
 .orders .card .orderData .items td {

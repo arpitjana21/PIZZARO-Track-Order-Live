@@ -1,4 +1,4 @@
-<nav>
+<nav data-user="<%=JSON.stringify(user)%>">
   <div class="nav-container container mx-auto flex items-center justify-between px-12 py-5">
     <div>
       <div id="logo">
@@ -20,7 +20,7 @@
                 <%= session.cart ? session.cart.totalQty :'0'%>
               </span></li>
             <%if(user){%>
-            <li class="user-account"><i class="ri-user-line pr-3"></i><a href="/account"><%=user.name.split(' ')[0]%></a><span class="<%= user.isAdmin? 'show' : 'hide'%>">admin</span></li>
+            <li class=" user-account"><i class="ri-user-line pr-3"></i><a href="/account"><%=user.name.split(' ')[0]%></a><span class="<%= user.isAdmin? 'show' : 'hide'%>">admin</span></li>
             <li><i class="ri-shopping-bag-line pr-3"></i><a class="orders" href="/<%=user.isAdmin ? 'admin' : 'customer' %>/orders">Orders</a></li>
             <li><i class="ri-user-shared-line pr-3"></i><a class="logout" href="/">Logout</a></li>
             <%}else{%>

@@ -1,4 +1,5 @@
 const path = require('path');
+const Emmiter = require('events');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const express = require('express');
@@ -26,6 +27,10 @@ const storeOptions = {
     mongoUrl: DATABASE,
     collection: 'sessions',
 };
+
+// Event Emmiter
+const eventEmmiter = new Emmiter();
+app.set('eventEmmiter', eventEmmiter);
 
 // Session Config
 app.use(
@@ -66,7 +71,7 @@ app.all('*', authController.isloggedIn, function (req, res) {
     res.render('404');
 });
 
-app.listen(PORT, function () {
+const server = app.listen(PORT, function () {
     console.log('Connecting with database..');
 });
 
@@ -81,3 +86,15 @@ mongoose
         console.log('\n⚠ DATABASE CONNECTION ERROR ⚠\n');
         console.log(err);
     });
+
+// Socket
+const io = require('socket.io')(server);
+io.on('connection', function (socket) {
+    socket.on('client-join', (room) => {
+        socket.join(room);
+    });
+});
+
+eventEmmiter.on('orderUpdated', (order) => {
+    io.to(`room_${order.user._id}`).emit('orderUpdated', order);
+});

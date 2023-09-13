@@ -10,7 +10,7 @@
           <p class="orderid mb-28"><%=String(order._id).toUpperCase()%></p>
           <div>
             <p class="phone"><i class="ri-phone-fill"></i> <%=order.phone%></p>
-            <p class="address"><i class="ri-map-pin-fill"></i> <%=order.address%></p>
+            <p class="address"><i class="ri-map-pin-2-line"></i> <%=order.address%></p>
           </div>
           <div class="items pt-4">
             <table class="mb-3">
@@ -36,32 +36,32 @@
 
 
         <div id="status_<%= order._id%>" data-order="<%=JSON.stringify(order)%>" class="orderStatus customer relative">
-<div class="flex">
-  <div class="status order_placed">
-    <i class="ri-chat-check-fill"></i>
-    <span>Received</span><span class="time hide">5.36pm</span>
-  </div>
-  <div class="status order_confirmed relative">
-    <div class="bar absolute"></div>
-    <i class="ri-verified-badge-fill"></i>
-    <span>Confirmed</span><span class="time hide">5.36pm</span>
-  </div>
-  <div class="status order_prepared relative">
-    <div class="bar absolute"></div>
-    <i class="ri-blaze-fill"></i>
-    <span>Prepared</span><span class="time hide">5.36pm</span>
-  </div>
-  <div class="status out_for_delivery relative">
-    <div class="bar absolute"></div>
-    <i class="ri-e-bike-2-fill"></i>
-    <span>Delivery</span><span class="time hide">5.36pm</span>
-  </div>
-  <div class="status order_compleated relative">
-    <div class="bar absolute"></div>
-    <i class="ri-emotion-fill"></i>
-    <span>Completed</span><span class="time hide">5.36pm</span>
-  </div>
-</div>
+          <div class="flex">
+            <div class="status order_placed">
+              <i class="ri-chat-check-fill"></i>
+              <span>Received</span><span class="time hide">5.36pm</span>
+            </div>
+            <div class="status order_confirmed relative">
+              <div class="bar absolute"></div>
+              <i class="ri-verified-badge-fill"></i>
+              <span>Confirmed</span><span class="time hide">5.36pm</span>
+            </div>
+            <div class="status order_prepared relative">
+              <div class="bar absolute"></div>
+              <i class="ri-blaze-fill"></i>
+              <span>Prepared</span><span class="time hide">5.36pm</span>
+            </div>
+            <div class="status out_for_delivery relative">
+              <div class="bar absolute"></div>
+              <i class="ri-e-bike-2-fill"></i>
+              <span>Delivery</span><span class="time hide">5.36pm</span>
+            </div>
+            <div class="status order_compleated relative">
+              <div class="bar absolute"></div>
+              <i class="ri-emotion-fill"></i>
+              <span>Completed</span><span class="time hide">5.36pm</span>
+            </div>
+          </div>
         </div>
 
       </div>

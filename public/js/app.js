@@ -27,6 +27,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var size = ['small', 'medium', 'large'];
+var user = document.querySelector('nav').dataset.user;
 function notify(message) {
   var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'alert';
   var theme = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'sunset';
@@ -485,6 +486,32 @@ if (orderCards) {
     });
   });
 }
+
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+// < SOCKET Connection >
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+
+var socket = io();
+if (user) {
+  user = JSON.parse(user);
+  // JOIN CLIENT
+  socket.emit('client-join', "room_".concat(user._id));
+}
+socket.on('orderUpdated', function (order) {
+  var currOrderStats = document.querySelector("#status_".concat(order._id));
+  updateOrderStats(currOrderStats, order);
+  notify("\u2705 Order Status Updated");
+});
 
 /***/ }),
 
