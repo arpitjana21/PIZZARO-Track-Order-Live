@@ -22,4 +22,30 @@ const adminView = function (req, res, next) {
     }
 };
 
-module.exports = {userView, customerView, adminView};
+const userProtected = function (req, res, next) {
+    if (req.user) next();
+    else {
+        return res.status(400).json({
+            status: 'fail',
+            message: 'User not Logged-IN',
+        });
+    }
+};
+
+const adminProtected = function (req, res, next) {
+    if (req.user.isAdmin) next();
+    else {
+        return res.status(400).json({
+            status: 'fail',
+            message: 'ADMIN not Logged-IN',
+        });
+    }
+};
+
+module.exports = {
+    userView,
+    customerView,
+    adminView,
+    adminProtected,
+    userProtected,
+};

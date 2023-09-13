@@ -62,14 +62,18 @@ function getTime(str) {
   return formattedTime;
 }
 function updateOrderStats(orderStats, orderData) {
-  var statusUpdatedAt = orderData.statusUpdatedAt,
+  var statusTimings = orderData.statusTimings,
     status = orderData.status;
   var allStats = orderStats.querySelectorAll('.status');
+  allStats.forEach(function (stats, index) {
+    stats.classList.remove('red');
+    stats.querySelector('.time').classList.add('hide');
+  });
   allStats.forEach(function (stats, index) {
     if (index <= status) {
       stats.classList.add('red');
       stats.querySelector('.time').classList.remove('hide');
-      stats.querySelector('.time').textContent = getTime(statusUpdatedAt[status]);
+      stats.querySelector('.time').textContent = getTime(statusTimings[index]);
     }
   });
 }
@@ -203,13 +207,13 @@ if (registerForm) registerForm.addEventListener('submit', function (e) {
     password: passwordInp.value,
     passwordConfirm: passwordCInp.value
   }).then(function (res) {
-    notify("\u2714\uFE0F Registration Successfull");
+    notify("\u2705 Registration Successfull");
     window.setTimeout(function () {
       location.assign('/');
     }, 2000);
   })["catch"](function (err) {
     console.log(err.response.data.message);
-    notify("\u274C ".concat(err.response.data.message));
+    notify("\uD83D\uDD34 ".concat(err.response.data.message));
   });
 });
 
@@ -236,13 +240,13 @@ if (loginForm) loginForm.addEventListener('submit', function (e) {
     email: emailInp.value,
     password: passwordInp.value
   }).then(function (res) {
-    notify("\u2714\uFE0F Login Successfull");
+    notify("\u2705 Login Successfull");
     window.setTimeout(function () {
       location.assign('/');
     }, 2000);
   })["catch"](function (err) {
     console.log(err.response.data.message);
-    notify("\u274C ".concat(err.response.data.message));
+    notify("\uD83D\uDD34 ".concat(err.response.data.message));
   });
 });
 
@@ -265,13 +269,13 @@ logoutBtns.forEach(function (btn) {
   btn.addEventListener('click', function (e) {
     e.preventDefault();
     axios__WEBPACK_IMPORTED_MODULE_1__["default"].get('/auth/logout').then(function (res) {
-      notify("\u2714\uFE0F ".concat(res.data.message));
+      notify("\u2705 ".concat(res.data.message));
       window.setTimeout(function () {
         location.assign('/');
       }, 2000);
     })["catch"](function (err) {
       console.log(err);
-      notify("\u274C ".concat(err.response.data.message));
+      notify("\uD83D\uDD34 ".concat(err.response.data.message));
     });
   });
 });
@@ -299,13 +303,13 @@ if (updateUser) {
       email: userForm.querySelector('#email').value
     };
     axios__WEBPACK_IMPORTED_MODULE_1__["default"].post('/auth/updateUser', newUserData).then(function (res) {
-      notify("\u2714\uFE0F ".concat(res.data.message));
+      notify("\u2705 ".concat(res.data.message));
       window.setTimeout(function () {
         location.reload();
       }, 4000);
     })["catch"](function (err) {
       console.log(err);
-      notify("\u274C ".concat(err.response.data.message));
+      notify("\uD83D\uDD34 ".concat(err.response.data.message));
     });
   });
 }
@@ -334,13 +338,13 @@ if (userPassForm) {
       passwordConfirm: userPassForm.querySelector('#passwordConfirm').value
     };
     axios__WEBPACK_IMPORTED_MODULE_1__["default"].post('/auth/updatePassword', newUserData).then(function (res) {
-      notify("\u2714\uFE0F Password Updated Successfully.");
+      notify("\u2705 Password Updated Successfully.");
       window.setTimeout(function () {
         location.reload();
       }, 4000);
     })["catch"](function (err) {
       console.log(err);
-      notify("\u274C ".concat(err.response.data.message));
+      notify("\uD83D\uDD34 ".concat(err.response.data.message));
     });
   });
 }
@@ -369,13 +373,13 @@ if (orderForm) {
       address: addressInp.value,
       phone: phoneInp.value
     }).then(function (res) {
-      notify("\u2714\uFE0F ".concat(res.data.message));
+      notify("\u2705 ".concat(res.data.message));
       window.setTimeout(function () {
         location.assign('/');
       }, 2000);
     })["catch"](function (err) {
       console.log(err);
-      notify("\u274C ".concat(err.response.data.message));
+      notify("\uD83D\uDD34 ".concat(err.response.data.message));
     });
   });
 }
@@ -423,6 +427,26 @@ if (orderStatusAdmin) {
     updateOrderStats(orderStats, orderData);
   });
 }
+var changeOrderStatus = document.querySelectorAll('.cahngeOrderStatus');
+changeOrderStatus.forEach(function (statSelect) {
+  var _statSelect$dataset = statSelect.dataset,
+    id = _statSelect$dataset.id,
+    status = _statSelect$dataset.status;
+  statSelect.value = status;
+  statSelect.addEventListener('change', function (e) {
+    axios__WEBPACK_IMPORTED_MODULE_1__["default"].post("/order/".concat(id), {
+      status: e.target.value
+    }).then(function (data) {
+      var order = data.data.order;
+      var currOrderStats = document.querySelector("#status_".concat(order._id));
+      updateOrderStats(currOrderStats, order);
+      notify("\u2705 Order Status Updated");
+    })["catch"](function (err) {
+      console.log(err);
+      notify("\uD83D\uDD34 ".concat(err.response.data.message));
+    });
+  });
+});
 
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
@@ -446,7 +470,7 @@ if (orderCards) {
     var cancleBtn = card.querySelector('.cancleOrder');
     cancleBtn.addEventListener('click', function (e) {
       axios__WEBPACK_IMPORTED_MODULE_1__["default"]["delete"]("/order/".concat(orderID)).then(function (data) {
-        notify('✔️ Order Cancled Successfully');
+        notify('✅ Order Cancled Successfully');
         card.remove();
         cardsQty--;
         if (!cardsQty) {
@@ -456,7 +480,7 @@ if (orderCards) {
         }
       })["catch"](function (err) {
         console.log(err);
-        notify("\u274C ".concat(err.response.data.message));
+        notify("\uD83D\uDD34 ".concat(err.response.data.message));
       });
     });
   });

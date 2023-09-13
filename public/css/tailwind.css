@@ -2200,7 +2200,7 @@ nav #drop-down:hover ul {
   width: 100%;
   max-width: 50rem;
   background-color: #f3f3f3;
-  border: 2px solid #ccc;
+  border: 2px solid #f03e3e;
 }
 
 .orders .card .orderData .orderid {
@@ -2226,6 +2226,20 @@ nav #drop-down:hover ul {
   border-color: #343a40;
 }
 
+.orders .card .orderData .cahngeOrderStatus {
+  cursor: pointer;
+  background-color: #343a40;
+  color: white;
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.2rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.orders .card .orderData .cahngeOrderStatus:focus {
+  outline: none;
+  border: none;
+}
+
 .orders .card .orderData .total-row {
   color: #f03e3e;
 }
@@ -2246,11 +2260,11 @@ nav #drop-down:hover ul {
 }
 
 .orders .card .orderStatus .bar {
-  height: 0.2rem;
+  height: 0.1rem;
   width: 6rem;
-  top: 0.95rem;
+  top: 1.2rem;
   left: -67%;
-  background-color: #343a40;
+  background-color: #868e96;
   border-radius: 1rem;
 }
 
@@ -2260,6 +2274,7 @@ nav #drop-down:hover ul {
 }
 
 .orders .card .orderStatus .status {
+  color: #868e96;
   z-index: 10;
   display: flex;
   flex-direction: column;
@@ -2267,6 +2282,10 @@ nav #drop-down:hover ul {
   justify-content: flex-end;
   padding: 0.3rem;
   width: 6rem;
+}
+
+.orders .card .orderStatus .status i {
+  font-size: 1.3rem;
 }
 
 .orders .card .orderStatus .status .time {
@@ -2292,10 +2311,9 @@ nav #drop-down:hover ul {
 
   .orders .card .orderStatus .bar {
     height: 2.5rem;
-    width: 0.2rem;
-    left: 0.7rem;
+    width: 0.1rem;
+    left: 0.9rem;
     top: -2.3rem;
-    background-color: #343a40;
     border-radius: 1rem;
   }
 

@@ -35,15 +35,20 @@ function getTime(str) {
 }
 
 function updateOrderStats(orderStats, orderData) {
-    const {statusUpdatedAt, status} = orderData;
+    const {statusTimings, status} = orderData;
     const allStats = orderStats.querySelectorAll('.status');
+
+    allStats.forEach(function (stats, index) {
+        stats.classList.remove('red');
+        stats.querySelector('.time').classList.add('hide');
+    });
 
     allStats.forEach(function (stats, index) {
         if (index <= status) {
             stats.classList.add('red');
             stats.querySelector('.time').classList.remove('hide');
             stats.querySelector('.time').textContent = getTime(
-                statusUpdatedAt[status]
+                statusTimings[index]
             );
         }
     });
@@ -192,14 +197,14 @@ if (registerForm)
                 passwordConfirm: passwordCInp.value,
             })
             .then(function (res) {
-                notify(`✔️ Registration Successfull`);
+                notify(`✅ Registration Successfull`);
                 window.setTimeout(function () {
                     location.assign('/');
                 }, 2000);
             })
             .catch(function (err) {
                 console.log(err.response.data.message);
-                notify(`❌ ${err.response.data.message}`);
+                notify(`🔴 ${err.response.data.message}`);
             });
     });
 
@@ -230,14 +235,14 @@ if (loginForm)
                 password: passwordInp.value,
             })
             .then(function (res) {
-                notify(`✔️ Login Successfull`);
+                notify(`✅ Login Successfull`);
                 window.setTimeout(function () {
                     location.assign('/');
                 }, 2000);
             })
             .catch(function (err) {
                 console.log(err.response.data.message);
-                notify(`❌ ${err.response.data.message}`);
+                notify(`🔴 ${err.response.data.message}`);
             });
     });
 
@@ -263,14 +268,14 @@ logoutBtns.forEach(function (btn) {
         axios
             .get('/auth/logout')
             .then(function (res) {
-                notify(`✔️ ${res.data.message}`);
+                notify(`✅ ${res.data.message}`);
                 window.setTimeout(function () {
                     location.assign('/');
                 }, 2000);
             })
             .catch(function (err) {
                 console.log(err);
-                notify(`❌ ${err.response.data.message}`);
+                notify(`🔴 ${err.response.data.message}`);
             });
     });
 });
@@ -302,14 +307,14 @@ if (updateUser) {
         axios
             .post('/auth/updateUser', newUserData)
             .then(function (res) {
-                notify(`✔️ ${res.data.message}`);
+                notify(`✅ ${res.data.message}`);
                 window.setTimeout(function () {
                     location.reload();
                 }, 4000);
             })
             .catch(function (err) {
                 console.log(err);
-                notify(`❌ ${err.response.data.message}`);
+                notify(`🔴 ${err.response.data.message}`);
             });
     });
 }
@@ -343,14 +348,14 @@ if (userPassForm) {
         axios
             .post('/auth/updatePassword', newUserData)
             .then(function (res) {
-                notify(`✔️ Password Updated Successfully.`);
+                notify(`✅ Password Updated Successfully.`);
                 window.setTimeout(function () {
                     location.reload();
                 }, 4000);
             })
             .catch(function (err) {
                 console.log(err);
-                notify(`❌ ${err.response.data.message}`);
+                notify(`🔴 ${err.response.data.message}`);
             });
     });
 }
@@ -383,14 +388,14 @@ if (orderForm) {
                 phone: phoneInp.value,
             })
             .then(function (res) {
-                notify(`✔️ ${res.data.message}`);
+                notify(`✅ ${res.data.message}`);
                 window.setTimeout(function () {
                     location.assign('/');
                 }, 2000);
             })
             .catch(function (err) {
                 console.log(err);
-                notify(`❌ ${err.response.data.message}`);
+                notify(`🔴 ${err.response.data.message}`);
             });
     });
 }
@@ -441,6 +446,30 @@ if (orderStatusAdmin) {
     });
 }
 
+const changeOrderStatus = document.querySelectorAll('.cahngeOrderStatus');
+
+changeOrderStatus.forEach(function (statSelect) {
+    let {id, status} = statSelect.dataset;
+    statSelect.value = status;
+
+    statSelect.addEventListener('change', function (e) {
+        axios
+            .post(`/order/${id}`, {status: e.target.value})
+            .then(function (data) {
+                const order = data.data.order;
+                const currOrderStats = document.querySelector(
+                    `#status_${order._id}`
+                );
+                updateOrderStats(currOrderStats, order);
+                notify(`✅ Order Status Updated`);
+            })
+            .catch(function (err) {
+                console.log(err);
+                notify(`🔴 ${err.response.data.message}`);
+            });
+    });
+});
+
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
@@ -466,7 +495,7 @@ if (orderCards) {
             axios
                 .delete(`/order/${orderID}`)
                 .then(function (data) {
-                    notify('✔️ Order Cancled Successfully');
+                    notify('✅ Order Cancled Successfully');
                     card.remove();
                     cardsQty--;
                     if (!cardsQty) {
@@ -477,7 +506,7 @@ if (orderCards) {
                 })
                 .catch(function (err) {
                     console.log(err);
-                    notify(`❌ ${err.response.data.message}`);
+                    notify(`🔴 ${err.response.data.message}`);
                 });
         });
     });

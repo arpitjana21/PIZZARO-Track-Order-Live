@@ -64,4 +64,46 @@ const cancleOrder = async function (req, res) {
     }
 };
 
-module.exports = {placeOrder, cancleOrder};
+const updateOrderStatus = async function (req, res) {
+    try {
+        const orderID = req.params.id;
+        const status = Number(req.body.status);
+        const order = await Order.findById(orderID);
+
+        const statusStr = [
+            'Received',
+            'Confirmed',
+            'Prepared',
+            'Delivery',
+            'Completed',
+        ];
+
+        if (order.status === 4) {
+            throw new Error(`Status is Already Completed !`);
+        }
+
+        if (status > order.status && status !== order.status + 1) {
+            throw new Error(
+                `Next Status Should be #${statusStr[order.status + 1]}`
+            );
+        }
+
+        order.status = status;
+        order.statusTimings.length = status + 1;
+        order.statusTimings[status] = Date.now();
+
+        const updatedOrder = await order.save();
+
+        res.status(200).json({
+            status: 'sussess',
+            order: updatedOrder,
+        });
+    } catch (error) {
+        res.status(400).json({
+            status: 'fail',
+            message: error.message,
+        });
+    }
+};
+
+module.exports = {placeOrder, cancleOrder, updateOrderStatus};
