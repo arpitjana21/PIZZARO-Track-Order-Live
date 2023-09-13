@@ -273,7 +273,12 @@
 
 .noty_theme__sunset {
   border-radius: 0.7rem !important;
-  padding: 0.4rem 0.6rem;
+  padding: 0.2rem 0.6rem;
+}
+
+.noty_theme__metroui {
+  border-radius: 0.7rem !important;
+  padding: 0.2rem 0.6rem;
 }
 
 input {

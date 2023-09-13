@@ -3,10 +3,10 @@ import Noty from 'noty';
 
 const size = ['small', 'medium', 'large'];
 
-function notify(message) {
+function notify(message, type = 'alert', theme = 'sunset') {
     new Noty({
-        type: 'alert',
-        theme: 'sunset',
+        type: type,
+        theme: theme,
         text: message,
         timeout: 2000,
         progressBar: false,
@@ -76,7 +76,10 @@ function updateCart(pizza) {
         cartQtys.forEach(function (el) {
             el.textContent = res.data.totalQty;
         });
-        notify(`✔️ ${pizza.name} ( ${size[pizza.size]} ) Added to Cart`);
+        notify(
+            `${pizza.name} ( ${size[pizza.size]} ) Added to Cart`,
+            'success'
+        );
     });
 }
 
@@ -398,7 +401,7 @@ if (orderForm) {
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
-// < Display Order Status On Page Load Customer>
+// < Display Order Status Customer >
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
@@ -410,6 +413,29 @@ const orderStatusCustomer = document.querySelectorAll('.orderStatus.customer');
 
 if (orderStatusCustomer) {
     orderStatusCustomer.forEach(function (orderStats) {
+        const orderData = JSON.parse(orderStats.dataset.order);
+        updateOrderStats(orderStats, orderData);
+    });
+}
+
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+// < Display Order Status Admin >
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+
+const orderStatusAdmin = document.querySelectorAll('.orderStatus.admin');
+
+if (orderStatusAdmin) {
+    orderStatusAdmin.forEach(function (orderStats) {
         const orderData = JSON.parse(orderStats.dataset.order);
         updateOrderStats(orderStats, orderData);
     });

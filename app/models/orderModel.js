@@ -18,7 +18,7 @@ const orderSchema = mongoose.Schema({
         type: String,
         validate: {
             validator: function (val) {
-                return /^\+91[1-9][0-9]{9}$/.test(val);
+                return /^[1-9][0-9]{9}$/.test(val);
             },
             message: 'Please Enter valid phone number: e.g: +91<10 digit>',
         },
@@ -28,8 +28,11 @@ const orderSchema = mongoose.Schema({
         enum: [0, 1, 2, 3, 4],
         default: 0,
     },
-    statusUpdatedAt: {
+    statusTimings: {
         type: [Date],
+    },
+    statusUpdatedAt: {
+        type: Date,
         default: Date.now(),
     },
     payment: {
@@ -44,10 +47,10 @@ const orderSchema = mongoose.Schema({
     },
 });
 
-// orderSchema.pre(/^find/, function (next) {
-//     this.populate({path: 'user', select: '_id'});
-//     next();
-// });
+orderSchema.pre(/^find/, function (next) {
+    this.populate({path: 'user', select: '_id name'});
+    next();
+});
 
 const Order = mongoose.model('Order', orderSchema);
 module.exports = {Order};

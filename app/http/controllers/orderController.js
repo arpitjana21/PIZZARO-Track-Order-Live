@@ -6,12 +6,13 @@ const placeOrder = async function (req, res) {
         const {items, totalQty, totalPrice} = req.session.cart;
 
         const orderData = {
-            phone: `+91${phone}`,
+            phone: `${phone}`,
             address: address,
             user: req.user._id,
             items: items,
             itemCount: totalQty,
             amount: totalPrice,
+            statusTimings: [Date.now()],
         };
 
         const newOrder = await Order.create(orderData);
@@ -43,8 +44,13 @@ const cancleOrder = async function (req, res) {
 
         const order = await Order.findById(orderID);
 
-        if (!(order.user.toString() === userID.toString()) && !req.user.isAdmin)
-            throw new Error('User Not Identified');
+        // Check if User is not the same
+        if (order.user._id.toString() !== userID.toString()) {
+            // Check if user is not Admin
+            if (req.user.isAdmin === false) {
+                throw new Error('User Not Identified');
+            }
+        }
 
         await Order.findByIdAndDelete(orderID);
         return res.status(200).json({

@@ -28,9 +28,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var size = ['small', 'medium', 'large'];
 function notify(message) {
+  var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'alert';
+  var theme = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'sunset';
   new (noty__WEBPACK_IMPORTED_MODULE_0___default())({
-    type: 'alert',
-    theme: 'sunset',
+    type: type,
+    theme: theme,
     text: message,
     timeout: 2000,
     progressBar: false
@@ -97,7 +99,7 @@ function updateCart(pizza) {
     cartQtys.forEach(function (el) {
       el.textContent = res.data.totalQty;
     });
-    notify("\u2714\uFE0F ".concat(pizza.name, " ( ").concat(size[pizza.size], " ) Added to Cart"));
+    notify("".concat(pizza.name, " ( ").concat(size[pizza.size], " ) Added to Cart"), 'success');
   });
 }
 if (menuCards) {
@@ -384,7 +386,7 @@ if (orderForm) {
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
-// < Display Order Status On Page Load Customer>
+// < Display Order Status Customer >
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
@@ -395,6 +397,28 @@ if (orderForm) {
 var orderStatusCustomer = document.querySelectorAll('.orderStatus.customer');
 if (orderStatusCustomer) {
   orderStatusCustomer.forEach(function (orderStats) {
+    var orderData = JSON.parse(orderStats.dataset.order);
+    updateOrderStats(orderStats, orderData);
+  });
+}
+
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+// < Display Order Status Admin >
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+
+var orderStatusAdmin = document.querySelectorAll('.orderStatus.admin');
+if (orderStatusAdmin) {
+  orderStatusAdmin.forEach(function (orderStats) {
     var orderData = JSON.parse(orderStats.dataset.order);
     updateOrderStats(orderStats, orderData);
   });
