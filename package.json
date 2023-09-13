@@ -4,6 +4,7 @@
     "description": "PizzaLust : Track Pizza Live!",
     "main": "server.js",
     "scripts": {
+        "start": "node server.js",
         "dev": "nodemon server.js",
         "lmix": "npx mix watch",
         "tail": "npx tailwindcss -i ./public/css/app.css -o ./public/css/tailwind.css",
