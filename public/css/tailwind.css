@@ -857,13 +857,13 @@ video {
   width: 20rem;
 }
 
-.w-full{
-  width: 100%;
-}
-
 .w-fit{
   width: -moz-fit-content;
   width: fit-content;
+}
+
+.w-full{
+  width: 100%;
 }
 
 .max-w-7xl{
@@ -1379,6 +1379,12 @@ video {
   opacity: 0.8;
 }
 
+.shadow{
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 .shadow-md{
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
@@ -1843,6 +1849,7 @@ nav #drop-down {
   padding-right: 1.4rem;
   border-radius: 0.2rem;
   display: none;
+  z-index: 100;
 }
 
 nav #drop-down .user-account span {
@@ -2237,6 +2244,10 @@ nav #drop-down:hover ul {
   font-size: 1.2rem;
 }
 
+.footer .btn-md:hover {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
 .footer .bottom h2 {
   font-size: 1.2rem;
   font-weight: bold;
@@ -2511,11 +2522,6 @@ nav #drop-down:hover ul {
 }
 
 @media (min-width: 1024px){
-  .lg\:w-fit{
-    width: -moz-fit-content;
-    width: fit-content;
-  }
-
   .lg\:flex-row{
     flex-direction: row;
   }
