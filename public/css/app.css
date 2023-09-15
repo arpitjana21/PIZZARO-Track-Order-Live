@@ -677,30 +677,59 @@ nav #drop-down:hover ul {
   border-top: 2px solid #f03e3e;
   border-bottom: 10px solid #343a40;
 }
-.footer img {
-  width: 8rem;
-  height: 8rem;
+.footer .news-letter {
+  background-color: #f03e3e;
+  padding: 2.5rem 3.2rem;
+  color: white;
+}
+.footer .news-letter form input {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #343a40;
+  height: 2.3rem;
+  padding: 0 0.8rem;
+  border-radius: 0.5rem;
+  border: none;
+  width: 15rem;
+}
+.footer .news-letter form button {
+  background-color: rgba(255, 255, 255, 0.9);
+  height: 2.3rem;
+  padding: 0 0.6rem;
+  font-size: 0.85rem;
+  color: #f03e3e;
+  border-radius: 0.5rem;
+  font-weight: bold;
+}
+.footer #logo2 {
+  height: 5rem;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 .footer p {
-  max-width: 50rem;
+  max-width: 20rem;
 }
 .footer .btn-md {
   background-color: #343a40;
   border-radius: 0.3rem;
-  font-size: 0.95rem;
-  padding: 0.2rem 0.6rem;
+  padding: 0.4rem 0.8rem;
+  width: 7.2rem;
 }
 .footer .btn-md i {
   font-size: 1.2rem;
 }
-.footer .btn-md:hover {
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-}
-.footer span {
-  color: #f03e3e;
+.footer .bottom h2 {
+  font-size: 1.2rem;
   font-weight: bold;
 }
+.footer .stack img {
+  max-width: 1.5rem;
+}
 
+@media (max-width: 640px) {
+  .footer .news-letter {
+    padding: 2.5rem 1rem;
+  }
+}
 .account {
   min-height: 80vh;
   display: flex;

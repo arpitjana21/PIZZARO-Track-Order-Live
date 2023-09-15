@@ -817,6 +817,10 @@ video {
   width: 5rem;
 }
 
+.w-28{
+  width: 7rem;
+}
+
 .w-32{
   width: 8rem;
 }
@@ -845,12 +849,21 @@ video {
   width: 15rem;
 }
 
+.w-7{
+  width: 1.75rem;
+}
+
 .w-80{
   width: 20rem;
 }
 
 .w-full{
   width: 100%;
+}
+
+.w-fit{
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .max-w-7xl{
@@ -893,6 +906,10 @@ video {
 
 .grid-cols-4{
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.flex-row{
+  flex-direction: row;
 }
 
 .flex-col{
@@ -2173,33 +2190,66 @@ nav #drop-down:hover ul {
   border-bottom: 10px solid #343a40;
 }
 
-.footer img {
-  width: 8rem;
-  height: 8rem;
+.footer .news-letter {
+  background-color: #f03e3e;
+  padding: 2.5rem 3.2rem;
+  color: white;
+}
+
+.footer .news-letter form input {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #343a40;
+  height: 2.3rem;
+  padding: 0 0.8rem;
+  border-radius: 0.5rem;
+  border: none;
+  width: 15rem;
+}
+
+.footer .news-letter form button {
+  background-color: rgba(255, 255, 255, 0.9);
+  height: 2.3rem;
+  padding: 0 0.6rem;
+  font-size: 0.85rem;
+  color: #f03e3e;
+  border-radius: 0.5rem;
+  font-weight: bold;
+}
+
+.footer #logo2 {
+  height: 5rem;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .footer p {
-  max-width: 50rem;
+  max-width: 20rem;
 }
 
 .footer .btn-md {
   background-color: #343a40;
   border-radius: 0.3rem;
-  font-size: 0.95rem;
-  padding: 0.2rem 0.6rem;
+  padding: 0.4rem 0.8rem;
+  width: 7.2rem;
 }
 
 .footer .btn-md i {
   font-size: 1.2rem;
 }
 
-.footer .btn-md:hover {
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+.footer .bottom h2 {
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
-.footer span {
-  color: #f03e3e;
-  font-weight: bold;
+.footer .stack img {
+  max-width: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .footer .news-letter {
+    padding: 2.5rem 1rem;
+  }
 }
 
 .account {
@@ -2438,9 +2488,40 @@ nav #drop-down:hover ul {
   }
 }
 
+@media (min-width: 640px){
+  .sm\:gap-2{
+    gap: 0.5rem;
+  }
+
+  .sm\:text-3xl{
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
 @media (min-width: 768px){
+  .md\:w-fit{
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+
   .md\:grid-cols-2{
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px){
+  .lg\:w-fit{
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+
+  .lg\:flex-row{
+    flex-direction: row;
+  }
+
+  .lg\:flex-col{
+    flex-direction: column;
   }
 }
 

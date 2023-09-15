@@ -2,27 +2,67 @@
     background-color: #dadada54;
     border-top: 2px solid $primary;
     border-bottom: 10px solid $dark;
-    img {
-        width: 8rem;
-        height: 8rem;
+    .news-letter {
+        background-color: $primary;
+        padding: 2.5rem 3.2rem;
+        color: white;
+        form {
+            input {
+                background-color: rgba(255, 255, 255, 0.9);
+                color: $dark;
+                height: 2.3rem;
+                padding: 0 0.8rem;
+                border-radius: 0.5rem;
+                border: none;
+                width: 15rem;
+            }
+            button {
+                background-color: rgba(255, 255, 255, 0.9);
+                height: 2.3rem;
+                padding: 0 0.6rem;
+                font-size: 0.85rem;
+                color: $primary;
+                border-radius: 0.5rem;
+                font-weight: bold;
+            }
+        }
+    }
+
+    #logo2 {
+        height: 5rem;
+        width: fit-content;
     }
     p {
-        max-width: 50rem;
+        max-width: 20rem;
     }
     .btn-md {
         background-color: $dark;
         border-radius: 0.3rem;
-        font-size: 0.95rem;
-        padding: 0.2rem 0.6rem;
+        padding: 0.4rem 0.8rem;
+        width: 7.2rem;
         i {
             font-size: 1.2rem;
         }
-        &:hover {
-            box-shadow: $shadow;
+    }
+
+    .bottom {
+        h2 {
+            font-size: 1.2rem;
+            font-weight: bold;
         }
     }
-    span {
-        color: $primary;
-        font-weight: bold;
+
+    .stack {
+        img {
+            max-width: 1.5rem;
+        }
+    }
+}
+
+@media (max-width: 640px) {
+    .footer {
+        .news-letter {
+            padding: 2.5rem 1rem;
+        }
     }
 }
