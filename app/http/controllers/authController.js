@@ -44,11 +44,17 @@ const createSendToken = function (user, statusCode, res) {
 
 const register = async function (req, res) {
     try {
+        const {password, passwordConfirm} = req.body;
+        if (password.length < 8) {
+            throw new Error('Password length length must be 8');
+        } else if (password !== passwordConfirm) {
+            throw new Error('Password Confirm is not same as Password');
+        }
         const newUser = await User.create({
             name: formatName(req.body.name),
             email: req.body.email,
-            password: req.body.password,
-            passwordConfirm: req.body.passwordConfirm,
+            password: password,
+            passwordConfirm: passwordConfirm,
         });
         createSendToken(newUser, 201, res);
     } catch (error) {
@@ -150,9 +156,14 @@ const updatePassword = async function (req, res, next) {
         let {password, passwordNew, passwordConfirm} = req.body;
 
         const user = await User.findById(req.user._id).select('+password');
-
         if (!(await user.correctPassword(password, user.password))) {
             throw new Error('Incorrect Password');
+        }
+
+        if (passwordNew.length < 8) {
+            throw new Error('New Password length length must be 8');
+        } else if (passwordNew !== passwordConfirm) {
+            throw new Error('Password Confirm is not same as New Password');
         }
 
         user.password = passwordNew;

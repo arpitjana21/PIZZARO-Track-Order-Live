@@ -354,8 +354,8 @@ nav .user-account span {
   font-size: 0.8rem;
   left: 30%;
   padding: 0.1rem 0.5rem;
-  background-color: #f1f3f5;
-  color: #868e96;
+  background-color: #feecec;
+  color: #f03e3e;
   border-radius: 0.3rem;
   pointer-events: none;
 }
