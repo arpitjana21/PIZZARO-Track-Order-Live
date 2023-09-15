@@ -1,15 +1,15 @@
 .offer {
     img {
-        width: 100%;
-        max-width: 35rem;
         box-shadow: $shadow;
+        cursor: pointer;
+        filter: contrast(90%);
     }
 }
 
-@media (max-width: 1224px) {
+@media (max-width: 600px) {
     .offer {
-        div {
-            flex-direction: column;
+        img {
+            width: 100%;
         }
     }
 }

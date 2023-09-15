@@ -55,6 +55,16 @@ function updateOrderStats(orderStats, orderData) {
     });
 }
 
+const offerImgs = document.querySelectorAll('.offer img');
+
+if (offerImgs) {
+    offerImgs.forEach(function (img) {
+        img.addEventListener('click', function () {
+            location.assign('/#menu');
+        });
+    });
+}
+
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
@@ -78,15 +88,18 @@ function getSlug(pizza) {
 
 function updateCart(pizza) {
     pizza.slug = getSlug(pizza);
-    axios.post('/update-cart', pizza).then(function (res) {
-        cartQtys.forEach(function (el) {
-            el.textContent = res.data.totalQty;
+    axios
+        .post('/update-cart', pizza)
+        .then(function (res) {
+            cartQtys.forEach(function (el) {
+                el.textContent = res.data.totalQty;
+            });
+            notify(`✅ ${pizza.name} ( ${size[pizza.size]} ) Added to Cart`);
+        })
+        .catch(function (err) {
+            console.log(err.response.data.message);
+            notify(`🔴 ${err.response.data.message}`);
         });
-        notify(
-            `${pizza.name} ( ${size[pizza.size]} ) Added to Cart`,
-            'success'
-        );
-    });
 }
 
 if (menuCards) {

@@ -11,7 +11,7 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: $dark;
+    background: #212529;
     border-radius: 0.12rem;
     cursor: pointer;
 }
@@ -23,14 +23,19 @@
 
 // Noty Theme
 .noty_theme__sunset {
-    border-radius: 0.7rem !important;
-    padding: 0.2rem 0.6rem;
+    border-radius: 0.4rem !important;
+    padding: 0.5rem 0.6rem;
+    background-color: #24282c !important;
+    border: 2px solid white !important;
 }
 
-.noty_theme__metroui {
-    border-radius: 0.7rem !important;
-    padding: 0.2rem 0.6rem;
-}
+// .noty_theme__metroui {
+//     border-radius: 0.4rem !important;
+//     padding: 0.5rem 0.6rem;
+//     background-color: #24282c !important;
+//     border: 2px solid white !important;
+//     color: white;
+// }
 
 input {
     border: 2px solid $grey;
@@ -48,9 +53,20 @@ html {
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    // font-family: 'Inter', sans-serif;
+    font-family: 'Rubik', sans-serif;
     -webkit-font-smoothing: antialiased;
     color: $dark;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    // font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .btn-md {

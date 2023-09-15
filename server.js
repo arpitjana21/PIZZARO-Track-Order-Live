@@ -19,8 +19,8 @@ dotenv.config({path: './config.env'});
 
 // ENV Variables
 const PORT = process.env.PORT;
-const DATABASE = process.env.DATABASE;
-// const DATABASE = process.env.DATABASE_LOCAL;
+// const DATABASE = process.env.DATABASE;
+const DATABASE = process.env.DATABASE_LOCAL;
 
 // Session Store
 const storeOptions = {

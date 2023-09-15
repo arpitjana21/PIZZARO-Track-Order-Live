@@ -69,6 +69,7 @@
                 left: -67%;
                 background-color: #868e96;
                 border-radius: 1rem;
+                transition: $smoothSlow;
             }
             .flex {
                 display: flex;
@@ -84,8 +85,12 @@
                 justify-content: flex-end;
                 padding: 0.3rem;
                 width: 6rem;
+                span {
+                    transition: $smoothSlow;
+                }
                 i {
                     font-size: 1.3rem;
+                    transition: $smoothSlow;
                 }
                 .time {
                     font-size: 0.9rem;

@@ -1,4 +1,6 @@
 @import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Rubik&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap);
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -261,7 +263,7 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #343a40;
+  background: #212529;
   border-radius: 0.12rem;
   cursor: pointer;
 }
@@ -272,13 +274,10 @@
 }
 
 .noty_theme__sunset {
-  border-radius: 0.7rem !important;
-  padding: 0.2rem 0.6rem;
-}
-
-.noty_theme__metroui {
-  border-radius: 0.7rem !important;
-  padding: 0.2rem 0.6rem;
+  border-radius: 0.4rem !important;
+  padding: 0.5rem 0.6rem;
+  background-color: #24282c !important;
+  border: 2px solid white !important;
 }
 
 input {
@@ -297,9 +296,18 @@ html {
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Rubik", sans-serif;
   -webkit-font-smoothing: antialiased;
   color: #343a40;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
 }
 
 .btn-md {
@@ -434,6 +442,10 @@ nav #drop-down:hover ul {
     display: none;
   }
 }
+.video-heading {
+  color: #f03e3e;
+}
+
 .hero {
   background-color: white;
   grid-template-columns: 1.5fr 2fr;
@@ -445,6 +457,7 @@ nav #drop-down:hover ul {
 .hero img {
   width: 100%;
   max-width: 42rem;
+  filter: contrast(110%);
 }
 .hero .ar01 {
   grid-area: ar01;
@@ -452,13 +465,21 @@ nav #drop-down:hover ul {
 .hero .ar02 {
   grid-area: ar02;
 }
+.hero h1 {
+  line-height: 6.3rem;
+  font-weight: 800;
+}
 
 @media (max-width: 1280px) {
   .hero h1 {
     font-size: 4rem;
+    line-height: 4.5rem;
   }
   .hero a {
     margin-top: 1rem;
+  }
+  .video-heading {
+    font-size: 2rem;
   }
 }
 @media (max-width: 1224px) {
@@ -469,6 +490,7 @@ nav #drop-down:hover ul {
   .hero h1 {
     font-size: 3.5rem;
     padding-top: 1rem;
+    line-height: 4rem;
   }
 }
 .donate {
@@ -489,18 +511,21 @@ nav #drop-down:hover ul {
 }
 
 .offer img {
-  width: 100%;
-  max-width: 35rem;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  cursor: pointer;
+  filter: contrast(90%);
 }
 
-@media (max-width: 1224px) {
-  .offer div {
-    flex-direction: column;
+@media (max-width: 600px) {
+  .offer img {
+    width: 100%;
   }
 }
 .menu {
-  background-color: #343a40;
+  background-color: #212529;
+}
+.menu img {
+  filter: contrast(120%);
 }
 .menu h1 {
   color: white;
@@ -512,7 +537,6 @@ nav #drop-down:hover ul {
 }
 .menu .card {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  border: 2px solid #868e96;
   background-color: white;
 }
 .menu .card .food {
@@ -605,6 +629,7 @@ nav #drop-down:hover ul {
   padding: 2rem;
   width: 100%;
   max-width: 40rem;
+  background-color: #f3f3f3;
 }
 .login-register .form-container h1 {
   color: #f03e3e;
@@ -687,6 +712,7 @@ nav #drop-down:hover ul {
   border: 2px solid #868e96;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding: 2rem;
+  background-color: #f3f3f3;
 }
 .account .form-container h1 {
   color: #f03e3e;
@@ -792,6 +818,7 @@ nav #drop-down:hover ul {
   left: -67%;
   background-color: #868e96;
   border-radius: 1rem;
+  transition: all 0.5s ease-in-out;
 }
 .orders .card .orderStatus .flex {
   display: flex;
@@ -807,8 +834,12 @@ nav #drop-down:hover ul {
   padding: 0.3rem;
   width: 6rem;
 }
+.orders .card .orderStatus .status span {
+  transition: all 0.5s ease-in-out;
+}
 .orders .card .orderStatus .status i {
   font-size: 1.3rem;
+  transition: all 0.5s ease-in-out;
 }
 .orders .card .orderStatus .status .time {
   font-size: 0.9rem;

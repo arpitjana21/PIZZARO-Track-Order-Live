@@ -1,5 +1,8 @@
 .menu {
-    background-color: $dark;
+    background-color: #212529;
+    img {
+        filter: contrast(120%);
+    }
     h1 {
         color: white;
     }
@@ -10,7 +13,6 @@
     }
     .card {
         box-shadow: $shadow;
-        border: 2px solid $grey;
         background-color: white;
 
         .food {

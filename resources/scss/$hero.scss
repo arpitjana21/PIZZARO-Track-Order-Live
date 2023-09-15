@@ -1,3 +1,6 @@
+.video-heading {
+    color: $primary;
+}
 .hero {
     background-color: white;
     grid-template-columns: 1.5fr 2fr;
@@ -8,6 +11,8 @@
     img {
         width: 100%;
         max-width: 42rem;
+
+        filter: contrast(110%);
     }
     .ar01 {
         grid-area: ar01;
@@ -15,16 +20,25 @@
     .ar02 {
         grid-area: ar02;
     }
+
+    h1 {
+        line-height: 6.3rem;
+        font-weight: 800;
+    }
 }
 
 @media (max-width: 1280px) {
     .hero {
         h1 {
             font-size: 4rem;
+            line-height: 4.5rem;
         }
         a {
             margin-top: 1rem;
         }
+    }
+    .video-heading {
+        font-size: 2rem;
     }
 }
 
@@ -35,6 +49,7 @@
         h1 {
             font-size: 3.5rem;
             padding-top: 1rem;
+            line-height: 4rem;
         }
     }
 }

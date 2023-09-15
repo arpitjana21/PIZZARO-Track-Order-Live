@@ -78,6 +78,14 @@ function updateOrderStats(orderStats, orderData) {
     }
   });
 }
+var offerImgs = document.querySelectorAll('.offer img');
+if (offerImgs) {
+  offerImgs.forEach(function (img) {
+    img.addEventListener('click', function () {
+      location.assign('/#menu');
+    });
+  });
+}
 
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
@@ -104,7 +112,10 @@ function updateCart(pizza) {
     cartQtys.forEach(function (el) {
       el.textContent = res.data.totalQty;
     });
-    notify("".concat(pizza.name, " ( ").concat(size[pizza.size], " ) Added to Cart"), 'success');
+    notify("\u2705 ".concat(pizza.name, " ( ").concat(size[pizza.size], " ) Added to Cart"));
+  })["catch"](function (err) {
+    console.log(err.response.data.message);
+    notify("\uD83D\uDD34 ".concat(err.response.data.message));
   });
 }
 if (menuCards) {
