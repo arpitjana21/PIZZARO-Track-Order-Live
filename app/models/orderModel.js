@@ -34,7 +34,7 @@ const orderSchema = mongoose.Schema(
         },
         payment: {
             type: String,
-            default: 'COD',
+            default: 'online',
         },
         itemCount: Number,
         amount: Number,

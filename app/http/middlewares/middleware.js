@@ -1,4 +1,5 @@
-const crypto = require('crypto');
+const base64 = require('base-64');
+const utf8 = require('utf8');
 
 const userView = function (req, res, next) {
     if (req.user) {
@@ -54,19 +55,17 @@ const adminProtected = function (req, res, next) {
     }
 };
 
-// function encrypt(text) {
-//     const cipher = crypto.createCipher(algorithm, secretKey);
-//     let encrypted = cipher.update(text, 'utf-8', 'hex');
-//     encrypted += cipher.final('hex');
-//     return encrypted;
-// }
+const encode = function (text) {
+    let bytes = utf8.encode(text);
+    let encoded = base64.encode(bytes);
+    return encoded;
+};
 
-// function decrypt(encryptedText) {
-//     const decipher = crypto.createDecipher(algorithm, secretKey);
-//     let decrypted = decipher.update(encryptedText, 'hex', 'utf-8');
-//     decrypted += decipher.final('utf-8');
-//     return decrypted;
-// }
+const decode = function (encoded) {
+    const bytes = base64.decode(encoded);
+    const text = utf8.decode(bytes);
+    return text;
+};
 
 module.exports = {
     userView,
@@ -75,4 +74,6 @@ module.exports = {
     adminProtected,
     userProtected,
     customerProtected,
+    encode,
+    decode,
 };

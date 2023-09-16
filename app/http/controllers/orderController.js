@@ -1,6 +1,6 @@
 const {Order} = require('../../models/orderModel');
 const stripe = require('stripe');
-// const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const middleware = require('../middlewares/middleware');
 
 const getLineItems = function (req) {
     const lineItems = [];
@@ -27,7 +27,10 @@ const getCheckOutSeccion = async function (req, res) {
     const stripeKey = process.env.STRIPE_SECRET_KEY;
     const URL = `${req.protocol}://${req.get('host')}`;
 
-    const successURL = `${URL}?phone=${phone}&address=${address}`;
+    const encode = middleware.encode(JSON.stringify({phone, address}));
+    // const successURL = `${URL}?phone=${phone}&address=${address}`;
+    const successURL = `${URL}?odata=${encode}`;
+
     const cancelURL = `${URL}/cart`;
 
     const session = await stripe(stripeKey).checkout.sessions.create({
@@ -46,7 +49,10 @@ const getCheckOutSeccion = async function (req, res) {
 };
 
 const placeOrder = async function (req, res, next) {
-    const {phone, address} = req.query;
+    const {odata} = req.query;
+    const decode = JSON.parse(middleware.decode(odata));
+    const {phone, address} = decode;
+    console.log(phone, address);
     if (!phone && !address) {
         return next();
     }
