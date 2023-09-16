@@ -1,12 +1,61 @@
 const {Order} = require('../../models/orderModel');
+const stripe = require('stripe');
+// const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-const placeOrder = async function (req, res) {
+const getLineItems = function (req) {
+    const lineItems = [];
+    Object.values(req.session.cart.items).forEach(function (item) {
+        lineItems.push({
+            price_data: {
+                product_data: {
+                    name: item.data.name,
+                    description: item.veg ? 'veg' : 'non-veg',
+                    images: [item.data.image],
+                },
+                currency: 'inr',
+                unit_amount: item.data.price[item.data.size] * 100,
+            },
+            quantity: item.qty,
+        });
+    });
+
+    return lineItems;
+};
+
+const getCheckOutSeccion = async function (req, res) {
+    const {phone, address} = req.body;
+    const stripeKey = process.env.STRIPE_SECRET_KEY;
+    const URL = `${req.protocol}://${req.get('host')}`;
+
+    const successURL = `${URL}?phone=${phone}&address=${address}`;
+    const cancelURL = `${URL}/cart`;
+
+    const session = await stripe(stripeKey).checkout.sessions.create({
+        payment_method_types: ['card'],
+        success_url: successURL,
+        cancel_url: cancelURL,
+        line_items: getLineItems(req),
+        mode: 'payment',
+    });
+
+    // Create session as response
+    res.status(200).json({
+        status: 'success',
+        session: session,
+    });
+};
+
+const placeOrder = async function (req, res, next) {
+    const {phone, address} = req.query;
+    if (!phone && !address) {
+        return next();
+    }
+
     try {
-        const {phone, address} = req.body;
         const {items, totalQty, totalPrice} = req.session.cart;
 
         const orderData = {
-            phone: `${phone}`,
+            phone: phone,
             address: address,
             user: req.user._id,
             items: items,
@@ -16,6 +65,8 @@ const placeOrder = async function (req, res) {
         };
 
         const newOrder = await Order.create(orderData);
+
+        // Reset The Session
         req.session.cart = {
             items: {},
             totalQty: 0,
@@ -24,19 +75,9 @@ const placeOrder = async function (req, res) {
 
         const eventEmmiter = req.app.get('eventEmmiter');
         eventEmmiter.emit('orderPlaced', newOrder);
-
-        res.status(200).json({
-            status: 'success',
-            message: 'Order Places Sussesfully',
-            data: {
-                data: newOrder,
-            },
-        });
+        return next();
     } catch (error) {
-        res.status(400).json({
-            status: 'fail',
-            message: error.message,
-        });
+        console.log(error);
     }
 };
 
@@ -113,4 +154,9 @@ const updateOrderStatus = async function (req, res) {
     }
 };
 
-module.exports = {placeOrder, cancleOrder, updateOrderStatus};
+module.exports = {
+    placeOrder,
+    cancleOrder,
+    updateOrderStatus,
+    getCheckOutSeccion,
+};

@@ -1,5 +1,6 @@
 const {Menu} = require('../../models/menuModel');
 const {Order} = require('../../models/orderModel');
+const {Subscription} = require('../../models/subscribeModel');
 
 const homeView = async function (req, res) {
     const pizzas = await Menu.find();
@@ -106,6 +107,26 @@ const minusPizza = function (req, res) {
     });
 };
 
+const addSubscription = async function (req, res) {
+    try {
+        const {email} = req.body;
+        const subs = await Subscription.findOne({email});
+        if (subs)
+            return res.status(200).json({
+                message: '⛔ Email Already had Subscription',
+            });
+        const newSubs = await Subscription.create({email: req.body.email});
+        return res.status(200).json({
+            message: '✅ Subscription Added Successfully',
+        });
+    } catch (error) {
+        res.status(400).json({
+            status: 'fail',
+            message: error.message,
+        });
+    }
+};
+
 module.exports = {
     homeView,
     registerView,
@@ -117,4 +138,5 @@ module.exports = {
     updateCart,
     plusPizza,
     minusPizza,
+    addSubscription,
 };

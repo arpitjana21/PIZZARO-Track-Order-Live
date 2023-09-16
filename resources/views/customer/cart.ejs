@@ -20,7 +20,7 @@
       <div class="pizza-list">
         <%for(const pizza of Object.values(session.cart.items)){%>
         <div data-pizza="<%= JSON.stringify(pizza)%>" class="cart-pizza-item flex items-center gap-4 pb-4 pt-5 ">
-          <img class="w-32" src="/img/pizzas/<%=pizza.data.image%>" alt="pizza">
+          <img class="w-32" src="<%=pizza.data.image%>" alt="pizza">
           <div class="w-full">
             <h2 class="text-lg font-bold">
               <%=pizza.data.name%>
@@ -59,7 +59,7 @@
         <form class="order-form flex flex-col justify-end items-end gap-2 pt-7">
           <input required class="address p-2 rounded-md" type="text" placeholder="Your Address">
           <input required class="phone p-2 rounded-md" type="tel" pattern="[0-9]{10}" title="Please enter a 10-digit mobile phone number" placeholder="10 Digit Phone-Number">
-          <button class="btn-md mt-2">Order Now</button>
+          <button class="btn-md mt-2 order-now">Order Now</button>
         </form>
         <%}else{%>
         <div class="flex justify-end">

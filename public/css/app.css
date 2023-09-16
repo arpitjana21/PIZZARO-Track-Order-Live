@@ -443,10 +443,6 @@ nav #drop-down:hover ul {
     display: none;
   }
 }
-.video-heading {
-  color: #f03e3e;
-}
-
 .hero {
   background-color: white;
   grid-template-columns: 1.5fr 2fr;

@@ -8,7 +8,11 @@ const orderRouter = express.Router();
 orderRouter.use(authController.isloggedIn);
 
 orderRouter
-    .route('/')
+    .route('/getCheckOut')
+    .post(middleware.customerProtected, orderController.getCheckOutSeccion);
+
+orderRouter
+    .route('/:orderDetails')
     .post(middleware.userProtected, orderController.placeOrder);
 
 orderRouter

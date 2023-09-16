@@ -15,7 +15,7 @@
 </section>
 
 <!-- Offer Section -->
-<section id="offer" class="offer container mx-auto px-12 py-14">
+<section id="offer" class="offer container mx-auto px-12 pb-14">
   <h1 class="mb-10 text-2xl font-bold">Just for you.</h1>
   <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-11">
     <div>
@@ -42,7 +42,7 @@
       <% pizzas.forEach(function(pizza){ %>
       <div data-pizza="<%= JSON.stringify(pizza)%>" class="relative card p-7 rounded-2xl menu-card">
         <div class="top">
-          <img src="/img/pizzas/<%= pizza.image %>" alt="pizza">
+          <img src="<%= pizza.image %>" alt="pizza">
           <span class="<%=`${pizza.veg ? 'veg' : 'nveg'} absolute food`%>"><i class="ri-circle-fill"></i></span>
         </div>
         <div class="flex flex-col items-center justify-center">
@@ -69,8 +69,8 @@
 
 </section>
 
-<section class="ad-video container mx-auto px-20 pb-20 pt-12">
-  <h1 class="video-heading text-5xl font-bold text-center pb-10">Why we are tooo much Delicious ?</h1>
+<section class="ad-video container mx-auto px-20 pb-14 pt-12">
+  <h1 class="video-heading text-5xl font-bold text-center pb-10">Why we are <span class="text-red-500">tooo</span> much <span class="text-red-500">Delicious</span> ?</h1>
   <iframe class="w-full aspect-video rounded-2xl" src="https://www.youtube.com/embed/_mgMgitzTls?rel=0&amp;mute=1&loop=1" title="YouTube video player" allowfullscreen></iframe>
   <p class="text-center pt-5">No matter what the situation, pizza always helps.
     Especially a pizza that gives you the freedom to choose your toppings - from paneer,
