@@ -56,15 +56,14 @@ const getCheckOutSeccion = async function (req, res) {
 };
 
 const placeOrder = async function (req, res, next) {
-    const {odata} = req.query;
-    const decode = JSON.parse(middleware.decode(odata));
-    const {phone, address} = decode;
-    console.log(phone, address);
-    if (!phone && !address) {
-        return next();
-    }
-
     try {
+        const {odata} = req.query;
+        const decode = JSON.parse(middleware.decode(odata));
+        const {phone, address} = decode;
+        if (!phone && !address) {
+            return next();
+        }
+
         const {items, totalQty, totalPrice} = req.session.cart;
 
         const orderData = {

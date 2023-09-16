@@ -3,8 +3,15 @@ const {Order} = require('../../models/orderModel');
 const {Subscription} = require('../../models/subscribeModel');
 
 const homeView = async function (req, res) {
-    const pizzas = await Menu.find();
-    res.render('home', {pizzas: pizzas});
+    try {
+        const pizzas = await Menu.find();
+        res.render('home', {pizzas: pizzas});
+    } catch (error) {
+        res.status(400).json({
+            status: 'fail',
+            message: error.message,
+        });
+    }
 };
 
 const cartView = function (req, res) {
@@ -26,15 +33,29 @@ const accountView = function (req, res) {
 };
 
 const customerOrdersView = async function (req, res) {
-    const userId = req.user._id;
-    const orders = await Order.find({user: userId}).sort('-createdAt');
-    return res.render('customer/orders', {orders: orders});
+    try {
+        const userId = req.user._id;
+        const orders = await Order.find({user: userId}).sort('-createdAt');
+        return res.render('customer/orders', {orders: orders});
+    } catch (error) {
+        res.status(400).json({
+            status: 'fail',
+            message: error.message,
+        });
+    }
 };
 
 const adminOrdersView = async function (req, res) {
-    const orders = await Order.find().sort('-createdAt');
-    // const orders = await Order.find().sort('-updatedAt');
-    return res.render('admin/orders', {orders: orders});
+    try {
+        const orders = await Order.find().sort('-createdAt');
+        // const orders = await Order.find().sort('-updatedAt');
+        return res.render('admin/orders', {orders: orders});
+    } catch (error) {
+        res.status(400).json({
+            status: 'fail',
+            message: error.message,
+        });
+    }
 };
 
 const updateSessionCart = function (req, pizza, type) {
