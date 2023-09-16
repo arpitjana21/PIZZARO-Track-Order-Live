@@ -341,7 +341,7 @@ var bookTour = /*#__PURE__*/function () {
           _context.prev = 0;
           stripe = Stripe(stripe_publishable_key);
           _context.next = 4;
-          return axios__WEBPACK_IMPORTED_MODULE_1__["default"].post('/order/getCheckOut', load);
+          return axios__WEBPACK_IMPORTED_MODULE_1__["default"].post('/order/getCheckOutSession', load);
         case 4:
           session = _context.sent;
           _context.next = 7;

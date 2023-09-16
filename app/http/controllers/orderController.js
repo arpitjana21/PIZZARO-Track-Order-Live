@@ -58,6 +58,7 @@ const getCheckOutSeccion = async function (req, res) {
 const placeOrder = async function (req, res, next) {
     try {
         const {odata} = req.query;
+        if (!odata) return next();
         const decode = JSON.parse(middleware.decode(odata));
         const {phone, address} = decode;
         if (!phone && !address) {

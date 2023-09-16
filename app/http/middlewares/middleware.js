@@ -1,6 +1,3 @@
-const base64 = require('base-64');
-const utf8 = require('utf8');
-
 const userView = function (req, res, next) {
     if (req.user) {
         next();
@@ -55,17 +52,13 @@ const adminProtected = function (req, res, next) {
     }
 };
 
-const encode = function (text) {
-    let bytes = utf8.encode(text);
-    let encoded = base64.encode(bytes);
-    return encoded;
-};
+function encode(originalString) {
+    return originalString;
+}
 
-const decode = function (encoded) {
-    const bytes = base64.decode(encoded);
-    const text = utf8.decode(bytes);
-    return text;
-};
+function decode(encodedString) {
+    return encodedString;
+}
 
 module.exports = {
     userView,
