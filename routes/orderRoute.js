@@ -8,7 +8,7 @@ const orderRouter = express.Router();
 orderRouter.use(authController.isloggedIn);
 
 orderRouter
-    .route('/getCheckOut')
+    .route('/getCheckOutSession')
     .post(middleware.customerProtected, orderController.getCheckOutSeccion);
 
 orderRouter

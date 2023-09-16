@@ -346,7 +346,7 @@ const orderForm = document.querySelector('.order-form');
 const bookTour = async function (load, orderNow) {
     try {
         const stripe = Stripe(stripe_publishable_key);
-        const session = await axios.post('/order/getCheckOut', load);
+        const session = await axios.post('/order/getCheckOutSession', load);
         await stripe.redirectToCheckout({
             sessionId: session.data.session.id,
         });

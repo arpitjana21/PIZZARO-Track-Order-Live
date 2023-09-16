@@ -23,29 +23,36 @@ const getLineItems = function (req) {
 };
 
 const getCheckOutSeccion = async function (req, res) {
-    const {phone, address} = req.body;
-    const stripeKey = process.env.STRIPE_SECRET_KEY;
-    const URL = `${req.protocol}://${req.get('host')}`;
+    try {
+        const {phone, address} = req.body;
+        const stripeKey = process.env.STRIPE_SECRET_KEY;
+        const URL = `${req.protocol}://${req.get('host')}`;
 
-    const encode = middleware.encode(JSON.stringify({phone, address}));
-    // const successURL = `${URL}?phone=${phone}&address=${address}`;
-    const successURL = `${URL}?odata=${encode}`;
+        const encode = middleware.encode(JSON.stringify({phone, address}));
+        // const successURL = `${URL}?phone=${phone}&address=${address}`;
+        const successURL = `${URL}?odata=${encode}`;
 
-    const cancelURL = `${URL}/cart`;
+        const cancelURL = `${URL}/cart`;
 
-    const session = await stripe(stripeKey).checkout.sessions.create({
-        payment_method_types: ['card'],
-        success_url: successURL,
-        cancel_url: cancelURL,
-        line_items: getLineItems(req),
-        mode: 'payment',
-    });
+        const session = await stripe(stripeKey).checkout.sessions.create({
+            payment_method_types: ['card'],
+            success_url: successURL,
+            cancel_url: cancelURL,
+            line_items: getLineItems(req),
+            mode: 'payment',
+        });
 
-    // Create session as response
-    res.status(200).json({
-        status: 'success',
-        session: session,
-    });
+        // Create session as response
+        res.status(200).json({
+            status: 'success',
+            session: session,
+        });
+    } catch (error) {
+        res.status(400).json({
+            status: 'fail',
+            message: error.message,
+        });
+    }
 };
 
 const placeOrder = async function (req, res, next) {
@@ -83,7 +90,10 @@ const placeOrder = async function (req, res, next) {
         eventEmmiter.emit('orderPlaced', newOrder);
         return next();
     } catch (error) {
-        console.log(error);
+        res.status(400).json({
+            status: 'fail',
+            message: error.message,
+        });
     }
 };
 
