@@ -21,14 +21,14 @@
                   <td class="qty"><%=item.qty%></td>
                   <td class="name"><%=item.data.name%></td>
                   <td class="size"><%=item.data.size === 0 ? 'Small' : item.data.size === 1 ? 'Medium' : 'Large'%></td>
-                  <td class="price"><%=item.data.price[item.data.size]%> Rs.</td>
+                  <td class="price">₹<%=item.data.price[item.data.size]%></td>
                 </tr>
                 <%})%>
                 <tr class="total-row">
                   <td></td>
                   <td></td>
                   <td>Total</td>
-                  <td><%=order.amount%> Rs.</td>
+                  <td>₹<%=order.amount%></td>
                 </tr>
             </table>
 
