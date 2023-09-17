@@ -2302,7 +2302,8 @@ nav #drop-down:hover ul {
 }
 
 .account .form-container {
-  min-width: 25rem;
+  width: 100%;
+  max-width: 25rem;
   border: 2px solid #868e96;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding: 2rem;

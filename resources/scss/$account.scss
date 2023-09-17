@@ -4,7 +4,8 @@
     align-items: center;
     justify-content: center;
     .form-container {
-        min-width: 25rem;
+        width: 100%;
+        max-width: 25rem;
         border: 2px solid $grey;
         box-shadow: $shadow;
         padding: 2rem;
@@ -45,3 +46,11 @@
         }
     }
 }
+
+// @media (max-width: 496px) {
+//     .account {
+//         .form-container {
+//             min-width: 100%;
+//         }
+//     }
+// }
