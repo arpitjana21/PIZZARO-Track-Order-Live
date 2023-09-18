@@ -92,11 +92,16 @@ e.g.
 
 ## Tech & Tools
 
-![Tech Stack](https://skillicons.dev/icons?i=nodejs,expressjs,mongodb)
-<img src="https://i.postimg.cc/ZnvhZNMT/stripe.png" height="48" style="border-radius: 11px; margin-right:20px; margin-left:20px"></img><img src="https://i.postimg.cc/rmx50nb3/socket.png" height="48" style="border-radius: 20px; margin-right:20px"></img>![Tech Stack](https://skillicons.dev/icons?i=scss,tailwind)\
-![Dev Tools](https://skillicons.dev/icons?i=vscode,git,github,postman)
+<img style="height: 3rem" src="https://i.postimg.cc/GhzG6X78/Untitled-design.png">\
+<img style="height: 3rem" src="https://i.postimg.cc/6QMP3Vpy/Untitled-design-1.png">
 
 ## Contact Me
 
 [![GitHub ](https://img.shields.io/badge/GitHub-@arpitjana21-orange?style=flat&logo=GitHub&link=https://github.com/arpitjana21)](https://github.com/arpitjana21)
 [![LinkedIn ](https://img.shields.io/badge/LinkedIn-@arpitjana2103-0077b5?style=flat&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/arpitjana2103/)](https://www.linkedin.com/in/arpitjana2103/)
+
+## LISENSE
+
+[![License](https://img.shields.io/badge/license-MIT-85e2cd.svg)](https://opensource.org/license/mit/)
+
+Copyright (c) 2023 Arpit Jana
