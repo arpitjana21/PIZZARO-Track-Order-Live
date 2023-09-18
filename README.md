@@ -20,10 +20,9 @@
 
 ## Gallery
 
-<img style="width:100%" src="https://i.postimg.cc/Y0pWbN0n/Untitled-design-1-page-0001.jpg">
-<img style="width:100%" src="https://i.postimg.cc/Bnt2rCgR/Untitled-design-1-page-0002.jpg">
-<img style="width:100%" src="https://i.postimg.cc/hvp7wJ7S/Untitled-design-1-page-0003.jpg">
-<img style="width:100%" src="https://i.postimg.cc/hjVLCPrj/Untitled-design-1-page-0005.jpg">
+<img style="width:100%" src="/public/img/screenshots/1.png">
+<img style="width:100%" src="/public/img/screenshots/3.png">
+<img style="width:100%" src="/public/img/screenshots/2.png">
 
 ## Application Features
 
