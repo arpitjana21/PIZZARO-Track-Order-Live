@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="" rel="">
- <img width=300px style="border-radius:0.3rem" src="https://i.postimg.cc/xCC83DrZ/PIZZARO.png"></a>
+ <img width=300px style="border-radius:0.3rem" src="./public//img/cover.png"></a>
 </p>
 
 <div align="center">
