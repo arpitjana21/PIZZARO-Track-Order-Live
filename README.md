@@ -7,7 +7,7 @@
 
 <div align="center">
 
-<a href="https://pizzaro-track-order-live-production.up.railway.app/">![version](https://img.shields.io/badge/Deployed-Link-0E89C6)</a>
+<a href="https://pizzaro-track-order-realtime.onrender.com/">![version](https://img.shields.io/badge/Deployed-Link-0E89C6)</a>
 
 <h4>Pizzaro transforms pizza ordering with real-time order tracking, secure online payments, and seamless cart management including 'Add to Cart' and 'Quantity Adjustments'. Experience easy login, registration, and password updates, complemented by a dedicated admin panel for efficient order status control.</h4>
 

@@ -22,15 +22,15 @@ const PORT = process.env.PORT;
 const DATABASE = process.env.DATABASE;
 // const DATABASE = process.env.DATABASE_LOCAL;
 
+// Event Emmiter
+const eventEmmiter = new Emmiter();
+app.set('eventEmmiter', eventEmmiter);
+
 // Session Store
 const storeOptions = {
     mongoUrl: DATABASE,
     collection: 'sessions',
 };
-
-// Event Emmiter
-const eventEmmiter = new Emmiter();
-app.set('eventEmmiter', eventEmmiter);
 
 // Session Config
 app.use(
